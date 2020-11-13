@@ -28,5 +28,35 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             List<Departments> listDepartment = JsonConvert.DeserializeObject<List<Departments>>(json);
             return listDepartment;
         }
+
+        public void Add(Departments departments)
+        {
+            var department = JsonConvert.SerializeObject(departments);
+            var buffer = Encoding.UTF8.GetBytes(department);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PostAsync($"/api/v1/departments/add", byteContent);
+        }
+        public void Update(int id, Departments departments)
+        {
+            var department = JsonConvert.SerializeObject(departments);
+            var buffer = Encoding.UTF8.GetBytes(department);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PutAsync($"/api/v1/departments/update/{id}", byteContent);
+        }
+        public async Task<Departments> GetByIdAsync(int id)
+        {
+            _response = await _client.GetAsync($"/api/v1/departments/{id}");
+
+            var json = await _response.Content.ReadAsStringAsync();
+            Departments department = JsonConvert.DeserializeObject<Departments>(json);
+            return department;
+        }
+
+        public void Delete(int id)
+        {
+            _client.DeleteAsync($"/api/v1/departments/delete/{id}");
+        }
     }
 }

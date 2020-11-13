@@ -8,6 +8,13 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
 {
     class Roles
     {
+        private static Roles _instance;
+        public static Roles GetInstance()
+        {
+            if (_instance == null)
+                _instance = new Roles();
+            return _instance;
+        }
         public long id { get; set; }
         public string roleName { get; set; }
         public string note { get; set; }

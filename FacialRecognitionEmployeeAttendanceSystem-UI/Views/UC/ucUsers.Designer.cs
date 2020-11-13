@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtRoleId = new System.Windows.Forms.TextBox();
+            this.txtDepartmentId = new System.Windows.Forms.TextBox();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.txtNetSalary = new System.Windows.Forms.TextBox();
             this.txtGrossSalary = new System.Windows.Forms.TextBox();
@@ -55,10 +55,10 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.textBox8, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.textBox7, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.txtRoleId, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.txtDepartmentId, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.txtNote, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.txtNetSalary, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.txtGrossSalary, 1, 5);
@@ -94,70 +94,70 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(539, 380);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // textBox8
+            // txtRoleId
             // 
-            this.textBox8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox8.Location = new System.Drawing.Point(83, 343);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(453, 22);
-            this.textBox8.TabIndex = 19;
+            this.txtRoleId.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtRoleId.Location = new System.Drawing.Point(123, 343);
+            this.txtRoleId.Name = "txtRoleId";
+            this.txtRoleId.Size = new System.Drawing.Size(413, 22);
+            this.txtRoleId.TabIndex = 19;
             // 
-            // textBox7
+            // txtDepartmentId
             // 
-            this.textBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox7.Location = new System.Drawing.Point(83, 313);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(453, 22);
-            this.textBox7.TabIndex = 18;
+            this.txtDepartmentId.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDepartmentId.Location = new System.Drawing.Point(123, 313);
+            this.txtDepartmentId.Name = "txtDepartmentId";
+            this.txtDepartmentId.Size = new System.Drawing.Size(413, 22);
+            this.txtDepartmentId.TabIndex = 18;
             // 
             // txtNote
             // 
             this.txtNote.AllowDrop = true;
             this.txtNote.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNote.Location = new System.Drawing.Point(83, 213);
+            this.txtNote.Location = new System.Drawing.Point(123, 213);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(453, 94);
+            this.txtNote.Size = new System.Drawing.Size(413, 94);
             this.txtNote.TabIndex = 17;
             // 
             // txtNetSalary
             // 
             this.txtNetSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNetSalary.Location = new System.Drawing.Point(83, 183);
+            this.txtNetSalary.Location = new System.Drawing.Point(123, 183);
             this.txtNetSalary.Name = "txtNetSalary";
-            this.txtNetSalary.Size = new System.Drawing.Size(453, 22);
+            this.txtNetSalary.Size = new System.Drawing.Size(413, 22);
             this.txtNetSalary.TabIndex = 16;
             // 
             // txtGrossSalary
             // 
             this.txtGrossSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtGrossSalary.Location = new System.Drawing.Point(83, 153);
+            this.txtGrossSalary.Location = new System.Drawing.Point(123, 153);
             this.txtGrossSalary.Name = "txtGrossSalary";
-            this.txtGrossSalary.Size = new System.Drawing.Size(453, 22);
+            this.txtGrossSalary.Size = new System.Drawing.Size(413, 22);
             this.txtGrossSalary.TabIndex = 15;
             // 
             // txtHomeAddress
             // 
             this.txtHomeAddress.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtHomeAddress.Location = new System.Drawing.Point(83, 123);
+            this.txtHomeAddress.Location = new System.Drawing.Point(123, 123);
             this.txtHomeAddress.Name = "txtHomeAddress";
-            this.txtHomeAddress.Size = new System.Drawing.Size(453, 22);
+            this.txtHomeAddress.Size = new System.Drawing.Size(413, 22);
             this.txtHomeAddress.TabIndex = 14;
             // 
             // txtDob
             // 
             this.txtDob.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDob.Location = new System.Drawing.Point(83, 93);
+            this.txtDob.Location = new System.Drawing.Point(123, 93);
             this.txtDob.Name = "txtDob";
-            this.txtDob.Size = new System.Drawing.Size(453, 22);
+            this.txtDob.Size = new System.Drawing.Size(413, 22);
             this.txtDob.TabIndex = 13;
             // 
             // txtPIN
             // 
             this.txtPIN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPIN.Location = new System.Drawing.Point(83, 63);
+            this.txtPIN.Location = new System.Drawing.Point(123, 63);
             this.txtPIN.Name = "txtPIN";
-            this.txtPIN.Size = new System.Drawing.Size(453, 22);
+            this.txtPIN.Size = new System.Drawing.Size(413, 22);
             this.txtPIN.TabIndex = 12;
             // 
             // label1
@@ -172,9 +172,9 @@
             // txtFullName
             // 
             this.txtFullName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtFullName.Location = new System.Drawing.Point(83, 3);
+            this.txtFullName.Location = new System.Drawing.Point(123, 3);
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(453, 22);
+            this.txtFullName.Size = new System.Drawing.Size(413, 22);
             this.txtFullName.TabIndex = 1;
             // 
             // label2
@@ -182,7 +182,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 30);
+            this.label2.Size = new System.Drawing.Size(79, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Image Path";
             // 
@@ -200,16 +200,16 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 90);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 30);
+            this.label4.Size = new System.Drawing.Size(34, 17);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Day of Birth";
+            this.label4.Text = "Dob";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 120);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 30);
+            this.label5.Size = new System.Drawing.Size(101, 17);
             this.label5.TabIndex = 5;
             this.label5.Text = "Home Address";
             // 
@@ -218,7 +218,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(3, 150);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 30);
+            this.label6.Size = new System.Drawing.Size(90, 17);
             this.label6.TabIndex = 6;
             this.label6.Text = "Gross Salary";
             // 
@@ -245,7 +245,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(3, 310);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 30);
+            this.label9.Size = new System.Drawing.Size(97, 17);
             this.label9.TabIndex = 9;
             this.label9.Text = "Department Id";
             // 
@@ -261,9 +261,9 @@
             // txtImgPath
             // 
             this.txtImgPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtImgPath.Location = new System.Drawing.Point(83, 33);
+            this.txtImgPath.Location = new System.Drawing.Point(123, 33);
             this.txtImgPath.Name = "txtImgPath";
-            this.txtImgPath.Size = new System.Drawing.Size(453, 22);
+            this.txtImgPath.Size = new System.Drawing.Size(413, 22);
             this.txtImgPath.TabIndex = 11;
             // 
             // ucUsers
@@ -282,16 +282,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox txtNote;
-        private System.Windows.Forms.TextBox txtNetSalary;
-        private System.Windows.Forms.TextBox txtGrossSalary;
-        private System.Windows.Forms.TextBox txtHomeAddress;
-        private System.Windows.Forms.TextBox txtDob;
-        private System.Windows.Forms.TextBox txtPIN;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtFullName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -301,6 +292,15 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtImgPath;
+        public System.Windows.Forms.TextBox txtFullName;
+        public System.Windows.Forms.TextBox txtImgPath;
+        public System.Windows.Forms.TextBox txtPIN;
+        public System.Windows.Forms.TextBox txtDob;
+        public System.Windows.Forms.TextBox txtHomeAddress;
+        public System.Windows.Forms.TextBox txtGrossSalary;
+        public System.Windows.Forms.TextBox txtNetSalary;
+        public System.Windows.Forms.TextBox txtNote;
+        public System.Windows.Forms.TextBox txtDepartmentId;
+        public System.Windows.Forms.TextBox txtRoleId;
     }
 }

@@ -149,13 +149,13 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox txtWorkingHours;
-        private System.Windows.Forms.TextBox txtNote;
-        private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtDateCheck;
+        public System.Windows.Forms.TextBox txtDateCheck;
+        public System.Windows.Forms.TextBox txtStatus;
+        public System.Windows.Forms.TextBox txtNote;
+        public System.Windows.Forms.TextBox txtWorkingHours;
     }
 }

@@ -27,5 +27,41 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             List<Users> listUsers = JsonConvert.DeserializeObject<List<Users>>(json);
             return listUsers;
         }
+        public void Add(Users users)
+        {
+            var user = JsonConvert.SerializeObject(users);
+            var buffer = Encoding.UTF8.GetBytes(user);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PostAsync($"/api/v1/users/add", byteContent);
+        }
+        public void Update(int id, Users users)
+        {
+            var user = JsonConvert.SerializeObject(users);
+            var buffer = Encoding.UTF8.GetBytes(user);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PutAsync($"/api/v1/users/update/{id}", byteContent);
+        }
+        public async Task<Users> GetByIdAsync(int id)
+        {
+            _response = await _client.GetAsync($"/api/v1/users/{id}");
+
+            var json = await _response.Content.ReadAsStringAsync();
+            Users user = JsonConvert.DeserializeObject<Users>(json);
+            return user;
+        }
+        public void Delete(int id)
+        {
+            _client.DeleteAsync($"/api/v1/users/delete/{id}");
+        }
+        public async Task<Users> GetByPinAsync(string pin)
+        {
+            _response = await _client.GetAsync($"/api/v1/users/pin/{pin}");
+
+            var json = await _response.Content.ReadAsStringAsync();
+            Users user = JsonConvert.DeserializeObject<Users>(json);
+            return user;
+        }
     }
 }

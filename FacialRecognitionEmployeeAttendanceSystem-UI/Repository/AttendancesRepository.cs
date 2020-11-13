@@ -21,11 +21,39 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
         }
         public async Task<List<Attendances>> GetList()
         {
-            _response = await _client.GetAsync($"/api/v1/users/");
+            _response = await _client.GetAsync($"/api/v1/attendances/");
 
             var json = await _response.Content.ReadAsStringAsync();
             List<Attendances> listAttendances = JsonConvert.DeserializeObject<List<Attendances>>(json);
             return listAttendances;
+        }
+        public void Add(Attendances attendances)
+        {
+            var attendance = JsonConvert.SerializeObject(attendances);
+            var buffer = Encoding.UTF8.GetBytes(attendance);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PostAsync($"/api/v1/attendances/add", byteContent);
+        }
+        public void Update(int id, Attendances attendances)
+        {
+            var attendance = JsonConvert.SerializeObject(attendances);
+            var buffer = Encoding.UTF8.GetBytes(attendance);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PutAsync($"/api/v1/attendances/update/{id}", byteContent);
+        }
+        public async Task<Attendances> GetByIdAsync(int id)
+        {
+            _response = await _client.GetAsync($"/api/v1/attendances/{id}");
+
+            var json = await _response.Content.ReadAsStringAsync();
+            Attendances listAttendances = JsonConvert.DeserializeObject<Attendances>(json);
+            return listAttendances;
+        }
+        public void Delete(int id)
+        {
+            _client.DeleteAsync($"/api/v1/attendances/delete/{id}");
         }
     }
 }

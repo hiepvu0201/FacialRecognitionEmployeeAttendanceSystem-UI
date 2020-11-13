@@ -80,7 +80,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMain";
+            this.Text = "Facial Recognition Employee Attendance System";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

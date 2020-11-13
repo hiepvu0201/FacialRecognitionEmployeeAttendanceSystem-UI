@@ -27,5 +27,33 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             List<Shifts> listShifts = JsonConvert.DeserializeObject<List<Shifts>>(json);
             return listShifts;
         }
+        public void Add(Shifts shifts)
+        {
+            var shift = JsonConvert.SerializeObject(shifts);
+            var buffer = Encoding.UTF8.GetBytes(shift);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PostAsync($"/api/v1/shifts/add", byteContent);
+        }
+        public void Update(int id, Shifts shifts)
+        {
+            var shift = JsonConvert.SerializeObject(shifts);
+            var buffer = Encoding.UTF8.GetBytes(shift);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PutAsync($"/api/v1/shifts/update/{id}", byteContent);
+        }
+        public async Task<Shifts> GetByIdAsync(int id)
+        {
+            _response = await _client.GetAsync($"/api/v1/shifts/{id}");
+
+            var json = await _response.Content.ReadAsStringAsync();
+            Shifts shift = JsonConvert.DeserializeObject<Shifts>(json);
+            return shift;
+        }
+        public void Delete(int id)
+        {
+            _client.DeleteAsync($"/api/v1/shifts/delete/{id}");
+        }
     }
 }

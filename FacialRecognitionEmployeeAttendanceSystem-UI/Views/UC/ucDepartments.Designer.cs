@@ -106,8 +106,8 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtDepartmentName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtShiftId;
+        public System.Windows.Forms.TextBox txtDepartmentName;
+        public System.Windows.Forms.TextBox txtShiftId;
     }
 }

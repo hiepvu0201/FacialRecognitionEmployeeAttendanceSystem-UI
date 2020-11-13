@@ -28,35 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgvManagement = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvManagement)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvManagement
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(539, 380);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvManagement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvManagement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvManagement.Location = new System.Drawing.Point(0, 0);
+            this.dgvManagement.Name = "dgvManagement";
+            this.dgvManagement.RowHeadersWidth = 51;
+            this.dgvManagement.RowTemplate.Height = 24;
+            this.dgvManagement.Size = new System.Drawing.Size(539, 380);
+            this.dgvManagement.TabIndex = 0;
+            this.dgvManagement.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvManagement_CellClick);
             // 
             // ucView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvManagement);
             this.Name = "ucView";
             this.Size = new System.Drawing.Size(539, 380);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvManagement)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        public System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.DataGridView dgvManagement;
     }
 }

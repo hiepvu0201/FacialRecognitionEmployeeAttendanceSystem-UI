@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtTimeEnd = new System.Windows.Forms.TextBox();
+            this.txtTimeStart = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtShiftName = new System.Windows.Forms.TextBox();
-            this.txtTimeStart = new System.Windows.Forms.TextBox();
-            this.txtTimeEnd = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +59,22 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(539, 380);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // txtTimeEnd
+            // 
+            this.txtTimeEnd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTimeEnd.Location = new System.Drawing.Point(103, 63);
+            this.txtTimeEnd.Name = "txtTimeEnd";
+            this.txtTimeEnd.Size = new System.Drawing.Size(433, 22);
+            this.txtTimeEnd.TabIndex = 5;
+            // 
+            // txtTimeStart
+            // 
+            this.txtTimeStart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTimeStart.Location = new System.Drawing.Point(103, 33);
+            this.txtTimeStart.Name = "txtTimeStart";
+            this.txtTimeStart.Size = new System.Drawing.Size(433, 22);
+            this.txtTimeStart.TabIndex = 4;
             // 
             // label1
             // 
@@ -95,22 +111,6 @@
             this.txtShiftName.Size = new System.Drawing.Size(433, 22);
             this.txtShiftName.TabIndex = 3;
             // 
-            // txtTimeStart
-            // 
-            this.txtTimeStart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTimeStart.Location = new System.Drawing.Point(103, 33);
-            this.txtTimeStart.Name = "txtTimeStart";
-            this.txtTimeStart.Size = new System.Drawing.Size(433, 22);
-            this.txtTimeStart.TabIndex = 4;
-            // 
-            // txtTimeEnd
-            // 
-            this.txtTimeEnd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTimeEnd.Location = new System.Drawing.Point(103, 63);
-            this.txtTimeEnd.Name = "txtTimeEnd";
-            this.txtTimeEnd.Size = new System.Drawing.Size(433, 22);
-            this.txtTimeEnd.TabIndex = 5;
-            // 
             // ucShifts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -127,11 +127,11 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox txtTimeEnd;
-        private System.Windows.Forms.TextBox txtTimeStart;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtShiftName;
+        public System.Windows.Forms.TextBox txtTimeEnd;
+        public System.Windows.Forms.TextBox txtTimeStart;
+        public System.Windows.Forms.TextBox txtShiftName;
     }
 }

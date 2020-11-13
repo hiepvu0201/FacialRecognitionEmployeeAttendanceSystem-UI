@@ -43,17 +43,19 @@
             this.btnDisable = new System.Windows.Forms.Button();
             this.btnEnable = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.ucView1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucView();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.ucRoles1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucRoles();
-            this.ucUsers1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucUsers();
-            this.ucShifts1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucShifts();
-            this.ucDepartments1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucDepartments();
-            this.ucAttendances1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucAttendances();
-            this.ucPayslips1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucPayslips();
+            this.ucView1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.ucPayslips1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucPayslips();
+            this.ucAttendances1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucAttendances();
+            this.ucDepartments1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucDepartments();
+            this.ucShifts1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucShifts();
+            this.ucUsers1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucUsers();
+            this.ucRoles1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucRoles();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -77,7 +79,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(964, 670);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1219, 943);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -102,7 +104,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(172, 660);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(219, 933);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // btnDepartments
@@ -110,7 +112,7 @@
             this.btnDepartments.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDepartments.Location = new System.Drawing.Point(5, 5);
             this.btnDepartments.Name = "btnDepartments";
-            this.btnDepartments.Size = new System.Drawing.Size(162, 44);
+            this.btnDepartments.Size = new System.Drawing.Size(209, 44);
             this.btnDepartments.TabIndex = 0;
             this.btnDepartments.Text = "Departments";
             this.btnDepartments.UseVisualStyleBackColor = true;
@@ -121,7 +123,7 @@
             this.btnRoles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRoles.Location = new System.Drawing.Point(5, 57);
             this.btnRoles.Name = "btnRoles";
-            this.btnRoles.Size = new System.Drawing.Size(162, 44);
+            this.btnRoles.Size = new System.Drawing.Size(209, 44);
             this.btnRoles.TabIndex = 1;
             this.btnRoles.Text = "Roles";
             this.btnRoles.UseVisualStyleBackColor = true;
@@ -132,7 +134,7 @@
             this.btnUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnUsers.Location = new System.Drawing.Point(5, 109);
             this.btnUsers.Name = "btnUsers";
-            this.btnUsers.Size = new System.Drawing.Size(162, 44);
+            this.btnUsers.Size = new System.Drawing.Size(209, 44);
             this.btnUsers.TabIndex = 2;
             this.btnUsers.Text = "Users";
             this.btnUsers.UseVisualStyleBackColor = true;
@@ -143,7 +145,7 @@
             this.btnShifts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnShifts.Location = new System.Drawing.Point(5, 161);
             this.btnShifts.Name = "btnShifts";
-            this.btnShifts.Size = new System.Drawing.Size(162, 44);
+            this.btnShifts.Size = new System.Drawing.Size(209, 44);
             this.btnShifts.TabIndex = 3;
             this.btnShifts.Text = "Shifts";
             this.btnShifts.UseVisualStyleBackColor = true;
@@ -154,7 +156,7 @@
             this.btnAttendances.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAttendances.Location = new System.Drawing.Point(5, 213);
             this.btnAttendances.Name = "btnAttendances";
-            this.btnAttendances.Size = new System.Drawing.Size(162, 44);
+            this.btnAttendances.Size = new System.Drawing.Size(209, 44);
             this.btnAttendances.TabIndex = 4;
             this.btnAttendances.Text = "Attendances";
             this.btnAttendances.UseVisualStyleBackColor = true;
@@ -165,7 +167,7 @@
             this.btnPayslips.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPayslips.Location = new System.Drawing.Point(5, 265);
             this.btnPayslips.Name = "btnPayslips";
-            this.btnPayslips.Size = new System.Drawing.Size(162, 44);
+            this.btnPayslips.Size = new System.Drawing.Size(209, 44);
             this.btnPayslips.TabIndex = 5;
             this.btnPayslips.Text = "Payslips";
             this.btnPayslips.UseVisualStyleBackColor = true;
@@ -180,35 +182,39 @@
             this.tableLayoutPanel3.Controls.Add(this.panel3, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(185, 5);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(232, 5);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 4;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(774, 660);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(982, 933);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 5;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.ColumnCount = 7;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
             this.tableLayoutPanel4.Controls.Add(this.btnAdd, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnUpdate, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnDisable, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnEnable, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnSave, 4, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnCancel, 5, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnDel, 6, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(768, 44);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(976, 44);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // btnAdd
@@ -216,7 +222,7 @@
             this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAdd.Location = new System.Drawing.Point(3, 3);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(147, 38);
+            this.btnAdd.Size = new System.Drawing.Size(133, 38);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -225,50 +231,68 @@
             // btnUpdate
             // 
             this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUpdate.Location = new System.Drawing.Point(156, 3);
+            this.btnUpdate.Location = new System.Drawing.Point(142, 3);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(147, 38);
+            this.btnUpdate.Size = new System.Drawing.Size(133, 38);
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDisable
             // 
             this.btnDisable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDisable.Location = new System.Drawing.Point(309, 3);
+            this.btnDisable.Location = new System.Drawing.Point(281, 3);
             this.btnDisable.Name = "btnDisable";
-            this.btnDisable.Size = new System.Drawing.Size(147, 38);
+            this.btnDisable.Size = new System.Drawing.Size(133, 38);
             this.btnDisable.TabIndex = 2;
             this.btnDisable.Text = "Disable";
             this.btnDisable.UseVisualStyleBackColor = true;
+            this.btnDisable.Click += new System.EventHandler(this.btnDisable_Click);
             // 
             // btnEnable
             // 
             this.btnEnable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEnable.Location = new System.Drawing.Point(462, 3);
+            this.btnEnable.Location = new System.Drawing.Point(420, 3);
             this.btnEnable.Name = "btnEnable";
-            this.btnEnable.Size = new System.Drawing.Size(147, 38);
+            this.btnEnable.Size = new System.Drawing.Size(133, 38);
             this.btnEnable.TabIndex = 3;
             this.btnEnable.Text = "Enable";
             this.btnEnable.UseVisualStyleBackColor = true;
+            this.btnEnable.Click += new System.EventHandler(this.btnEnable_Click);
             // 
             // btnSave
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.Location = new System.Drawing.Point(615, 3);
+            this.btnSave.Location = new System.Drawing.Point(559, 3);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(150, 38);
+            this.btnSave.Size = new System.Drawing.Size(133, 38);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // ucView1
+            // btnCancel
             // 
-            this.ucView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucView1.Location = new System.Drawing.Point(0, 0);
-            this.ucView1.Name = "ucView1";
-            this.ucView1.Size = new System.Drawing.Size(768, 274);
-            this.ucView1.TabIndex = 6;
+            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCancel.Location = new System.Drawing.Point(698, 3);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(133, 38);
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnDel
+            // 
+            this.btnDel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDel.Location = new System.Drawing.Point(837, 3);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(136, 38);
+            this.btnDel.TabIndex = 6;
+            this.btnDel.Text = "Delete";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // panel2
             // 
@@ -276,60 +300,20 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 103);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(768, 274);
+            this.panel2.Size = new System.Drawing.Size(976, 410);
             this.panel2.TabIndex = 7;
             // 
-            // ucRoles1
+            // ucView1
             // 
-            this.ucRoles1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucRoles1.Location = new System.Drawing.Point(0, 0);
-            this.ucRoles1.Name = "ucRoles1";
-            this.ucRoles1.Size = new System.Drawing.Size(768, 274);
-            this.ucRoles1.TabIndex = 1;
-            // 
-            // ucUsers1
-            // 
-            this.ucUsers1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucUsers1.Location = new System.Drawing.Point(0, 0);
-            this.ucUsers1.Name = "ucUsers1";
-            this.ucUsers1.Size = new System.Drawing.Size(768, 274);
-            this.ucUsers1.TabIndex = 2;
-            // 
-            // ucShifts1
-            // 
-            this.ucShifts1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucShifts1.Location = new System.Drawing.Point(0, 0);
-            this.ucShifts1.Name = "ucShifts1";
-            this.ucShifts1.Size = new System.Drawing.Size(768, 274);
-            this.ucShifts1.TabIndex = 3;
-            // 
-            // ucDepartments1
-            // 
-            this.ucDepartments1.AutoScroll = true;
-            this.ucDepartments1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucDepartments1.Location = new System.Drawing.Point(0, 0);
-            this.ucDepartments1.Name = "ucDepartments1";
-            this.ucDepartments1.Size = new System.Drawing.Size(768, 274);
-            this.ucDepartments1.TabIndex = 0;
-            // 
-            // ucAttendances1
-            // 
-            this.ucAttendances1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucAttendances1.Location = new System.Drawing.Point(0, 0);
-            this.ucAttendances1.Name = "ucAttendances1";
-            this.ucAttendances1.Size = new System.Drawing.Size(768, 274);
-            this.ucAttendances1.TabIndex = 4;
-            // 
-            // ucPayslips1
-            // 
-            this.ucPayslips1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPayslips1.Location = new System.Drawing.Point(0, 0);
-            this.ucPayslips1.Name = "ucPayslips1";
-            this.ucPayslips1.Size = new System.Drawing.Size(768, 274);
-            this.ucPayslips1.TabIndex = 5;
+            this.ucView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucView1.Location = new System.Drawing.Point(0, 0);
+            this.ucView1.Name = "ucView1";
+            this.ucView1.Size = new System.Drawing.Size(976, 410);
+            this.ucView1.TabIndex = 6;
             // 
             // panel3
             // 
+            this.panel3.AutoScroll = true;
             this.panel3.Controls.Add(this.ucPayslips1);
             this.panel3.Controls.Add(this.ucAttendances1);
             this.panel3.Controls.Add(this.ucDepartments1);
@@ -337,20 +321,59 @@
             this.panel3.Controls.Add(this.ucUsers1);
             this.panel3.Controls.Add(this.ucRoles1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 383);
+            this.panel3.Location = new System.Drawing.Point(3, 519);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(768, 274);
+            this.panel3.Size = new System.Drawing.Size(976, 411);
             this.panel3.TabIndex = 8;
             // 
-            // txtSearch
+            // ucPayslips1
             // 
-            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSearch.Location = new System.Drawing.Point(3, 3);
-            this.txtSearch.Multiline = true;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(513, 38);
-            this.txtSearch.TabIndex = 0;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.ucPayslips1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucPayslips1.Location = new System.Drawing.Point(0, 0);
+            this.ucPayslips1.Name = "ucPayslips1";
+            this.ucPayslips1.Size = new System.Drawing.Size(976, 411);
+            this.ucPayslips1.TabIndex = 5;
+            // 
+            // ucAttendances1
+            // 
+            this.ucAttendances1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucAttendances1.Location = new System.Drawing.Point(0, 0);
+            this.ucAttendances1.Name = "ucAttendances1";
+            this.ucAttendances1.Size = new System.Drawing.Size(976, 411);
+            this.ucAttendances1.TabIndex = 4;
+            // 
+            // ucDepartments1
+            // 
+            this.ucDepartments1.AutoScroll = true;
+            this.ucDepartments1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucDepartments1.Location = new System.Drawing.Point(0, 0);
+            this.ucDepartments1.Name = "ucDepartments1";
+            this.ucDepartments1.Size = new System.Drawing.Size(976, 411);
+            this.ucDepartments1.TabIndex = 0;
+            // 
+            // ucShifts1
+            // 
+            this.ucShifts1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucShifts1.Location = new System.Drawing.Point(0, 0);
+            this.ucShifts1.Name = "ucShifts1";
+            this.ucShifts1.Size = new System.Drawing.Size(976, 411);
+            this.ucShifts1.TabIndex = 3;
+            // 
+            // ucUsers1
+            // 
+            this.ucUsers1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucUsers1.Location = new System.Drawing.Point(0, 0);
+            this.ucUsers1.Name = "ucUsers1";
+            this.ucUsers1.Size = new System.Drawing.Size(976, 411);
+            this.ucUsers1.TabIndex = 2;
+            // 
+            // ucRoles1
+            // 
+            this.ucRoles1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucRoles1.Location = new System.Drawing.Point(0, 0);
+            this.ucRoles1.Name = "ucRoles1";
+            this.ucRoles1.Size = new System.Drawing.Size(976, 411);
+            this.ucRoles1.TabIndex = 1;
             // 
             // tableLayoutPanel5
             // 
@@ -364,15 +387,25 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(768, 44);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(976, 44);
             this.tableLayoutPanel5.TabIndex = 9;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSearch.Location = new System.Drawing.Point(3, 3);
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(653, 38);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // btnSearch
             // 
             this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSearch.Location = new System.Drawing.Point(522, 3);
+            this.btnSearch.Location = new System.Drawing.Point(662, 3);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(243, 38);
+            this.btnSearch.Size = new System.Drawing.Size(311, 38);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -381,11 +414,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 670);
+            this.ClientSize = new System.Drawing.Size(1219, 943);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmManagementSystem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmManagementSystem";
+            this.Text = "Management System";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -427,5 +460,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnDel;
     }
 }
