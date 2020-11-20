@@ -36,10 +36,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtPin = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnMainMenu = new System.Windows.Forms.Button();
+            this.btnCheckAttendanceHistory = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCamera)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnFacialRecognitionMode
@@ -51,6 +55,7 @@
             this.btnFacialRecognitionMode.TabIndex = 0;
             this.btnFacialRecognitionMode.Text = "Facial Recognition Mode";
             this.btnFacialRecognitionMode.UseVisualStyleBackColor = true;
+            this.btnFacialRecognitionMode.Click += new System.EventHandler(this.btnFacialRecognitionMode_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -85,6 +90,7 @@
             this.tableLayoutPanel2.Controls.Add(this.btnFacialRecognitionMode, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.btnConfirm, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(647, 5);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -137,6 +143,38 @@
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnCheckAttendanceHistory);
+            this.panel2.Controls.Add(this.btnMainMenu);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 203);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(263, 272);
+            this.panel2.TabIndex = 4;
+            // 
+            // btnMainMenu
+            // 
+            this.btnMainMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnMainMenu.Location = new System.Drawing.Point(0, 228);
+            this.btnMainMenu.Name = "btnMainMenu";
+            this.btnMainMenu.Size = new System.Drawing.Size(263, 44);
+            this.btnMainMenu.TabIndex = 0;
+            this.btnMainMenu.Text = "Main Menu";
+            this.btnMainMenu.UseVisualStyleBackColor = true;
+            this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
+            // 
+            // btnCheckAttendanceHistory
+            // 
+            this.btnCheckAttendanceHistory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCheckAttendanceHistory.Location = new System.Drawing.Point(0, 0);
+            this.btnCheckAttendanceHistory.Name = "btnCheckAttendanceHistory";
+            this.btnCheckAttendanceHistory.Size = new System.Drawing.Size(263, 44);
+            this.btnCheckAttendanceHistory.TabIndex = 1;
+            this.btnCheckAttendanceHistory.Text = "Check Attendance History";
+            this.btnCheckAttendanceHistory.UseVisualStyleBackColor = true;
+            this.btnCheckAttendanceHistory.Click += new System.EventHandler(this.btnCheckAttendanceHistory_Click);
+            // 
             // frmAttendanceSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -146,11 +184,13 @@
             this.Name = "frmAttendanceSystem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Attendance System";
+            this.Load += new System.EventHandler(this.frmAttendanceSystem_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbCamera)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -165,5 +205,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtPin;
         private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnMainMenu;
+        private System.Windows.Forms.Button btnCheckAttendanceHistory;
     }
 }

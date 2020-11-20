@@ -48,12 +48,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtImgPath = new System.Windows.Forms.TextBox();
+            this.btnCapture = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -76,13 +80,13 @@
             this.tableLayoutPanel1.Controls.Add(this.label8, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.label9, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.txtImgPath, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -97,7 +101,7 @@
             // txtRoleId
             // 
             this.txtRoleId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtRoleId.Location = new System.Drawing.Point(123, 343);
+            this.txtRoleId.Location = new System.Drawing.Point(123, 348);
             this.txtRoleId.Name = "txtRoleId";
             this.txtRoleId.Size = new System.Drawing.Size(413, 22);
             this.txtRoleId.TabIndex = 19;
@@ -105,7 +109,7 @@
             // txtDepartmentId
             // 
             this.txtDepartmentId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDepartmentId.Location = new System.Drawing.Point(123, 313);
+            this.txtDepartmentId.Location = new System.Drawing.Point(123, 318);
             this.txtDepartmentId.Name = "txtDepartmentId";
             this.txtDepartmentId.Size = new System.Drawing.Size(413, 22);
             this.txtDepartmentId.TabIndex = 18;
@@ -114,7 +118,7 @@
             // 
             this.txtNote.AllowDrop = true;
             this.txtNote.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNote.Location = new System.Drawing.Point(123, 213);
+            this.txtNote.Location = new System.Drawing.Point(123, 218);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(413, 94);
@@ -123,7 +127,7 @@
             // txtNetSalary
             // 
             this.txtNetSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNetSalary.Location = new System.Drawing.Point(123, 183);
+            this.txtNetSalary.Location = new System.Drawing.Point(123, 188);
             this.txtNetSalary.Name = "txtNetSalary";
             this.txtNetSalary.Size = new System.Drawing.Size(413, 22);
             this.txtNetSalary.TabIndex = 16;
@@ -131,7 +135,7 @@
             // txtGrossSalary
             // 
             this.txtGrossSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtGrossSalary.Location = new System.Drawing.Point(123, 153);
+            this.txtGrossSalary.Location = new System.Drawing.Point(123, 158);
             this.txtGrossSalary.Name = "txtGrossSalary";
             this.txtGrossSalary.Size = new System.Drawing.Size(413, 22);
             this.txtGrossSalary.TabIndex = 15;
@@ -139,7 +143,7 @@
             // txtHomeAddress
             // 
             this.txtHomeAddress.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtHomeAddress.Location = new System.Drawing.Point(123, 123);
+            this.txtHomeAddress.Location = new System.Drawing.Point(123, 128);
             this.txtHomeAddress.Name = "txtHomeAddress";
             this.txtHomeAddress.Size = new System.Drawing.Size(413, 22);
             this.txtHomeAddress.TabIndex = 14;
@@ -147,7 +151,7 @@
             // txtDob
             // 
             this.txtDob.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDob.Location = new System.Drawing.Point(123, 93);
+            this.txtDob.Location = new System.Drawing.Point(123, 98);
             this.txtDob.Name = "txtDob";
             this.txtDob.Size = new System.Drawing.Size(413, 22);
             this.txtDob.TabIndex = 13;
@@ -155,7 +159,7 @@
             // txtPIN
             // 
             this.txtPIN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPIN.Location = new System.Drawing.Point(123, 63);
+            this.txtPIN.Location = new System.Drawing.Point(123, 68);
             this.txtPIN.Name = "txtPIN";
             this.txtPIN.Size = new System.Drawing.Size(413, 22);
             this.txtPIN.TabIndex = 12;
@@ -189,7 +193,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 60);
+            this.label3.Location = new System.Drawing.Point(3, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(30, 17);
             this.label3.TabIndex = 3;
@@ -198,7 +202,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 90);
+            this.label4.Location = new System.Drawing.Point(3, 95);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 17);
             this.label4.TabIndex = 4;
@@ -207,7 +211,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 120);
+            this.label5.Location = new System.Drawing.Point(3, 125);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 17);
             this.label5.TabIndex = 5;
@@ -216,7 +220,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 150);
+            this.label6.Location = new System.Drawing.Point(3, 155);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(90, 17);
             this.label6.TabIndex = 6;
@@ -225,7 +229,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 180);
+            this.label7.Location = new System.Drawing.Point(3, 185);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(74, 17);
             this.label7.TabIndex = 7;
@@ -234,7 +238,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 210);
+            this.label8.Location = new System.Drawing.Point(3, 215);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 17);
             this.label8.TabIndex = 8;
@@ -243,7 +247,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 310);
+            this.label9.Location = new System.Drawing.Point(3, 315);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(97, 17);
             this.label9.TabIndex = 9;
@@ -252,19 +256,44 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 340);
+            this.label10.Location = new System.Drawing.Point(3, 345);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(52, 17);
             this.label10.TabIndex = 10;
             this.label10.Text = "Role Id";
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.txtImgPath, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnCapture, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(123, 33);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(413, 29);
+            this.tableLayoutPanel2.TabIndex = 20;
+            // 
             // txtImgPath
             // 
             this.txtImgPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtImgPath.Location = new System.Drawing.Point(123, 33);
+            this.txtImgPath.Location = new System.Drawing.Point(43, 3);
             this.txtImgPath.Name = "txtImgPath";
-            this.txtImgPath.Size = new System.Drawing.Size(413, 22);
-            this.txtImgPath.TabIndex = 11;
+            this.txtImgPath.Size = new System.Drawing.Size(367, 22);
+            this.txtImgPath.TabIndex = 14;
+            // 
+            // btnCapture
+            // 
+            this.btnCapture.Location = new System.Drawing.Point(3, 3);
+            this.btnCapture.Name = "btnCapture";
+            this.btnCapture.Size = new System.Drawing.Size(34, 23);
+            this.btnCapture.TabIndex = 15;
+            this.btnCapture.Text = "...";
+            this.btnCapture.UseVisualStyleBackColor = true;
+            this.btnCapture.Click += new System.EventHandler(this.btnCapture_Click);
             // 
             // ucUsers
             // 
@@ -275,6 +304,8 @@
             this.Size = new System.Drawing.Size(539, 380);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -293,7 +324,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.TextBox txtFullName;
-        public System.Windows.Forms.TextBox txtImgPath;
         public System.Windows.Forms.TextBox txtPIN;
         public System.Windows.Forms.TextBox txtDob;
         public System.Windows.Forms.TextBox txtHomeAddress;
@@ -302,5 +332,8 @@
         public System.Windows.Forms.TextBox txtNote;
         public System.Windows.Forms.TextBox txtDepartmentId;
         public System.Windows.Forms.TextBox txtRoleId;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        public System.Windows.Forms.TextBox txtImgPath;
+        private System.Windows.Forms.Button btnCapture;
     }
 }

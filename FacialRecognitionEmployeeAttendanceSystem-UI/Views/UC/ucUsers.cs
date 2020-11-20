@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FacialRecognitionEmployeeAttendanceSystem_UI.Views.ImageHandler;
 
 namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
 {
@@ -15,6 +16,13 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
         public ucUsers()
         {
             InitializeComponent();
+        }
+
+        private void btnCapture_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ImageHandler.frmImageHandler frmImageHandler = new frmImageHandler();
+            frmImageHandler.Show();
         }
     }
 }

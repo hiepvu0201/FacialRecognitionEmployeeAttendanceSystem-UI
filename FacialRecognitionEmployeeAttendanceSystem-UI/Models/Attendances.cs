@@ -23,5 +23,10 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
                 _instance = new Attendances();
             return _instance;
         }
+
+        public static implicit operator List<object>(Attendances v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

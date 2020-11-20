@@ -239,31 +239,31 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 case 2:
                     {
                         // Role
-                        mapRoleInfo();
+                        SaveRoleInfo();
                     }
                     break;
                 case 3:
                     {
                         // User
-                        mapUserInfo();
+                        SaveUserInfo();
                     }
                     break;
                 case 4:
                     {
                         // Shift
-                        mapShiftInfo();
+                        SaveShiftInfo();
                     }
                     break;
                 case 5:
                     {
                         // Attendance
-                        mapAttendanceInfo();
+                        SaveAttendanceInfo();
                     }
                     break;
                 case 6:
                     {
                         // Payslip
-                        mapPayslipInfo();
+                        SavePayslipInfo();
                     }
                     break;
                 default:
@@ -271,7 +271,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             }
         }
 
-        private void mapPayslipInfo()
+        private void SavePayslipInfo()
         {
             try
             {
@@ -297,7 +297,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             }
         }
 
-        private void mapAttendanceInfo()
+        private void SaveAttendanceInfo()
         {
             try
             {
@@ -316,7 +316,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             }
         }
 
-        private void mapShiftInfo()
+        private void SaveShiftInfo()
         {
             try
             {
@@ -334,7 +334,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             }
         }
 
-        private void mapUserInfo()
+        private void SaveUserInfo()
         {
             try
             {
@@ -359,7 +359,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             }
         }
 
-        private void mapRoleInfo()
+        private void SaveRoleInfo()
         {
             try
             {
@@ -390,12 +390,16 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                     _departmentRepository.Add(department);
                     MessageBox.Show("Successful added!");
                     isAdd = false;
+                    LoadData();
+                    Init();
                 }
                 else if (isUpdate == true)
                 {
                     _departmentRepository.Update(selectedId, department);
                     MessageBox.Show("Successful updated!");
                     isUpdate = false;
+                    LoadData();
+                    Init();
                 }
                 
             }
@@ -559,6 +563,18 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         }
 
         private void btnEnable_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMainMenu_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmMain frmMain = new frmMain();
+            frmMain.Show();
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
