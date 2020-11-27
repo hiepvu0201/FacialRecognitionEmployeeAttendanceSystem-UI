@@ -37,8 +37,8 @@
             this.txtPin = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnMainMenu = new System.Windows.Forms.Button();
             this.btnCheckAttendanceHistory = new System.Windows.Forms.Button();
+            this.btnMainMenu = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCamera)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -153,17 +153,6 @@
             this.panel2.Size = new System.Drawing.Size(263, 272);
             this.panel2.TabIndex = 4;
             // 
-            // btnMainMenu
-            // 
-            this.btnMainMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnMainMenu.Location = new System.Drawing.Point(0, 228);
-            this.btnMainMenu.Name = "btnMainMenu";
-            this.btnMainMenu.Size = new System.Drawing.Size(263, 44);
-            this.btnMainMenu.TabIndex = 0;
-            this.btnMainMenu.Text = "Main Menu";
-            this.btnMainMenu.UseVisualStyleBackColor = true;
-            this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
-            // 
             // btnCheckAttendanceHistory
             // 
             this.btnCheckAttendanceHistory.Dock = System.Windows.Forms.DockStyle.Top;
@@ -174,6 +163,17 @@
             this.btnCheckAttendanceHistory.Text = "Check Attendance History";
             this.btnCheckAttendanceHistory.UseVisualStyleBackColor = true;
             this.btnCheckAttendanceHistory.Click += new System.EventHandler(this.btnCheckAttendanceHistory_Click);
+            // 
+            // btnMainMenu
+            // 
+            this.btnMainMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnMainMenu.Location = new System.Drawing.Point(0, 228);
+            this.btnMainMenu.Name = "btnMainMenu";
+            this.btnMainMenu.Size = new System.Drawing.Size(263, 44);
+            this.btnMainMenu.TabIndex = 0;
+            this.btnMainMenu.Text = "Main Menu";
+            this.btnMainMenu.UseVisualStyleBackColor = true;
+            this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
             // 
             // frmAttendanceSystem
             // 

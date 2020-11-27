@@ -67,7 +67,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.AttendanceSystem
                     }
 
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
-                    saveFileDialog.FileName = "output";
+                    saveFileDialog.FileName = $"AttendanceHistory{dtpHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat)}";
                     saveFileDialog.DefaultExt = ".xlsx";
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {

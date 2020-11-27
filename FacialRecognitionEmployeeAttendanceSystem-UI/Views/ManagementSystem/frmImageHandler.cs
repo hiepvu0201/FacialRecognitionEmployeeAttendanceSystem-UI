@@ -1,7 +1,9 @@
 ﻿using Emgu.CV;
 using Emgu.CV.Structure;
+using FacialRecognitionEmployeeAttendanceSystem_UI.Models;
 using FacialRecognitionEmployeeAttendanceSystem_UI.Models.AWS_S3;
 using FacialRecognitionEmployeeAttendanceSystem_UI.Repository;
+using FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -67,7 +69,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ImageHandler
         {
             try
             {
-                MemoryStream stream = new MemoryStream();
+                /*MemoryStream stream = new MemoryStream();
 
                 int width = Convert.ToInt32(pbCaptureImg.Width);
                 int height = Convert.ToInt32(pbCaptureImg.Height);
@@ -82,8 +84,18 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ImageHandler
                 buckets.Image = pic;
 
                 _bucketRepository.SaveImage(buckets);
+                MessageBox.Show(@"Saved!");*/
 
-                MessageBox.Show(@"Saved!");
+
+                var saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Title = @"Save Your Photo";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    pbCaptureImg.Image.Save(saveFileDialog.FileName + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    Users.GetInstance().imgPath = saveFileDialog.FileName;
+                    MessageBox.Show(@"Saved!");
+                    this.Hide();
+                }
             }
             catch (Exception)
             {
