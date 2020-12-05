@@ -2,50 +2,110 @@
 using Emgu.CV.CvEnum;
 using Emgu.CV.Face;
 using Emgu.CV.Structure;
+using Emgu.CV.Util;
 using FacialRecognitionEmployeeAttendanceSystem_UI.Models;
 using FacialRecognitionEmployeeAttendanceSystem_UI.Repository;
 using FacialRecognitionEmployeeAttendanceSystem_UI.Views.AttendanceSystem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
+using System.Runtime.CompilerServices;
 using System.Threading;
-using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 {
-    public partial class frmAttendanceSystem : Form
+    public partial class frmAttendanceSystem : Form, INotifyPropertyChanged
     {
-        #region Variables
-        int testid = 0;
-        private Capture videoCapture = null;
-        private Image<Bgr, Byte> currentFrame = null;
-        Mat frame = new Mat();
-        CascadeClassifier faceCasacdeClassifier = new CascadeClassifier(@"D:\HocTap\ProgrammingLanguage\.NET Framework\FacialRecognitionEmployeeAttendanceSystem-UI\FacialRecognitionEmployeeAttendanceSystem-UI\haarcascade_frontalface_alt.xml");
-        Image<Bgr, Byte> faceResult = null;
-        List<Image<Gray, Byte>> TrainedFaces = new List<Image<Gray, byte>>();
-        List<int> PersonsLabes = new List<int>();
-
-        private bool isTrained = false;
-        EigenFaceRecognizer recognizer;
-        List<string> PersonsNames = new List<string>();
+        #region Properties
+        public event PropertyChangedEventHandler PropertyChanged;
+        private VideoCapture videoCapture;
+        private CascadeClassifier cascadeClassifier;
+        private Image<Bgr, Byte> bgrFrame = null;
+        private Image<Gray, Byte> detectedFace = null;
+        private List<FaceData> faceList = new List<FaceData>();
+        private VectorOfMat imageList = new VectorOfMat();
+        private List<string> nameList = new List<string>();
+        private VectorOfInt labelList = new VectorOfInt();
+        private EigenFaceRecognizer recognizer;
+        private System.Timers.Timer captureTimer;
 
         UsersRepository _usersRepository = new UsersRepository();
         bool isFaceRecognition = true;
-        private Capture _capture;
-        bool EnableSaveImage = false;
-
         #endregion
 
+        #region CameraCaptureImage
+        private Bitmap cameraCapture;
+        public Bitmap CameraCapture
+        {
+            get { return cameraCapture; }
+            set
+            {
+                cameraCapture = value;
+                pbCamera.Invoke(new Action(() => { pbCamera.Image = BitmapToImageSource(cameraCapture); }));
+                NotifyPropertyChanged();
+            }
+        }
+        #endregion
+
+        #region CameraCaptureFaceImage
+        private Bitmap cameraCaptureFace;
+        public Bitmap CameraCaptureFace
+        {
+            get { return cameraCaptureFace; }
+            set
+            {
+                cameraCaptureFace = value;
+                pbFaceCapture.Invoke(new Action(() => { pbFaceCapture.Image = BitmapToImageSource(cameraCaptureFace); }));
+                NotifyPropertyChanged();
+            }
+        }
+        #endregion
+
+        #region FaceName
+        private string faceName;
+        public string FaceName
+        {
+            get { return faceName; }
+            set
+            {
+                faceName = value.ToUpper();
+                lblFaceName.Invoke(new Action(() => { lblFaceName.Text = faceName; }));
+                NotifyPropertyChanged();
+            }
+        }
+        #endregion
+
+        #region Constructor
         public frmAttendanceSystem()
         {
             InitializeComponent();
+            captureTimer = new System.Timers.Timer()
+            {
+                Interval = Config.TimerResponseValue
+            };
+            captureTimer.Elapsed += CaptureTimer_Elapsed;
+        }
+        #endregion
+
+        #region Event
+        private void frmAttendanceSystem_Load(object sender, EventArgs e)
+        {
+            StartFaceRecognition();
+        }
+
+        protected virtual void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void CaptureTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            ProcessFrame();
         }
 
         private async void btnConfirm_Click(object sender, EventArgs e)
@@ -81,25 +141,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         }
         private void StartLiveWebcam(object sender, System.EventArgs e)
         {
-            var img = _capture.QueryFrame().ToImage<Bgr, byte>();
-            var bmp = img.Bitmap;
-            pbCamera.Image = bmp;
-        }
-
-        private void frmAttendanceSystem_Load(object sender, EventArgs e)
-        {
-            /*_capture = new Capture();
-            Application.Idle += StartLiveWebcam;*/
-            ActiveFaceRecognition();
-            DialogResult dialogResult = MessageBox.Show("Ask for save new Image", "Would you like to save the image as new person?", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                EnableSaveImage = true;
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                EnableSaveImage = false;
-            }
+            StartFaceRecognition();
         }
 
         private void btnCheckAttendanceHistory_Click(object sender, EventArgs e)
@@ -109,153 +151,158 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             frmCheckAttendanceHistory.Show();
         }
 
-        private void ActiveFaceRecognition()
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (videoCapture != null) videoCapture.Dispose();
-            videoCapture = new Capture();
-            Application.Idle += ProcessFrame;
+            if (detectedFace == null)
+            {
+                MessageBox.Show("No face detected.");
+                return;
+            }
+            //Save detected face
+            detectedFace = detectedFace.Resize(100, 100, Inter.Cubic);
+            detectedFace.Save(Config.FacePhotosPath + "face" + (faceList.Count + 1) + Config.ImageFileExtension);
+            StreamWriter writer = new StreamWriter(Config.FaceListTextFile, true);
+            string personName = txtName.Text;
+            writer.WriteLine(String.Format("face{0}:{1}", (faceList.Count + 1), personName));
+            writer.Close();
+            GetFacesList();
+            MessageBox.Show("Successful.");
+        }
+        #endregion
+
+        #region Method
+        private void StartFaceRecognition()
+        {
+            GetFacesList();
+            videoCapture = new VideoCapture(Config.ActiveCameraIndex);
+            videoCapture.SetCaptureProperty(CapProp.Fps, 30);
+            videoCapture.SetCaptureProperty(CapProp.FrameHeight, 422);
+            videoCapture.SetCaptureProperty(CapProp.FrameWidth, 628);
+            captureTimer.Start();
         }
 
-        private bool TrainImagesFromDir()
+        private void ProcessFrame()
         {
-            int ImagesCount = 0;
-            double Threshold = 2000;
-            TrainedFaces.Clear();
-            PersonsLabes.Clear();
-            PersonsNames.Clear();
-            try
+            bgrFrame = videoCapture.QueryFrame().ToImage<Bgr, Byte>();
+            
+            if (bgrFrame != null)
             {
-                string path = Directory.GetCurrentDirectory() + @"\TrainedImages";
-                string[] files = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
+                try
+                {//for emgu cv bug
+                    Image<Gray, byte> grayframe = bgrFrame.Convert<Gray, byte>();
 
-                foreach (var file in files)
+                    Rectangle[] faces = cascadeClassifier.DetectMultiScale(grayframe, 1.2, 10, new System.Drawing.Size(50, 50), new System.Drawing.Size(200, 200));
+
+                    //detect face
+                    FaceName = "No face detected";
+                    foreach (Rectangle face in faces)
+                    {
+                        bgrFrame.Draw(face, new Bgr(255, 255, 0), 2);
+
+                        detectedFace = bgrFrame.Copy(face).Convert<Gray, Byte>();
+
+                        FaceRecognition();
+                        break;
+                    }
+                    CameraCapture = bgrFrame.ToBitmap(pbCamera.Width, pbCamera.Height);
+                }
+                catch (Exception ex)
                 {
-                    Image<Gray, byte> trainedImage = new Image<Gray, byte>(file).Resize(200, 200, Inter.Cubic);
-                    CvInvoke.EqualizeHist(trainedImage, trainedImage);
-                    TrainedFaces.Add(trainedImage);
-                    PersonsLabes.Add(ImagesCount);
-                    string name = file.Split('\\').Last().Split('_')[0];
-                    PersonsNames.Add(name);
-                    ImagesCount++;
-                    Debug.WriteLine(ImagesCount + ". " + name);
-
+                    //todo log
                 }
 
-                if (TrainedFaces.Count() > 0)
-                {
-                    // recognizer = new EigenFaceRecognizer(ImagesCount,Threshold);
-                    recognizer = new EigenFaceRecognizer(ImagesCount, Threshold);
-                    recognizer.Train(TrainedFaces.ToArray(), PersonsLabes.ToArray());
+            }
+        }
 
-                    isTrained = true;
-                    //Debug.WriteLine(ImagesCount);
-                    //Debug.WriteLine(isTrained);
-                    return true;
+        private void FaceRecognition()
+        {
+            if (imageList.Size != 0)
+            {
+                //Eigen Face Algorithm
+                FaceRecognizer.PredictionResult result = recognizer.Predict(detectedFace.Resize(100, 100, Inter.Cubic));
+
+                if (result.Label==0)
+                {
+                    FaceName = "Unknown";
                 }
                 else
                 {
-                    isTrained = false;
-                    return false;
+                    FaceName = nameList[result.Label];
                 }
+                CameraCaptureFace = detectedFace.ToBitmap(pbFaceCapture.Width, pbFaceCapture.Height);
             }
-            catch (Exception ex)
+            else
             {
-                isTrained = false;
-                MessageBox.Show("Error in Train Images: " + ex.Message);
-                return false;
+                FaceName = "Please add new face!";
             }
-
         }
 
-        private void ProcessFrame(object sender, EventArgs e) 
+        private void GetFacesList()
         {
-            //Step 1: Video Capture
-            if (videoCapture != null && videoCapture.Ptr != IntPtr.Zero)
+            if (!File.Exists(Config.HaarCascadePath))
             {
-                videoCapture.Retrieve(frame, 0);
-                currentFrame = frame.ToImage<Bgr, Byte>().Resize(pbCamera.Width, pbCamera.Height, Inter.Cubic);
-
-                //Step 2: Face Detection
-                if (isFaceRecognition)
-                {
-
-                    //Convert from Bgr to Gray Image
-                    Mat grayImage = new Mat();
-                    CvInvoke.CvtColor(currentFrame, grayImage, ColorConversion.Bgr2Gray);
-                    //Enhance the image to get better result
-                    CvInvoke.EqualizeHist(grayImage, grayImage);
-
-                    Rectangle[] faces = faceCasacdeClassifier.DetectMultiScale(grayImage, 1.1, 3, Size.Empty, Size.Empty);
-                    //If faces detected
-                    if (faces.Length > 0)
-                    {
-                        foreach (var face in faces)
-                        {
-                            //Draw square around each face 
-                            // CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Red).MCvScalar, 2);
-
-                            //Assign the face to the picture Box face picDetected
-                            Image<Bgr, Byte> resultImage = currentFrame.Convert<Bgr, Byte>();
-
-                            resultImage.ROI = face;
-                            string name = "Hiệp Vũ";
-
-                            if (EnableSaveImage)
-                            {
-                                //We will create a directory if does not exists!
-                                string path = Directory.GetCurrentDirectory() + $@"\TrainedImages\{name}";
-                                if (!Directory.Exists(path))
-                                    Directory.CreateDirectory(path);
-                                //we will save 10 images with delay a second for each image 
-                                //to avoid hang GUI we will create a new task
-                                Task.Factory.StartNew(() => {
-                                    for (int i = 0; i < 10; i++)
-                                    {
-                                        //resize the image then saving it
-                                        resultImage.Resize(200, 200, Inter.Cubic).Save(path + @"\" + name + "_" + DateTime.Now.ToString("dd-mm-yyyy-hh-mm-ss") + ".jpg");
-                                        Thread.Sleep(1000);
-                                    }
-                                });
-
-                            }
-                            EnableSaveImage = false;
-
-                            TrainImagesFromDir();
-
-                            // Recognize the face 
-                            if (isTrained)
-                            {
-                                Image<Gray, Byte> grayFaceResult = resultImage.Convert<Gray, Byte>().Resize(200, 200, Inter.Cubic);
-                                CvInvoke.EqualizeHist(grayFaceResult, grayFaceResult);
-                                var result = recognizer.Predict(grayFaceResult);
-                                Debug.WriteLine(result.Label + ". " + result.Distance);
-                                //Here results found known faces
-                                if (result.Label != -1 && result.Distance < 2000)
-                                {
-                                    CvInvoke.PutText(currentFrame, PersonsNames[result.Label], new Point(face.X - 2, face.Y - 2),
-                                        FontFace.HersheyComplex, 1.0, new Bgr(Color.Orange).MCvScalar);
-                                    CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Green).MCvScalar, 2);
-                                }
-                                //here results did not found any know faces
-                                else
-                                {
-                                    CvInvoke.PutText(currentFrame, "Unknown", new Point(face.X - 2, face.Y - 2),
-                                        FontFace.HersheyComplex, 1.0, new Bgr(Color.Orange).MCvScalar);
-                                    CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Red).MCvScalar, 2);
-
-                                }
-                            }
-                        }
-                    }
-                }
-
-                //Render the video capture into the Picture Box picCapture
-                pbCamera.Image = currentFrame.Bitmap;
+                string message = "Can't find Harr Cascade file! \n";
+                message += Config.HaarCascadePath;
+                DialogResult results = MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            //Dispose the Current Frame after processing it to reduce the memory consumption.
-            if (currentFrame != null)
-                currentFrame.Dispose();
+            cascadeClassifier = new CascadeClassifier(Config.HaarCascadePath);
+            faceList.Clear();
+            string line;
+
+            // create file to store face data if neccessary
+            if (!Directory.Exists(Config.FacePhotosPath))
+            {
+                Directory.CreateDirectory(Config.FacePhotosPath);
+            }
+
+            if (!File.Exists(Config.FaceListTextFile))
+            {
+                string message = "Can't find face data file!";
+                message += Config.FaceListTextFile;
+                message += "An empty file will be create if this is your first time running the application!";
+                DialogResult results = MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (results == DialogResult.OK)
+                {
+                    String dirName = Path.GetDirectoryName(Config.FaceListTextFile);
+                    Directory.CreateDirectory(dirName);
+                    File.Create(Config.FaceListTextFile).Close();
+                }
+            }
+
+            FaceData faceDataInstance = null;
+            StreamReader reader = new StreamReader(Config.FaceListTextFile);
+            int i = 0;
+            while ((line = reader.ReadLine()) != null)
+            {
+                string[] lineParts = line.Split(':');
+                faceDataInstance = new FaceData();
+                faceDataInstance.FaceImage = new Image<Gray, byte>(Config.FacePhotosPath + lineParts[0] + Config.ImageFileExtension);
+                faceDataInstance.PersonName = lineParts[1];
+                faceList.Add(faceDataInstance);
+            }
+
+            foreach (FaceData face in faceList)
+            {
+                imageList.Push(face.FaceImage.Mat);
+                nameList.Add(face.PersonName);
+                labelList.Push(new[] { i++ });
+            }
+            reader.Close();
+
+            //Train recognizer
+            if (imageList.Size > 0)
+            {
+                recognizer = new EigenFaceRecognizer(imageList.Size);
+                recognizer.Train(imageList, labelList);
+            }
         }
+
+        private Bitmap BitmapToImageSource(Bitmap bitmap)
+        {
+            return bitmap;
+        }
+        #endregion
     }
 }

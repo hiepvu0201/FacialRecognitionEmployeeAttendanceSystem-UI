@@ -63,5 +63,13 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
         {
             _client.DeleteAsync($"/api/v1/attendances/delete/{id}");
         }
+        public void RollUp(Attendances attendances)
+        {
+            var attendance = JsonConvert.SerializeObject(attendances);
+            var buffer = Encoding.UTF8.GetBytes(attendance);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PostAsync($"/api/v1/attendances/rollup", byteContent);
+        }
     }
 }

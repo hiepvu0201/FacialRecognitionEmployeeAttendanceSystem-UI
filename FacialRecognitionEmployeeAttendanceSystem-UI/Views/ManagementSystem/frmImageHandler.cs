@@ -20,7 +20,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ImageHandler
     public partial class frmImageHandler : Form
     {
         private bool _liveWebcam;
-        private Capture _capture;
+        private VideoCapture _capture;
         BucketRepository _bucketRepository = new BucketRepository();
 
         public frmImageHandler()
@@ -36,7 +36,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ImageHandler
         private void ImageHandler_Load(object sender, EventArgs e)
         {
             _liveWebcam = false;
-            _capture = new Capture();
+            _capture = new VideoCapture();
         }
 
         private void btnStartWebcam_Click(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ImageHandler
         private void StartLiveWebcam(object sender, System.EventArgs e)
         {
             var img = _capture.QueryFrame().ToImage<Bgr, byte>();
-            var bmp = img.Bitmap;
+            var bmp = img.ToBitmap(pbLiveWebcam.Width, pbLiveWebcam.Height);
             pbLiveWebcam.Image = bmp;
         }
 

@@ -16,6 +16,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
         public bool status { get; set; }
         public string note { get; set; }
         public double workingHours { get; set; }
+        public int name { get; set; }
 
         public static Attendances GetInstance()
         {
