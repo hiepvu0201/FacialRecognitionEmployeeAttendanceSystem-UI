@@ -12,22 +12,21 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
         private static Attendances _instance;
 
         public long id { get; set; }
-        public DateTime dateCheck { get; set; }
-        public bool status { get; set; }
+        public string dateCheck { get; set; }
+        public bool status { get; set; } = true;
         public string note { get; set; }
         public double workingHours { get; set; }
-        public int name { get; set; }
+        public DateTime checkinAt { get; set; } = new DateTime(DateTime.Now.Ticks);
+        public DateTime checkoutAt { get; set; } = new DateTime(DateTime.Now.Ticks);
+        public Users users { get; set; }
+
+        public long userId { get; set; }
 
         public static Attendances GetInstance()
         {
             if (_instance == null)
                 _instance = new Attendances();
             return _instance;
-        }
-
-        public static implicit operator List<object>(Attendances v)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -35,7 +35,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             _client.PostAsync($"/api/v1/attendances/add", byteContent);
         }
-        public void Update(int id, Attendances attendances)
+        public void Update(long id, Attendances attendances)
         {
             var attendance = JsonConvert.SerializeObject(attendances);
             var buffer = Encoding.UTF8.GetBytes(attendance);
@@ -43,7 +43,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             _client.PutAsync($"/api/v1/attendances/update/{id}", byteContent);
         }
-        public async Task<Attendances> GetByIdAsync(int id)
+        public async Task<Attendances> GetByIdAsync(long id)
         {
             _response = await _client.GetAsync($"/api/v1/attendances/{id}");
 
@@ -59,17 +59,26 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             Attendances Attendances = JsonConvert.DeserializeObject<Attendances>(json);
             return Attendances;
         }
-        public void Delete(int id)
+        public void Delete(long id)
         {
             _client.DeleteAsync($"/api/v1/attendances/delete/{id}");
         }
-        public void RollUp(Attendances attendances)
+        public void CheckIn(Attendances attendances)
         {
             var attendance = JsonConvert.SerializeObject(attendances);
             var buffer = Encoding.UTF8.GetBytes(attendance);
             var byteContent = new ByteArrayContent(buffer);
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-            _client.PostAsync($"/api/v1/attendances/rollup", byteContent);
+            _client.PostAsync($"/api/v1/attendances/checkin", byteContent);
+        }
+
+        public void CheckOut(long id, Attendances attendances)
+        {
+            var attendance = JsonConvert.SerializeObject(attendances);
+            var buffer = Encoding.UTF8.GetBytes(attendance);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PutAsync($"/api/v1/attendances/checkout/{id}", byteContent);
         }
     }
 }

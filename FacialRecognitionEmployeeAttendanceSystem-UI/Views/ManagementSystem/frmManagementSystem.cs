@@ -302,7 +302,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             try
             {
                 Attendances attendance = new Attendances();
-                attendance.dateCheck = DateTime.Parse(ucAttendances1.txtDateCheck.Text);
+                attendance.dateCheck = ucAttendances1.txtDateCheck.Text;
                 attendance.status = Boolean.Parse(ucAttendances1.txtStatus.Text);
                 attendance.note = ucAttendances1.txtNote.Text;
                 attendance.workingHours = Double.Parse(ucAttendances1.txtWorkingHours.Text);

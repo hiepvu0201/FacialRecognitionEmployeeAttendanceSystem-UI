@@ -63,5 +63,13 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             Users user = JsonConvert.DeserializeObject<Users>(json);
             return user;
         }
+        public async Task<Users> GetByFullNameAsync(string fullName)
+        {
+            _response = await _client.GetAsync($"/api/v1/users/fullname/{fullName}");
+
+            var json = await _response.Content.ReadAsStringAsync();
+            Users user = JsonConvert.DeserializeObject<Users>(json);
+            return user;
+        }
     }
 }

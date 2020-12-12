@@ -70,7 +70,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
                     case 5:
                         {
                             // Attendance
-                            Attendances.GetInstance().dateCheck = Convert.ToDateTime(data.Cells[1].Value);
+                            Attendances.GetInstance().dateCheck = data.Cells[1].Value.ToString();
                             Attendances.GetInstance().status = Convert.ToBoolean(data.Cells[2].Value);
                             Attendances.GetInstance().note = data.Cells[3].Value.ToString();
                             Attendances.GetInstance().workingHours = Convert.ToInt32(data.Cells[4].Value);

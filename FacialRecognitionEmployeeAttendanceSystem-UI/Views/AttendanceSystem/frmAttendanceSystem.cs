@@ -23,8 +23,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         #region Properties
         public event PropertyChangedEventHandler PropertyChanged;
         private VideoCapture videoCapture;
+        Image<Bgr, Byte> bgrFrame = null;
         private CascadeClassifier cascadeClassifier;
-        private Image<Bgr, Byte> bgrFrame = null;
         private Image<Gray, Byte> detectedFace = null;
         private List<FaceData> faceList = new List<FaceData>();
         private VectorOfMat imageList = new VectorOfMat();
@@ -32,9 +32,11 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         private VectorOfInt labelList = new VectorOfInt();
         private EigenFaceRecognizer recognizer;
         private System.Timers.Timer captureTimer;
+        private string recognitionName = "";
 
-        UsersRepository _usersRepository = new UsersRepository();
-        bool isFaceRecognition = true;
+        UsersRepository _userRepository = new UsersRepository();
+        AttendancesRepository _attendanceRepository = new AttendancesRepository();
+        bool isPinMode = false;
         #endregion
 
         #region CameraCaptureImage
@@ -45,7 +47,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             set
             {
                 cameraCapture = value;
-                pbCamera.Invoke(new Action(() => { pbCamera.Image = BitmapToImageSource(cameraCapture); }));
+                pbCamera.Invoke(new Action(() => { pbCamera.Image = cameraCapture; }));
                 NotifyPropertyChanged();
             }
         }
@@ -59,7 +61,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             set
             {
                 cameraCaptureFace = value;
-                pbFaceCapture.Invoke(new Action(() => { pbFaceCapture.Image = BitmapToImageSource(cameraCaptureFace); }));
+                pbFaceCapture.Invoke(new Action(() => { pbFaceCapture.Image = cameraCaptureFace; }));
                 NotifyPropertyChanged();
             }
         }
@@ -73,7 +75,25 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             set
             {
                 faceName = value.ToUpper();
-                lblFaceName.Invoke(new Action(() => { lblFaceName.Text = faceName; }));
+                lblFaceName.Invoke(new Action(async () => { 
+                    lblFaceName.Text = faceName;
+                    Users userResult = await _userRepository.GetByFullNameAsync(recognitionName);
+
+                    if (userResult!=null)
+                    {
+                        Attendances attendance = await GetAttendanceForRequestAsync(userResult);
+
+                        // Time <= 0 when check-in meanwhile > 0 when checkout
+                        if (CalculateWorkingTime(attendance) == 0)
+                        {
+                            lblFaceName.Text = $"Check in success! Welcome {userResult.fullName}!".ToUpper();
+                        }
+                        else
+                        {
+                            lblFaceName.Text = $"Check out success! Good bye {userResult.fullName}!!".ToUpper();
+                        }
+                    }
+                }));
                 NotifyPropertyChanged();
             }
         }
@@ -94,7 +114,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         #region Event
         private void frmAttendanceSystem_Load(object sender, EventArgs e)
         {
-            StartFaceRecognition();
+            GetFacesList();
+            videoCapture = ConfigCamera(videoCapture);
+            captureTimer.Start();
         }
 
         protected virtual void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
@@ -105,24 +127,62 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
         private void CaptureTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            ProcessFrame();
+            CameraCapture = ProcessFrame(bgrFrame);
         }
 
         private async void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (isFaceRecognition == false && txtPin.Text != null && txtPin.Text != "")
+            if (isPinMode == true && txtPin.Text != null && txtPin.Text != "")
             {
-                Users user = await _usersRepository.GetByPinAsync(txtPin.Text);
-                MessageBox.Show($"Welcome {user.fullName}! Have a good day!");
+                Users userResult = await _userRepository.GetByPinAsync(txtPin.Text);
+
+                Attendances attendance = await GetAttendanceForRequestAsync(userResult);
+
+                // Time <= 0 when check-in meanwhile > 0 when checkout
+                if (CalculateWorkingTime(attendance) == 0)
+                {
+                    MessageBox.Show($"Check in success! Welcome {userResult.fullName}!");
+                }
+                else
+                {
+                    MessageBox.Show($"Check out success! Good bye {userResult.fullName}!");
+                }
             }
             else MessageBox.Show("Please choose PIN Mode!!!");
-            isFaceRecognition = true;
+            isPinMode = false;
+        }
+
+        private async System.Threading.Tasks.Task<Attendances> GetAttendanceForRequestAsync(Users userResult)
+        {
+            //Attendance for json request
+            Attendances attendanceRq = new Attendances();
+            attendanceRq.dateCheck = DateTime.Now.ToString("yyyy-MM-dd");
+
+            //Attendance from db
+            Attendances attendanceDB = await _attendanceRepository.GetByDateTimeAsync(attendanceRq.dateCheck);
+
+            attendanceRq.workingHours = CalculateWorkingTime(attendanceDB);
+            attendanceRq.userId = userResult.id;
+
+            if (attendanceRq.workingHours <= 0)
+            {
+                attendanceRq.workingHours = 0;
+                attendanceRq.checkinAt = new DateTime(DateTime.Now.Ticks);
+
+                _attendanceRepository.CheckIn(attendanceRq);
+            }
+            else
+            {
+                attendanceRq.checkoutAt = new DateTime(DateTime.Now.Ticks);
+
+                _attendanceRepository.CheckOut(attendanceDB.id, attendanceRq);
+            }
+            return attendanceRq;
         }
 
         private void btnPinMode_Click(object sender, EventArgs e)
         {
-            isFaceRecognition = false;
-            Application.Idle -= StartLiveWebcam;
+            isPinMode = true;
             pbCamera.Image = null;
             MessageBox.Show("Now you're in PIN mode!");
         }
@@ -132,16 +192,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             this.Hide();
             frmMain frmMain = new frmMain();
             frmMain.Show();
-        }
-
-        private void btnFacialRecognitionMode_Click(object sender, EventArgs e)
-        {
-            isFaceRecognition = true;
-            Application.Idle += StartLiveWebcam;
-        }
-        private void StartLiveWebcam(object sender, System.EventArgs e)
-        {
-            StartFaceRecognition();
         }
 
         private void btnCheckAttendanceHistory_Click(object sender, EventArgs e)
@@ -171,70 +221,76 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         #endregion
 
         #region Method
-        private void StartFaceRecognition()
+        private VideoCapture ConfigCamera(VideoCapture video)
         {
-            GetFacesList();
-            videoCapture = new VideoCapture(Config.ActiveCameraIndex);
-            videoCapture.SetCaptureProperty(CapProp.Fps, 30);
-            videoCapture.SetCaptureProperty(CapProp.FrameHeight, 422);
-            videoCapture.SetCaptureProperty(CapProp.FrameWidth, 628);
-            captureTimer.Start();
+            video = new VideoCapture(Config.ActiveCameraIndex);
+            video.SetCaptureProperty(CapProp.Fps, 30);
+            video.SetCaptureProperty(CapProp.FrameHeight, 422);
+            video.SetCaptureProperty(CapProp.FrameWidth, 628);
+            return video;
         }
 
-        private void ProcessFrame()
+        private Bitmap ProcessFrame(Image<Bgr, Byte> bgrFrame)
         {
             bgrFrame = videoCapture.QueryFrame().ToImage<Bgr, Byte>();
-            
+
             if (bgrFrame != null)
             {
                 try
-                {//for emgu cv bug
+                {
+                    //for emgu cv bug
                     Image<Gray, byte> grayframe = bgrFrame.Convert<Gray, byte>();
 
                     Rectangle[] faces = cascadeClassifier.DetectMultiScale(grayframe, 1.2, 10, new System.Drawing.Size(50, 50), new System.Drawing.Size(200, 200));
 
                     //detect face
-                    FaceName = "No face detected";
                     foreach (Rectangle face in faces)
                     {
                         bgrFrame.Draw(face, new Bgr(255, 255, 0), 2);
 
                         detectedFace = bgrFrame.Copy(face).Convert<Gray, Byte>();
+                        CameraCaptureFace = detectedFace.ToBitmap(pbFaceCapture.Width, pbFaceCapture.Height);
 
-                        FaceRecognition();
+                        recognitionName = FaceRecognition("");
+                        FaceName = lblFaceName.Text;
+
+                        bgrFrame.Draw(recognitionName, new Point(face.X - 4, face.Y - 4), FontFace.HersheyTriplex, 0.5, new Bgr(255, 255, 0));
+
                         break;
                     }
-                    CameraCapture = bgrFrame.ToBitmap(pbCamera.Width, pbCamera.Height);
+
                 }
                 catch (Exception ex)
                 {
-                    //todo log
+                    
                 }
 
             }
+            return bgrFrame.ToBitmap(pbCamera.Width, pbCamera.Height);
         }
 
-        private void FaceRecognition()
+        private string FaceRecognition(string recognitionName)
         {
             if (imageList.Size != 0)
             {
                 //Eigen Face Algorithm
                 FaceRecognizer.PredictionResult result = recognizer.Predict(detectedFace.Resize(100, 100, Inter.Cubic));
 
-                if (result.Label==0)
+                if (result.Label == 0)
                 {
-                    FaceName = "Unknown";
+                    recognitionName = "Unknown";
                 }
                 else
                 {
-                    FaceName = nameList[result.Label];
+                    recognitionName = nameList[result.Label];       
                 }
-                CameraCaptureFace = detectedFace.ToBitmap(pbFaceCapture.Width, pbFaceCapture.Height);
+
             }
             else
             {
-                FaceName = "Please add new face!";
+                recognitionName = "Unknown";
             }
+            return recognitionName;
         }
 
         private void GetFacesList()
@@ -247,6 +303,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             }
 
             cascadeClassifier = new CascadeClassifier(Config.HaarCascadePath);
+
             faceList.Clear();
             string line;
 
@@ -299,9 +356,16 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             }
         }
 
-        private Bitmap BitmapToImageSource(Bitmap bitmap)
+        private double CalculateWorkingTime(Attendances attendance)
         {
-            return bitmap;
+            if (attendance == null || attendance.checkinAt == DateTime.MinValue)
+            {
+                return -1;
+            }
+
+            double time = (DateTime.Now - attendance.checkinAt).TotalHours;
+
+            return time;
         }
         #endregion
     }

@@ -121,12 +121,6 @@
     <Compile Include="Views\ManagementSystem\frmManagementSystem.Designer.cs">
       <DependentUpon>frmManagementSystem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ManagementSystem\frmImageHandler.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\ManagementSystem\frmImageHandler.Designer.cs">
-      <DependentUpon>frmImageHandler.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\UC\ucAttendances.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -189,9 +183,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ManagementSystem\frmManagementSystem.resx">
       <DependentUpon>frmManagementSystem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ManagementSystem\frmImageHandler.resx">
-      <DependentUpon>frmImageHandler.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC\ucAttendances.resx">
       <DependentUpon>ucAttendances.cs</DependentUpon>

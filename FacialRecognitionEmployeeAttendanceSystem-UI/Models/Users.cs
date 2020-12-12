@@ -9,7 +9,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
     class Users
     {
         public long id { get; set; }
-        public string fullName { get; set; }
+        public string fullName { get; set; } = "";
         public string imgPath { get; set; }
         public string pin { get; set; }
         public DateTime dob { get; set; }
