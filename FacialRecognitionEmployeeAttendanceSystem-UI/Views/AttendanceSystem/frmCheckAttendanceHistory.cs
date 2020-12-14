@@ -14,32 +14,26 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.AttendanceSystem
 {
     public partial class frmCheckAttendanceHistory : Form
     {
+        #region Properties
         AttendancesRepository _attendancesRepository = new AttendancesRepository();
+        #endregion
+
+        #region Constructor
         public frmCheckAttendanceHistory()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Event
         private void frmCheckAttendanceHistory_Load(object sender, EventArgs e)
         {
             LoadData();
         }
-
-        private async void LoadData()
-        {
-            /*string date = dtpHistory.Value.ToShortDateString();*/
-            Attendances attendances = await _attendancesRepository.GetByDateTimeAsync(dtpHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat));
-
-            List<Attendances> listAttendances = new List<Attendances>();
-            listAttendances.Add(attendances);
-            dgvCheckAttendanceHistory.DataSource = listAttendances;
-        }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             LoadData();
         }
-
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
             if (dgvCheckAttendanceHistory.Rows.Count > 0)
@@ -81,6 +75,37 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.AttendanceSystem
                     MessageBox.Show("Export fail! Please check and try later!");
                 }
             }
+        }
+        private void btnCalculateTodaySalary_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmAttendanceSystem frmAttendanceSystem = new frmAttendanceSystem();
+            frmAttendanceSystem.Show();
+        }
+        #endregion
+
+        #region Method
+        private async void LoadData()
+        {
+            /*string date = dtpHistory.Value.ToShortDateString();*/
+            Attendances attendances = await _attendancesRepository.GetByDateTimeAsync(dtpHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat));
+
+            if (attendances != null && attendances.users.fullName == frmAttendanceSystem.recognitionName)
+            {
+                List<Attendances> listAttendances = new List<Attendances>();
+                listAttendances.Add(attendances);
+                dgvCheckAttendanceHistory.DataSource = listAttendances;
+            }
+        }
+        #endregion
+
+        private void btnOptionalCalculate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

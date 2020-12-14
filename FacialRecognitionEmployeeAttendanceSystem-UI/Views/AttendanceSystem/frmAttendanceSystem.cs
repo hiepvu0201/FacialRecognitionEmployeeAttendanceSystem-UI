@@ -32,7 +32,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         private VectorOfInt labelList = new VectorOfInt();
         private EigenFaceRecognizer recognizer;
         private System.Timers.Timer captureTimer;
-        private string recognitionName = "";
+        public static string recognitionName = "";
 
         UsersRepository _userRepository = new UsersRepository();
         AttendancesRepository _attendanceRepository = new AttendancesRepository();
@@ -81,18 +81,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
                     if (userResult!=null)
                     {
-                        Attendances attendance = await GetAttendanceForRequestAsync(userResult);
-
-                        // Time <= 0 when check-in meanwhile > 0 when checkout
-                        if (CalculateWorkingTime(attendance) == 0)
-                        {
-                            lblFaceName.Text = $"Check in success! Welcome {userResult.fullName}!".ToUpper();
-                        }
-                        else
-                        {
-                            lblFaceName.Text = $"Check out success! Good bye {userResult.fullName}!!".ToUpper();
-                        }
+                        await GetAttendanceForRequestAsync(userResult);
                     }
+                    txtNameToCheck.Text = recognitionName;
                 }));
                 NotifyPropertyChanged();
             }
@@ -170,12 +161,16 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 attendanceRq.checkinAt = new DateTime(DateTime.Now.Ticks);
 
                 _attendanceRepository.CheckIn(attendanceRq);
+
+                FaceName = $"Check in success! Welcome {userResult.fullName}!";
             }
             else
             {
                 attendanceRq.checkoutAt = new DateTime(DateTime.Now.Ticks);
 
                 _attendanceRepository.CheckOut(attendanceDB.id, attendanceRq);
+
+                FaceName = $"Check out success! Good bye {userResult.fullName}!";
             }
             return attendanceRq;
         }
