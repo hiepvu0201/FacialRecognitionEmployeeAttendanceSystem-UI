@@ -129,50 +129,26 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
                 Attendances attendance = await GetAttendanceForRequestAsync(userResult);
 
+                double workingTime = CalculateWorkingTime(attendance);
                 // Time <= 0 when check-in meanwhile > 0 when checkout
-                if (CalculateWorkingTime(attendance) == 0)
+                if (workingTime == 0)
                 {
                     MessageBox.Show($"Check in success! Welcome {userResult.fullName}!");
                 }
                 else
                 {
                     MessageBox.Show($"Check out success! Good bye {userResult.fullName}!");
+                    double todaySalary = CalculateTodaySalary(workingTime);
                 }
             }
             else MessageBox.Show("Please choose PIN Mode!!!");
             isPinMode = false;
         }
 
-        private async System.Threading.Tasks.Task<Attendances> GetAttendanceForRequestAsync(Users userResult)
+        private double CalculateTodaySalary(double workingTime)
         {
-            //Attendance for json request
-            Attendances attendanceRq = new Attendances();
-            attendanceRq.dateCheck = DateTime.Now.ToString("yyyy-MM-dd");
-
-            //Attendance from db
-            Attendances attendanceDB = await _attendanceRepository.GetByDateTimeAsync(attendanceRq.dateCheck);
-
-            attendanceRq.workingHours = CalculateWorkingTime(attendanceDB);
-            attendanceRq.userId = userResult.id;
-
-            if (attendanceRq.workingHours <= 0)
-            {
-                attendanceRq.workingHours = 0;
-                attendanceRq.checkinAt = new DateTime(DateTime.Now.Ticks);
-
-                _attendanceRepository.CheckIn(attendanceRq);
-
-                FaceName = $"Check in success! Welcome {userResult.fullName}!";
-            }
-            else
-            {
-                attendanceRq.checkoutAt = new DateTime(DateTime.Now.Ticks);
-
-                _attendanceRepository.CheckOut(attendanceDB.id, attendanceRq);
-
-                FaceName = $"Check out success! Good bye {userResult.fullName}!";
-            }
-            return attendanceRq;
+            double todaySalary = workingTime * ConfigSalary.GetInstance().salaryPerHour;
+            return todaySalary;
         }
 
         private void btnPinMode_Click(object sender, EventArgs e)
@@ -361,6 +337,38 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             double time = (DateTime.Now - attendance.checkinAt).TotalHours;
 
             return time;
+        }
+
+        private async System.Threading.Tasks.Task<Attendances> GetAttendanceForRequestAsync(Users userResult)
+        {
+            //Attendance for json request
+            Attendances attendanceRq = new Attendances();
+            attendanceRq.dateCheck = DateTime.Now.ToString("yyyy-MM-dd");
+
+            //Attendance from db
+            Attendances attendanceDB = await _attendanceRepository.GetByDateTimeAsync(attendanceRq.dateCheck);
+
+            attendanceRq.workingHours = CalculateWorkingTime(attendanceDB);
+            attendanceRq.userId = userResult.id;
+
+            if (attendanceRq.workingHours <= 0)
+            {
+                attendanceRq.workingHours = 0;
+                attendanceRq.checkinAt = new DateTime(DateTime.Now.Ticks);
+
+                _attendanceRepository.CheckIn(attendanceRq);
+
+                FaceName = $"Check in success! Welcome {userResult.fullName}!";
+            }
+            else
+            {
+                attendanceRq.checkoutAt = new DateTime(DateTime.Now.Ticks);
+
+                _attendanceRepository.CheckOut(attendanceDB.id, attendanceRq);
+
+                FaceName = $"Check out success! Good bye {userResult.fullName}!";
+            }
+            return attendanceRq;
         }
         #endregion
     }

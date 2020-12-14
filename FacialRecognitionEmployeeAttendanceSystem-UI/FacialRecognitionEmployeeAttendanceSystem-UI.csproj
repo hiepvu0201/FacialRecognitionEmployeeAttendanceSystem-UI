@@ -82,6 +82,7 @@
     <Compile Include="Models\Attendances.cs" />
     <Compile Include="Models\AWS-S3\Buckets.cs" />
     <Compile Include="Models\Config.cs" />
+    <Compile Include="Models\ConfigSalary.cs" />
     <Compile Include="Models\Departments.cs" />
     <Compile Include="Models\FaceData.cs" />
     <Compile Include="Models\Payslips.cs" />
