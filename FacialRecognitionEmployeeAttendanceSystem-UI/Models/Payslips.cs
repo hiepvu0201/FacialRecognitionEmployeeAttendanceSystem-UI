@@ -19,6 +19,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
         public double allowance { get; set; }
         public double bonus { get; set; }
         public double tax { get; set; }
+        public long userId { get; set; }
         public double deductionSalary { get; set; }
         public DateTime createdAt { get; set; }
         public bool isDisabled { get; set; }

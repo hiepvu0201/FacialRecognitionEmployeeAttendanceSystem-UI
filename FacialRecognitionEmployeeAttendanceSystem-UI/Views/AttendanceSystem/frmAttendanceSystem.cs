@@ -6,6 +6,8 @@ using Emgu.CV.Util;
 using FacialRecognitionEmployeeAttendanceSystem_UI.Models;
 using FacialRecognitionEmployeeAttendanceSystem_UI.Repository;
 using FacialRecognitionEmployeeAttendanceSystem_UI.Views.AttendanceSystem;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +41,10 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
         UsersRepository _userRepository = new UsersRepository();
         AttendancesRepository _attendanceRepository = new AttendancesRepository();
+        PayslipsRepository _payslipsRepository = new PayslipsRepository();
         bool isPinMode = false;
+
+        public static double todaySalary = 0;
         #endregion
 
         #region CameraCaptureImage
@@ -84,7 +89,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
                     if (userResult!=null)
                     {
-                        await GetAttendanceForRequestAsync(userResult);
+                        Attendances attendance = await GetAttendanceForRequestAsync(userResult);
+                        if (attendance == null) return;
                     }
                     txtNameToCheck.Text = recognitionName;
                 }));
@@ -130,7 +136,11 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             {
                 Users userResult = await _userRepository.GetByPinAsync(txtPin.Text);
 
+                if (userResult==null) return;
+
                 Attendances attendance = await GetAttendanceForRequestAsync(userResult);
+
+                if (attendance == null) return;
 
                 double workingTime = CalculateWorkingTime(attendance);
                 // Time <= 0 when check-in meanwhile > 0 when checkout
@@ -141,17 +151,43 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 else
                 {
                     MessageBox.Show($"Check out success! Good bye {userResult.fullName}!");
-                    double todaySalary = CalculateTodaySalary(workingTime);
+
+                    JObject json = JObject.Parse(File.ReadAllText(Config.ConfigFile));
+                    ConfigSalary configSalary = JsonConvert.DeserializeObject<ConfigSalary>(json.ToString());
+
+                    todaySalary = CalculateTodaySalary(workingTime, configSalary);
+                    _payslipsRepository.Add(CalcualteTodayPayslips(workingTime, new DateTime(DateTime.Now.Ticks), configSalary, todaySalary, userResult.id));
+                    
                 }
             }
             else MessageBox.Show("Please choose PIN Mode!!!");
             isPinMode = false;
         }
 
-        private double CalculateTodaySalary(double workingTime)
+        private Payslips CalcualteTodayPayslips(double workingTime, DateTime today, ConfigSalary configSalary, double todaySalary, long userId)
         {
-            double todaySalary = workingTime * ConfigSalary.GetInstance().salaryPerHour;
-            return todaySalary;
+            Payslips payslips = new Payslips();
+            payslips.payDate = today;
+            payslips.publicSalary = todaySalary;
+            payslips.otherSalary = 0;
+            payslips.tax = configSalary.taxRate / 100 * (configSalary.salaryPerHour * workingTime);
+            payslips.overtimeSalary = 0;
+            payslips.deductionSalary = 0;
+            payslips.annualLeaveSalary = 0;
+            payslips.bonus = configSalary.bonusPerDay;
+            payslips.userId = userId;
+            payslips.workingSalary = configSalary.salaryPerHour * workingTime;
+            payslips.allowance = configSalary.allowance;
+
+            return payslips;
+        }
+
+        private double CalculateTodaySalary(double workingTime, ConfigSalary configSalary)
+        {
+            double todaySalary = workingTime * configSalary.salaryPerHour + configSalary.bonusPerDay + configSalary.overTimeSalaryRate*0 + configSalary.allowance;
+            todaySalary = todaySalary - todaySalary * configSalary.taxRate / 100;
+
+            return todaySalary ;
         }
 
         private void btnPinMode_Click(object sender, EventArgs e)
@@ -385,6 +421,12 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 _attendanceRepository.CheckOut(attendanceDB.id, attendanceRq);
 
                 FaceName = $"Check out success! Good bye {userResult.fullName}!";
+
+                JObject json = JObject.Parse(File.ReadAllText(Config.ConfigFile));
+                ConfigSalary configSalary = JsonConvert.DeserializeObject<ConfigSalary>(json.ToString());
+
+                todaySalary = CalculateTodaySalary(attendanceRq.workingHours, configSalary);
+                _payslipsRepository.Add(CalcualteTodayPayslips(attendanceRq.workingHours, new DateTime(DateTime.Now.Ticks), configSalary, todaySalary, userResult.id));
             }
             return attendanceRq;
         }

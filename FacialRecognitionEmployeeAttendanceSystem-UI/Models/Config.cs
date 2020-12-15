@@ -11,6 +11,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
         public static string FacePhotosPath = "Source\\Faces\\";
         public static string FaceListTextFile = "Source\\FaceList.txt";
         public static string TrainingFile = "Source\\Train";
+        public static string ConfigFile = "Source\\Config.json";
         public static string HaarCascadePath = "Resources\\haarcascade_frontalface_default.xml";
         public static int TimerResponseValue = 100;
         public static string ImageFileExtension = ".bmp";

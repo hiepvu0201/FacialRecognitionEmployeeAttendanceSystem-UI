@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem;
 
 namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 {
@@ -573,10 +574,11 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             frmMain frmMain = new frmMain();
             frmMain.Show();
         }
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        private void btnModifySalary_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frmModifySalaryRules frmModifySalaryRules = new frmModifySalaryRules();
+            frmModifySalaryRules.Show();
         }
     }
 }

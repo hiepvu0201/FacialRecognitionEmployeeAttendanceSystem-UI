@@ -78,7 +78,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.AttendanceSystem
         }
         private void btnCalculateTodaySalary_Click(object sender, EventArgs e)
         {
-            
+            MessageBox.Show(frmAttendanceSystem.todaySalary.ToString());
         }
         private void btnBack_Click(object sender, EventArgs e)
         {

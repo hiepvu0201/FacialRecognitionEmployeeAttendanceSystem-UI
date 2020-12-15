@@ -37,16 +37,16 @@
             this.btnExportExcel = new System.Windows.Forms.Button();
             this.btnCalculateTodaySalary = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            this.dgvCheckAttendanceHistory = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.btnOptionalCalculate = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dgvCheckAttendanceHistory = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCheckAttendanceHistory)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCheckAttendanceHistory)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -169,18 +169,6 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // dgvCheckAttendanceHistory
-            // 
-            this.dgvCheckAttendanceHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCheckAttendanceHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvCheckAttendanceHistory.Location = new System.Drawing.Point(2, 43);
-            this.dgvCheckAttendanceHistory.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvCheckAttendanceHistory.Name = "dgvCheckAttendanceHistory";
-            this.dgvCheckAttendanceHistory.RowHeadersWidth = 51;
-            this.dgvCheckAttendanceHistory.RowTemplate.Height = 24;
-            this.dgvCheckAttendanceHistory.Size = new System.Drawing.Size(1009, 321);
-            this.dgvCheckAttendanceHistory.TabIndex = 2;
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
@@ -233,6 +221,18 @@
             this.comboBox1.TabIndex = 2;
             this.comboBox1.Text = "Click to choose";
             // 
+            // dgvCheckAttendanceHistory
+            // 
+            this.dgvCheckAttendanceHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCheckAttendanceHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvCheckAttendanceHistory.Location = new System.Drawing.Point(2, 43);
+            this.dgvCheckAttendanceHistory.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvCheckAttendanceHistory.Name = "dgvCheckAttendanceHistory";
+            this.dgvCheckAttendanceHistory.RowHeadersWidth = 51;
+            this.dgvCheckAttendanceHistory.RowTemplate.Height = 24;
+            this.dgvCheckAttendanceHistory.Size = new System.Drawing.Size(1009, 321);
+            this.dgvCheckAttendanceHistory.TabIndex = 2;
+            // 
             // frmCheckAttendanceHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,9 +248,9 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCheckAttendanceHistory)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCheckAttendanceHistory)).EndInit();
             this.ResumeLayout(false);
 
         }
