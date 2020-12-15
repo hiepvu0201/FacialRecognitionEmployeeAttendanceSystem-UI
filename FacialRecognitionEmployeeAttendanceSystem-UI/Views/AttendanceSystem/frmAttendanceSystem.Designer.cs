@@ -40,24 +40,27 @@
             this.btnMainMenu = new System.Windows.Forms.Button();
             this.btnPinMode = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.pbFaceCapture = new System.Windows.Forms.PictureBox();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.pbFaceCapture = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.pbCamera = new System.Windows.Forms.PictureBox();
             this.lblFaceName = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblThesh = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFaceCapture)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFaceCapture)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCamera)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -74,7 +77,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(873, 499);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(891, 548);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -85,13 +88,13 @@
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.btnMainMenu, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.btnPinMode, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel6, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(623, 4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(641, 4);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 6;
+            this.tableLayoutPanel2.RowCount = 7;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -99,7 +102,8 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 280F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(246, 491);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(246, 540);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // tableLayoutPanel4
@@ -188,7 +192,7 @@
             // btnMainMenu
             // 
             this.btnMainMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnMainMenu.Location = new System.Drawing.Point(2, 453);
+            this.btnMainMenu.Location = new System.Drawing.Point(2, 445);
             this.btnMainMenu.Margin = new System.Windows.Forms.Padding(2);
             this.btnMainMenu.Name = "btnMainMenu";
             this.btnMainMenu.Size = new System.Drawing.Size(242, 36);
@@ -212,45 +216,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 122);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(240, 41);
+            this.label1.Size = new System.Drawing.Size(109, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Preview Image Below";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtName
-            // 
-            this.txtName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtName.Location = new System.Drawing.Point(2, 2);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtName.Multiline = true;
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(159, 31);
-            this.txtName.TabIndex = 4;
-            // 
-            // pbFaceCapture
-            // 
-            this.pbFaceCapture.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbFaceCapture.Location = new System.Drawing.Point(2, 2);
-            this.pbFaceCapture.Margin = new System.Windows.Forms.Padding(2);
-            this.pbFaceCapture.Name = "pbFaceCapture";
-            this.pbFaceCapture.Size = new System.Drawing.Size(236, 229);
-            this.pbFaceCapture.TabIndex = 3;
-            this.pbFaceCapture.TabStop = false;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAdd.Location = new System.Drawing.Point(165, 2);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(67, 31);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // tableLayoutPanel6
             // 
@@ -282,6 +253,38 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(234, 35);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAdd.Location = new System.Drawing.Point(165, 2);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(67, 31);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // txtName
+            // 
+            this.txtName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtName.Location = new System.Drawing.Point(2, 2);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtName.Multiline = true;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(159, 31);
+            this.txtName.TabIndex = 4;
+            // 
+            // pbFaceCapture
+            // 
+            this.pbFaceCapture.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbFaceCapture.Location = new System.Drawing.Point(2, 2);
+            this.pbFaceCapture.Margin = new System.Windows.Forms.Padding(2);
+            this.pbFaceCapture.Name = "pbFaceCapture";
+            this.pbFaceCapture.Size = new System.Drawing.Size(236, 229);
+            this.pbFaceCapture.TabIndex = 3;
+            this.pbFaceCapture.TabStop = false;
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
@@ -295,7 +298,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(613, 491);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(631, 540);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // pbCamera
@@ -304,7 +307,7 @@
             this.pbCamera.Location = new System.Drawing.Point(2, 2);
             this.pbCamera.Margin = new System.Windows.Forms.Padding(2);
             this.pbCamera.Name = "pbCamera";
-            this.pbCamera.Size = new System.Drawing.Size(609, 446);
+            this.pbCamera.Size = new System.Drawing.Size(627, 495);
             this.pbCamera.TabIndex = 2;
             this.pbCamera.TabStop = false;
             // 
@@ -313,18 +316,36 @@
             this.lblFaceName.AutoSize = true;
             this.lblFaceName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblFaceName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFaceName.Location = new System.Drawing.Point(2, 450);
+            this.lblFaceName.Location = new System.Drawing.Point(2, 499);
             this.lblFaceName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFaceName.Name = "lblFaceName";
-            this.lblFaceName.Size = new System.Drawing.Size(609, 41);
+            this.lblFaceName.Size = new System.Drawing.Size(627, 41);
             this.lblFaceName.TabIndex = 3;
             this.lblFaceName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblThesh);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(3, 125);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(235, 35);
+            this.panel2.TabIndex = 7;
+            // 
+            // lblThesh
+            // 
+            this.lblThesh.AutoSize = true;
+            this.lblThesh.Location = new System.Drawing.Point(137, 4);
+            this.lblThesh.Name = "lblThesh";
+            this.lblThesh.Size = new System.Drawing.Size(54, 13);
+            this.lblThesh.TabIndex = 6;
+            this.lblThesh.Text = "Threshold";
             // 
             // frmAttendanceSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 499);
+            this.ClientSize = new System.Drawing.Size(891, 548);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmAttendanceSystem";
@@ -333,19 +354,20 @@
             this.Load += new System.EventHandler(this.frmAttendanceSystem_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFaceCapture)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFaceCapture)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCamera)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -371,5 +393,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblThesh;
     }
 }

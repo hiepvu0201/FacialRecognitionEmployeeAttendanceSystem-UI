@@ -34,6 +34,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         private System.Timers.Timer captureTimer;
         public static string recognitionName = "";
 
+        double Eigen_Distance = 0;
+        double Eigen_threshold = 3000;
+
         UsersRepository _userRepository = new UsersRepository();
         AttendancesRepository _attendanceRepository = new AttendancesRepository();
         bool isPinMode = false;
@@ -212,20 +215,29 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                     //for emgu cv bug
                     Image<Gray, byte> grayframe = bgrFrame.Convert<Gray, byte>();
 
-                    Rectangle[] faces = cascadeClassifier.DetectMultiScale(grayframe, 1.2, 10, new System.Drawing.Size(50, 50), new System.Drawing.Size(200, 200));
+                    Rectangle[] faces = cascadeClassifier.DetectMultiScale(grayframe, 1.2, 10, new Size(50, 50), Size.Empty);
 
                     //detect face
-                    foreach (Rectangle face in faces)
+                    for (int i = 0; i < faces.Length; i++)// (Rectangle face_found in facesDetected)
                     {
-                        bgrFrame.Draw(face, new Bgr(255, 255, 0), 2);
+                        //This will focus in on the face from the haar results its not perfect but it will remove a majoriy
+                        //of the background noise
+                        faces[i].X += (int)(faces[i].Height * 0.15);
+                        faces[i].Y += (int)(faces[i].Width * 0.22);
+                        faces[i].Height -= (int)(faces[i].Height * 0.3);
+                        faces[i].Width -= (int)(faces[i].Width * 0.35);
 
-                        detectedFace = bgrFrame.Copy(face).Convert<Gray, Byte>();
+                        detectedFace = bgrFrame.Copy(faces[i]).Convert<Gray, Byte>().Resize(100, 100, Inter.Cubic);
+                        detectedFace._EqualizeHist();
+
+                        bgrFrame.Draw(faces[i], new Bgr(255, 255, 0), 2);
+
                         CameraCaptureFace = detectedFace.ToBitmap(pbFaceCapture.Width, pbFaceCapture.Height);
 
-                        recognitionName = FaceRecognition("");
-                        FaceName = lblFaceName.Text;
+                        recognitionName = FaceRecognition(detectedFace);
+                     
 
-                        bgrFrame.Draw(recognitionName, new Point(face.X - 4, face.Y - 4), FontFace.HersheyTriplex, 0.5, new Bgr(255, 255, 0));
+                        bgrFrame.Draw(recognitionName, new Point(faces[i].X - 4, faces[i].Y - 4), FontFace.HersheyTriplex, 0.5, new Bgr(255, 255, 0));
 
                         break;
                     }
@@ -240,28 +252,34 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             return bgrFrame.ToBitmap(pbCamera.Width, pbCamera.Height);
         }
 
-        private string FaceRecognition(string recognitionName)
+        private string FaceRecognition(Image<Gray, Byte> image, int Eigen_Thresh = -1)
         {
             if (imageList.Size != 0)
             {
                 //Eigen Face Algorithm
-                FaceRecognizer.PredictionResult result = recognizer.Predict(detectedFace.Resize(100, 100, Inter.Cubic));
+                FaceRecognizer.PredictionResult result = recognizer.Predict(image);
 
-                if (result.Label == 0)
+                FaceName = "Distance: " + result.Distance + "\tThresh: " + Eigen_threshold+"\tLabel: "+result.Label;
+
+                if (result.Label == -1)
                 {
                     recognitionName = "Unknown";
+                    Eigen_Distance = 0;
+                    return recognitionName;
                 }
                 else
                 {
-                    recognitionName = nameList[result.Label];       
+                    recognitionName = nameList[result.Label];
+                    Eigen_Distance = (float)result.Distance;
+                    if (Eigen_Thresh > -1) Eigen_threshold = Eigen_Thresh;
+
+                    if (Eigen_Distance > Eigen_threshold) return recognitionName;
+                    else return "Unknown";
                 }
 
             }
-            else
-            {
-                recognitionName = "Unknown";
-            }
-            return recognitionName;
+            
+            return "";
         }
 
         private void GetFacesList()
@@ -322,7 +340,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             //Train recognizer
             if (imageList.Size > 0)
             {
-                recognizer = new EigenFaceRecognizer(imageList.Size);
+                recognizer = new EigenFaceRecognizer(imageList.Size, double.PositiveInfinity);
                 recognizer.Train(imageList, labelList);
             }
         }

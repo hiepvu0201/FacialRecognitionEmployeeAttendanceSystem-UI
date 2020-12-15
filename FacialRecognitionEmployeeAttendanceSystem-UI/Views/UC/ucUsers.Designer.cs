@@ -83,7 +83,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
@@ -103,7 +103,7 @@
             // 
             this.txtRoleId.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtRoleId.Location = new System.Drawing.Point(92, 279);
-            this.txtRoleId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtRoleId.Margin = new System.Windows.Forms.Padding(2);
             this.txtRoleId.Name = "txtRoleId";
             this.txtRoleId.Size = new System.Drawing.Size(310, 20);
             this.txtRoleId.TabIndex = 19;
@@ -112,7 +112,7 @@
             // 
             this.txtDepartmentId.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDepartmentId.Location = new System.Drawing.Point(92, 255);
-            this.txtDepartmentId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDepartmentId.Margin = new System.Windows.Forms.Padding(2);
             this.txtDepartmentId.Name = "txtDepartmentId";
             this.txtDepartmentId.Size = new System.Drawing.Size(310, 20);
             this.txtDepartmentId.TabIndex = 18;
@@ -122,7 +122,7 @@
             this.txtNote.AllowDrop = true;
             this.txtNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNote.Location = new System.Drawing.Point(92, 174);
-            this.txtNote.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNote.Margin = new System.Windows.Forms.Padding(2);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(310, 77);
@@ -132,7 +132,7 @@
             // 
             this.txtNetSalary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNetSalary.Location = new System.Drawing.Point(92, 150);
-            this.txtNetSalary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNetSalary.Margin = new System.Windows.Forms.Padding(2);
             this.txtNetSalary.Name = "txtNetSalary";
             this.txtNetSalary.Size = new System.Drawing.Size(310, 20);
             this.txtNetSalary.TabIndex = 16;
@@ -141,7 +141,7 @@
             // 
             this.txtGrossSalary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtGrossSalary.Location = new System.Drawing.Point(92, 126);
-            this.txtGrossSalary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGrossSalary.Margin = new System.Windows.Forms.Padding(2);
             this.txtGrossSalary.Name = "txtGrossSalary";
             this.txtGrossSalary.Size = new System.Drawing.Size(310, 20);
             this.txtGrossSalary.TabIndex = 15;
@@ -150,7 +150,7 @@
             // 
             this.txtHomeAddress.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtHomeAddress.Location = new System.Drawing.Point(92, 102);
-            this.txtHomeAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtHomeAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtHomeAddress.Name = "txtHomeAddress";
             this.txtHomeAddress.Size = new System.Drawing.Size(310, 20);
             this.txtHomeAddress.TabIndex = 14;
@@ -159,7 +159,7 @@
             // 
             this.txtDob.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDob.Location = new System.Drawing.Point(92, 78);
-            this.txtDob.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDob.Margin = new System.Windows.Forms.Padding(2);
             this.txtDob.Name = "txtDob";
             this.txtDob.Size = new System.Drawing.Size(310, 20);
             this.txtDob.TabIndex = 13;
@@ -168,7 +168,7 @@
             // 
             this.txtPIN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPIN.Location = new System.Drawing.Point(92, 54);
-            this.txtPIN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPIN.Margin = new System.Windows.Forms.Padding(2);
             this.txtPIN.Name = "txtPIN";
             this.txtPIN.Size = new System.Drawing.Size(310, 20);
             this.txtPIN.TabIndex = 12;
@@ -187,7 +187,7 @@
             // 
             this.txtFullName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtFullName.Location = new System.Drawing.Point(92, 2);
-            this.txtFullName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFullName.Margin = new System.Windows.Forms.Padding(2);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(310, 20);
             this.txtFullName.TabIndex = 1;
@@ -291,7 +291,7 @@
             this.tableLayoutPanel2.Controls.Add(this.btnCapture, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(92, 26);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -302,7 +302,7 @@
             // 
             this.txtImgPath.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtImgPath.Location = new System.Drawing.Point(32, 2);
-            this.txtImgPath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtImgPath.Margin = new System.Windows.Forms.Padding(2);
             this.txtImgPath.Name = "txtImgPath";
             this.txtImgPath.Size = new System.Drawing.Size(276, 20);
             this.txtImgPath.TabIndex = 14;
@@ -310,7 +310,7 @@
             // btnCapture
             // 
             this.btnCapture.Location = new System.Drawing.Point(2, 2);
-            this.btnCapture.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCapture.Margin = new System.Windows.Forms.Padding(2);
             this.btnCapture.Name = "btnCapture";
             this.btnCapture.Size = new System.Drawing.Size(26, 19);
             this.btnCapture.TabIndex = 15;
@@ -323,7 +323,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ucUsers";
             this.Size = new System.Drawing.Size(404, 309);
             this.tableLayoutPanel1.ResumeLayout(false);
