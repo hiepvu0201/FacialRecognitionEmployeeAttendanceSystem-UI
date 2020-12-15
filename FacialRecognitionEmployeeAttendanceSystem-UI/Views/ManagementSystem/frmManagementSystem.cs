@@ -226,7 +226,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        protected void btnSave_Click(object sender, EventArgs e)
         {
             switch (flag)
             {

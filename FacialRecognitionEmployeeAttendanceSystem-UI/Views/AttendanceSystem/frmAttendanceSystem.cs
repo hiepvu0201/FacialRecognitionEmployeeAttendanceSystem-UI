@@ -35,6 +35,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         public static string recognitionName = "";
 
         UsersRepository _userRepository = new UsersRepository();
+        Payslips _payslipRepository = new Payslips();
         AttendancesRepository _attendanceRepository = new AttendancesRepository();
         bool isPinMode = false;
         #endregion
@@ -138,19 +139,43 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 else
                 {
                     MessageBox.Show($"Check out success! Good bye {userResult.fullName}!");
-                    double todaySalary = CalculateTodaySalary(workingTime);
+               
                 }
             }
             else MessageBox.Show("Please choose PIN Mode!!!");
             isPinMode = false;
         }
-
-        private double CalculateTodaySalary(double workingTime)
+        #region CalculateSalary
+        private double CalculateTodaySalary(double workingTime, double workingTimeofDepartment)
         {
-            double todaySalary = workingTime * ConfigSalary.GetInstance().salaryPerHour;
-            return todaySalary;
+            double workingSalary = workingTimeofDepartment * ConfigSalary.GetInstance().salaryPerHour;
+            double overtimeSalary = ConfigSalary.GetInstance().overtimeSalary * (workingTime - workingTimeofDepartment);
+            return workingSalary + overtimeSalary;
+        }
+        //Pay salary base on the working hour
+        private double CalculateAnnualLeaveSalary(double workingTimeofDepartment)
+        {
+            double annualLeaveSalary = Convert.ToDouble(ConfigSalary.GetInstance().daysAnnualLeave.Date) * workingTimeofDepartment;
+            return annualLeaveSalary;
         }
 
+        private double CalculatePalidSalary(double workingTimeofDepartment)
+        {
+            double palidSalary = Convert.ToDouble(ConfigSalary.GetInstance().daysPalidHoliday.Date) * workingTimeofDepartment;
+            return palidSalary;
+        }
+        public void CalculateGrossSalary(double workingTimeofDepartment)
+        
+        {
+            double annualSal = CalculateAnnualLeaveSalary(workingTimeofDepartment);
+            double palidSal = CalculatePalidSalary( workingTimeofDepartment);
+            double bonus = ConfigSalary.GetInstance().bonus;
+            double tax = ConfigSalary.GetInstance().tax;
+            double decutionSal = ConfigSalary.GetInstance().deduction;
+            double totalSal = annualSal + palidSal + bonus - decutionSal;
+            double grossSal = totalSal - totalSal*(tax/100);
+        }
+        #endregion
         private void btnPinMode_Click(object sender, EventArgs e)
         {
             isPinMode = true;
