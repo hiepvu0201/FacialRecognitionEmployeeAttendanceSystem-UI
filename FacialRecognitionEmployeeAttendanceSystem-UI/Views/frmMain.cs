@@ -19,16 +19,16 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
         private void btnAttendanceSystem_Click(object sender, EventArgs e)
         {
-            this.Hide();
             frmAttendanceSystem frmAttendanceSystem = new frmAttendanceSystem();
             frmAttendanceSystem.Show();
+            this.Hide();
         }
 
         private void btnManagementSystem_Click(object sender, EventArgs e)
         {
-            this.Hide();
             frmManagementSystem frmManagementSystem = new frmManagementSystem();
             frmManagementSystem.Show();
+            this.Hide();
         }
     }
 }

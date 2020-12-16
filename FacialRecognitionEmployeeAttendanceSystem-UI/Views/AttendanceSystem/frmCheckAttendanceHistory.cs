@@ -78,13 +78,12 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.AttendanceSystem
         }
         private void btnCalculateTodaySalary_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(frmAttendanceSystem.todaySalary.ToString());
+            MessageBox.Show(frmAttendanceSystem.todaySalary.ToString() + " $");
         }
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
-            frmAttendanceSystem frmAttendanceSystem = new frmAttendanceSystem();
-            frmAttendanceSystem.Show();
+            
         }
         #endregion
 
@@ -94,7 +93,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.AttendanceSystem
             /*string date = dtpHistory.Value.ToShortDateString();*/
             Attendances attendances = await _attendancesRepository.GetByDateTimeAsync(dtpHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat));
 
-            if (attendances != null && attendances.users.fullName == frmAttendanceSystem.recognitionName)
+            if (attendances != null && attendances.id != 0 && attendances.users.fullName == frmAttendanceSystem.recognitionName)
             {
                 List<Attendances> listAttendances = new List<Attendances>();
                 listAttendances.Add(attendances);

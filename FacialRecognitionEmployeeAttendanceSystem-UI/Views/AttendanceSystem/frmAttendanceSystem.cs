@@ -22,28 +22,42 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 {
     public partial class frmAttendanceSystem : Form, INotifyPropertyChanged
     {
+
         #region Properties
+        //Initial Event
         public event PropertyChangedEventHandler PropertyChanged;
+        private System.Timers.Timer captureTimer;
+
+        //Camera Properties
         private VideoCapture videoCapture;
         Image<Bgr, Byte> bgrFrame = null;
-        private CascadeClassifier cascadeClassifier;
         private Image<Gray, Byte> detectedFace = null;
+
+        //Initial Algorithm
+        private CascadeClassifier cascadeClassifier;    //For xml haarcascade file loading
+        private EigenFaceRecognizer recognizer;         //Using eigen face recognizer algorithm to predict user
+
+        //List Of Face, Name and Label Name
         private List<FaceData> faceList = new List<FaceData>();
         private VectorOfMat imageList = new VectorOfMat();
         private List<string> nameList = new List<string>();
         private VectorOfInt labelList = new VectorOfInt();
-        private EigenFaceRecognizer recognizer;
-        private System.Timers.Timer captureTimer;
+        
+        //Variable that store name to set in frame
         public static string recognitionName = "";
+        
+        string previousName = "";
 
-        double Eigen_Distance = 0;
-        double Eigen_threshold = 3000;
-
+        //Repository
         UsersRepository _userRepository = new UsersRepository();
         AttendancesRepository _attendanceRepository = new AttendancesRepository();
         PayslipsRepository _payslipsRepository = new PayslipsRepository();
+
+        //Flag
+        int count = 0;
         bool isPinMode = false;
 
+        //Current salary
         public static double todaySalary = 0;
         #endregion
 
@@ -77,22 +91,42 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
         #region FaceName
         private string faceName;
+
         public string FaceName
         {
             get { return faceName; }
             set
             {
+                faceName = value;
                 faceName = value.ToUpper();
-                lblFaceName.Invoke(new Action(async () => { 
-                    lblFaceName.Text = faceName;
-                    Users userResult = await _userRepository.GetByFullNameAsync(recognitionName);
+                lblInfo.Invoke(new Action(async () =>
+                {
+                    Users userResult = await _userRepository.GetByFullNameAsync(faceName);
 
-                    if (userResult!=null)
+                    if (userResult != null)
                     {
                         Attendances attendance = await GetAttendanceForRequestAsync(userResult);
-                        if (attendance == null) return;
+
+                        if (attendance != null)
+                        {
+                            double workingTime = CalculateWorkingTime(attendance);
+                            if (workingTime == 0)
+                            {
+                                lblInfo.Text = $"Check in success! Welcome {userResult.fullName}!".ToUpper();
+                            }
+                            else
+                            {
+                                lblInfo.Text = $"Check out success! Good bye {userResult.fullName}!!".ToUpper();
+                                JObject json = JObject.Parse(File.ReadAllText(Config.ConfigFile));
+                                ConfigSalary configSalary = JsonConvert.DeserializeObject<ConfigSalary>(json.ToString());
+
+                                todaySalary = CalculateTodaySalary(workingTime, configSalary);
+                                _payslipsRepository.Add(CalcualteTodayPayslips(workingTime, new DateTime(DateTime.Now.Ticks), configSalary, todaySalary, userResult.id));
+                            }
+                        }
+                        lblInfo.Text = faceName;
+                        txtNameToCheck.Text = recognitionName;
                     }
-                    txtNameToCheck.Text = recognitionName;
                 }));
                 NotifyPropertyChanged();
             }
@@ -103,6 +137,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         public frmAttendanceSystem()
         {
             InitializeComponent();
+
             captureTimer = new System.Timers.Timer()
             {
                 Interval = Config.TimerResponseValue
@@ -136,28 +171,30 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             {
                 Users userResult = await _userRepository.GetByPinAsync(txtPin.Text);
 
-                if (userResult==null) return;
-
-                Attendances attendance = await GetAttendanceForRequestAsync(userResult);
-
-                if (attendance == null) return;
-
-                double workingTime = CalculateWorkingTime(attendance);
-                // Time <= 0 when check-in meanwhile > 0 when checkout
-                if (workingTime == 0)
+                if (userResult != null)
                 {
-                    MessageBox.Show($"Check in success! Welcome {userResult.fullName}!");
-                }
-                else
-                {
-                    MessageBox.Show($"Check out success! Good bye {userResult.fullName}!");
+                    Attendances attendance = await GetAttendanceForRequestAsync(userResult);
 
-                    JObject json = JObject.Parse(File.ReadAllText(Config.ConfigFile));
-                    ConfigSalary configSalary = JsonConvert.DeserializeObject<ConfigSalary>(json.ToString());
+                    if (attendance != null)
+                    {
+                        double workingTime = CalculateWorkingTime(attendance);
+                        // Time <= 0 when check-in meanwhile > 0 when checkout
+                        if (workingTime == 0)
+                        {
+                            MessageBox.Show($"Check in success! Welcome {userResult.fullName}!");
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Check out success! Good bye {userResult.fullName}!");
 
-                    todaySalary = CalculateTodaySalary(workingTime, configSalary);
-                    _payslipsRepository.Add(CalcualteTodayPayslips(workingTime, new DateTime(DateTime.Now.Ticks), configSalary, todaySalary, userResult.id));
-                    
+                            JObject json = JObject.Parse(File.ReadAllText(Config.ConfigFile));
+                            ConfigSalary configSalary = JsonConvert.DeserializeObject<ConfigSalary>(json.ToString());
+
+                            todaySalary = CalculateTodaySalary(workingTime, configSalary);
+                            _payslipsRepository.Add(CalcualteTodayPayslips(workingTime, new DateTime(DateTime.Now.Ticks), configSalary, todaySalary, userResult.id));
+
+                        }
+                    }
                 }
             }
             else MessageBox.Show("Please choose PIN Mode!!!");
@@ -199,14 +236,13 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
         private void btnMainMenu_Click(object sender, EventArgs e)
         {
-            this.Hide();
             frmMain frmMain = new frmMain();
             frmMain.Show();
+            this.Close();
         }
 
         private void btnCheckAttendanceHistory_Click(object sender, EventArgs e)
         {
-            this.Hide();
             frmCheckAttendanceHistory frmCheckAttendanceHistory = new frmCheckAttendanceHistory();
             frmCheckAttendanceHistory.Show();
         }
@@ -251,7 +287,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                     //for emgu cv bug
                     Image<Gray, byte> grayframe = bgrFrame.Convert<Gray, byte>();
 
-                    Rectangle[] faces = cascadeClassifier.DetectMultiScale(grayframe, 1.2, 10, new Size(50, 50), Size.Empty);
+                    Rectangle[] faces = cascadeClassifier.DetectMultiScale(grayframe, 1.2, 2, new Size(50, 50), Size.Empty);
 
                     //detect face
                     for (int i = 0; i < faces.Length; i++)// (Rectangle face_found in facesDetected)
@@ -271,9 +307,26 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                         CameraCaptureFace = detectedFace.ToBitmap(pbFaceCapture.Width, pbFaceCapture.Height);
 
                         recognitionName = FaceRecognition(detectedFace);
-                     
 
-                        bgrFrame.Draw(recognitionName, new Point(faces[i].X - 4, faces[i].Y - 4), FontFace.HersheyTriplex, 0.5, new Bgr(255, 255, 0));
+                        //Draw only if current recognition name is repeat 15 times
+                        if (previousName == "")
+                        {
+                            previousName = recognitionName;
+                        }
+                        if (previousName==recognitionName && previousName!="")
+                        {
+                            count++;
+                        }
+                        if (previousName!=recognitionName)
+                        {
+                            count = 0;
+                        }
+                        if (count>=15)
+                        {
+                            bgrFrame.Draw(recognitionName, new Point(faces[i].X - 4, faces[i].Y - 4), FontFace.HersheyTriplex, 0.5, new Bgr(255, 255, 0));
+                            previousName = "";
+                            FaceName = recognitionName;
+                        }
 
                         break;
                     }
@@ -295,21 +348,19 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 //Eigen Face Algorithm
                 FaceRecognizer.PredictionResult result = recognizer.Predict(image);
 
-                FaceName = "Distance: " + result.Distance + "\tThresh: " + Eigen_threshold+"\tLabel: "+result.Label;
-
                 if (result.Label == -1)
                 {
                     recognitionName = "Unknown";
-                    Eigen_Distance = 0;
+                    Config.Eigen_Distance = 0;
                     return recognitionName;
                 }
                 else
                 {
                     recognitionName = nameList[result.Label];
-                    Eigen_Distance = (float)result.Distance;
-                    if (Eigen_Thresh > -1) Eigen_threshold = Eigen_Thresh;
+                    Config.Eigen_Distance = (float)result.Distance;
+                    if (Eigen_Thresh > -1) Config.Threshold = Eigen_Thresh;
 
-                    if (Eigen_Distance > Eigen_threshold) return recognitionName;
+                    if (Config.Eigen_Distance < Config.Threshold) return recognitionName;
                     else return "Unknown";
                 }
 
@@ -421,15 +472,13 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 _attendanceRepository.CheckOut(attendanceDB.id, attendanceRq);
 
                 FaceName = $"Check out success! Good bye {userResult.fullName}!";
-
-                JObject json = JObject.Parse(File.ReadAllText(Config.ConfigFile));
-                ConfigSalary configSalary = JsonConvert.DeserializeObject<ConfigSalary>(json.ToString());
-
-                todaySalary = CalculateTodaySalary(attendanceRq.workingHours, configSalary);
-                _payslipsRepository.Add(CalcualteTodayPayslips(attendanceRq.workingHours, new DateTime(DateTime.Now.Ticks), configSalary, todaySalary, userResult.id));
             }
             return attendanceRq;
         }
         #endregion
+        private void frmAttendanceSystem_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            captureTimer.Stop();
+        }
     }
 }
