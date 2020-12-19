@@ -1,4 +1,4 @@
-﻿namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.AttendanceSystem
+﻿namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
 {
     partial class frmCheckAttendanceHistory
     {
@@ -35,18 +35,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnExportExcel = new System.Windows.Forms.Button();
-            this.btnCalculateTodaySalary = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.dgvCheckAttendanceHistory = new System.Windows.Forms.DataGridView();
+            this.dgvPayslips = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnCalculateTodaySalary = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.btnOptionalCalculate = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dgvCheckAttendanceHistory = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCheckAttendanceHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPayslips)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -56,7 +60,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1013, 366);
+            this.panel1.Size = new System.Drawing.Size(1009, 706);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -65,40 +69,42 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.dgvCheckAttendanceHistory, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dgvPayslips, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1013, 366);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1009, 706);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 7;
+            this.tableLayoutPanel2.ColumnCount = 5;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 188F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 356F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Controls.Add(this.dtpHistory, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnSearch, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnExportExcel, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnCalculateTodaySalary, 4, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnBack, 6, 0);
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 5, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnBack, 4, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1009, 37);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1005, 37);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // dtpHistory
@@ -147,27 +153,64 @@
             this.btnExportExcel.UseVisualStyleBackColor = true;
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
-            // btnCalculateTodaySalary
-            // 
-            this.btnCalculateTodaySalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCalculateTodaySalary.Location = new System.Drawing.Point(409, 3);
-            this.btnCalculateTodaySalary.Name = "btnCalculateTodaySalary";
-            this.btnCalculateTodaySalary.Size = new System.Drawing.Size(144, 31);
-            this.btnCalculateTodaySalary.TabIndex = 4;
-            this.btnCalculateTodaySalary.Text = "Calculate Today Salary";
-            this.btnCalculateTodaySalary.UseVisualStyleBackColor = true;
-            this.btnCalculateTodaySalary.Click += new System.EventHandler(this.btnCalculateTodaySalary_Click);
-            // 
             // btnBack
             // 
             this.btnBack.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnBack.Location = new System.Drawing.Point(915, 3);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(91, 31);
+            this.btnBack.Size = new System.Drawing.Size(87, 31);
             this.btnBack.TabIndex = 5;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // dgvCheckAttendanceHistory
+            // 
+            this.dgvCheckAttendanceHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCheckAttendanceHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvCheckAttendanceHistory.Location = new System.Drawing.Point(2, 43);
+            this.dgvCheckAttendanceHistory.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvCheckAttendanceHistory.Name = "dgvCheckAttendanceHistory";
+            this.dgvCheckAttendanceHistory.RowHeadersWidth = 51;
+            this.dgvCheckAttendanceHistory.RowTemplate.Height = 24;
+            this.dgvCheckAttendanceHistory.Size = new System.Drawing.Size(1005, 308);
+            this.dgvCheckAttendanceHistory.TabIndex = 2;
+            // 
+            // dgvPayslips
+            // 
+            this.dgvPayslips.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPayslips.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPayslips.Location = new System.Drawing.Point(3, 397);
+            this.dgvPayslips.Name = "dgvPayslips";
+            this.dgvPayslips.Size = new System.Drawing.Size(1003, 306);
+            this.dgvPayslips.TabIndex = 3;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 709F));
+            this.tableLayoutPanel4.Controls.Add(this.btnCalculateTodaySalary, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel3, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 356);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1003, 35);
+            this.tableLayoutPanel4.TabIndex = 4;
+            // 
+            // btnCalculateTodaySalary
+            // 
+            this.btnCalculateTodaySalary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCalculateTodaySalary.Location = new System.Drawing.Point(3, 3);
+            this.btnCalculateTodaySalary.Name = "btnCalculateTodaySalary";
+            this.btnCalculateTodaySalary.Size = new System.Drawing.Size(144, 29);
+            this.btnCalculateTodaySalary.TabIndex = 5;
+            this.btnCalculateTodaySalary.Text = "Calculate Today Salary";
+            this.btnCalculateTodaySalary.UseVisualStyleBackColor = true;
+            this.btnCalculateTodaySalary.Click += new System.EventHandler(this.btnCalculateTodaySalary_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -179,11 +222,11 @@
             this.tableLayoutPanel3.Controls.Add(this.btnOptionalCalculate, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.comboBox1, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(559, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(153, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(350, 31);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(344, 29);
             this.tableLayoutPanel3.TabIndex = 6;
             // 
             // label2
@@ -192,7 +235,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 31);
+            this.label2.Size = new System.Drawing.Size(138, 29);
             this.label2.TabIndex = 0;
             this.label2.Text = "Optional Salary Calculate";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -200,13 +243,12 @@
             // btnOptionalCalculate
             // 
             this.btnOptionalCalculate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOptionalCalculate.Location = new System.Drawing.Point(253, 3);
+            this.btnOptionalCalculate.Location = new System.Drawing.Point(247, 3);
             this.btnOptionalCalculate.Name = "btnOptionalCalculate";
-            this.btnOptionalCalculate.Size = new System.Drawing.Size(94, 25);
+            this.btnOptionalCalculate.Size = new System.Drawing.Size(94, 23);
             this.btnOptionalCalculate.TabIndex = 1;
             this.btnOptionalCalculate.Text = "Confirm";
             this.btnOptionalCalculate.UseVisualStyleBackColor = true;
-            this.btnOptionalCalculate.Click += new System.EventHandler(this.btnOptionalCalculate_Click);
             // 
             // comboBox1
             // 
@@ -215,29 +257,17 @@
             this.comboBox1.Items.AddRange(new object[] {
             "This Month",
             "This Year"});
-            this.comboBox1.Location = new System.Drawing.Point(153, 3);
+            this.comboBox1.Location = new System.Drawing.Point(147, 3);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(94, 21);
             this.comboBox1.TabIndex = 2;
             this.comboBox1.Text = "Click to choose";
             // 
-            // dgvCheckAttendanceHistory
-            // 
-            this.dgvCheckAttendanceHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCheckAttendanceHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvCheckAttendanceHistory.Location = new System.Drawing.Point(2, 43);
-            this.dgvCheckAttendanceHistory.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvCheckAttendanceHistory.Name = "dgvCheckAttendanceHistory";
-            this.dgvCheckAttendanceHistory.RowHeadersWidth = 51;
-            this.dgvCheckAttendanceHistory.RowTemplate.Height = 24;
-            this.dgvCheckAttendanceHistory.Size = new System.Drawing.Size(1009, 321);
-            this.dgvCheckAttendanceHistory.TabIndex = 2;
-            // 
             // frmCheckAttendanceHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1013, 366);
+            this.ClientSize = new System.Drawing.Size(1009, 706);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmCheckAttendanceHistory";
@@ -248,9 +278,11 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCheckAttendanceHistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPayslips)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCheckAttendanceHistory)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -265,11 +297,13 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnExportExcel;
-        private System.Windows.Forms.Button btnCalculateTodaySalary;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnOptionalCalculate;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView dgvPayslips;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button btnCalculateTodaySalary;
     }
 }

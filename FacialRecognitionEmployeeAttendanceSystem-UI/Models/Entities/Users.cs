@@ -8,19 +8,43 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
 {
     class Users
     {
+        [System.ComponentModel.DisplayName("Id")]
         public long id { get; set; }
+
+        [System.ComponentModel.DisplayName("Full Name")]
         public string fullName { get; set; } = "";
+
         public string imgPath { get; set; }
+
+        [System.ComponentModel.DisplayName("PIN")]
         public string pin { get; set; }
+
+        [System.ComponentModel.DisplayName("Date Of Birth")]
         public DateTime dob { get; set; }
+
+        [System.ComponentModel.DisplayName("Home Address")]
         public string homeAddress { get; set; }
+
+        [System.ComponentModel.DisplayName("Gross Salary")]
         public double grossSalary { get; set; }
+
+        [System.ComponentModel.DisplayName("Net Salary")]
         public double netSalary { get; set; }
+
+        [System.ComponentModel.DisplayName("Note")]
         public string note { get; set; }
+
+        [System.ComponentModel.DisplayName("Created At")]
         public DateTime createdAt { get; set; }
+
+        [System.ComponentModel.DisplayName("Is Disabled")]
         public bool isDisabled { get; set; }
+
+        [System.ComponentModel.DisplayName("Department Id")]
         public long departmentId { get; set; }
         public Departments departments { get; set; }
+
+        [System.ComponentModel.DisplayName("Role Id")]
         public long roleId { get; set; }
         public Roles roles { get; set; }
 

@@ -79,36 +79,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Attendances.cs" />
-    <Compile Include="Models\AWS-S3\Buckets.cs" />
-    <Compile Include="Models\Config.cs" />
-    <Compile Include="Models\ConfigSalary.cs" />
-    <Compile Include="Models\Departments.cs" />
+    <Compile Include="Models\Entities\Attendances.cs" />
+    <Compile Include="Models\Config\Config.cs" />
+    <Compile Include="Models\Config\ConfigSalary.cs" />
+    <Compile Include="Models\Entities\Departments.cs" />
     <Compile Include="Models\FaceData.cs" />
-    <Compile Include="Models\Payslips.cs" />
-    <Compile Include="Models\Roles.cs" />
-    <Compile Include="Models\Shifts.cs" />
-    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\Entities\Payslips.cs" />
+    <Compile Include="Models\Entities\Roles.cs" />
+    <Compile Include="Models\Entities\Shifts.cs" />
+    <Compile Include="Models\Entities\Users.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\AttendancesRepository.cs" />
-    <Compile Include="Repository\AWS-S3\BucketRepository.cs" />
-    <Compile Include="Repository\DepartmentsRepository.cs" />
-    <Compile Include="Repository\PayslipsRepository.cs" />
-    <Compile Include="Repository\RolesRepository.cs" />
-    <Compile Include="Repository\ShiftsRepository.cs" />
-    <Compile Include="Repository\UsersRepository.cs" />
+    <Compile Include="Repositories\AttendancesRepository.cs" />
+    <Compile Include="Repositories\DepartmentsRepository.cs" />
+    <Compile Include="Repositories\PayslipsRepository.cs" />
+    <Compile Include="Repositories\RolesRepository.cs" />
+    <Compile Include="Repositories\ShiftsRepository.cs" />
+    <Compile Include="Repositories\UsersRepository.cs" />
     <Compile Include="Views\AttendanceSystem\frmAttendanceSystem.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\AttendanceSystem\frmAttendanceSystem.Designer.cs">
       <DependentUpon>frmAttendanceSystem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\AttendanceSystem\frmCheckAttendanceHistory.cs">
+    <Compile Include="Views\ManagementSystem\frmCheckAttendanceHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\AttendanceSystem\frmCheckAttendanceHistory.Designer.cs">
+    <Compile Include="Views\ManagementSystem\frmCheckAttendanceHistory.Designer.cs">
       <DependentUpon>frmCheckAttendanceHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ManagementSystem\frmTraining.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ManagementSystem\frmTraining.Designer.cs">
+      <DependentUpon>frmTraining.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmMain.cs">
       <SubType>Form</SubType>
@@ -182,8 +186,11 @@
     <EmbeddedResource Include="Views\AttendanceSystem\frmAttendanceSystem.resx">
       <DependentUpon>frmAttendanceSystem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\AttendanceSystem\frmCheckAttendanceHistory.resx">
+    <EmbeddedResource Include="Views\ManagementSystem\frmCheckAttendanceHistory.resx">
       <DependentUpon>frmCheckAttendanceHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ManagementSystem\frmTraining.resx">
+      <DependentUpon>frmTraining.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

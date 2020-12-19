@@ -51,9 +51,17 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             Attendances listAttendances = JsonConvert.DeserializeObject<Attendances>(json);
             return listAttendances;
         }
-        public async Task<Attendances> GetByDateTimeAsync(string dateTime)
+        public async Task<List<Attendances>> GetByDateTimeAsync(string dateTime)
         {
             _response = await _client.GetAsync($"/api/v1/attendances/datecheck/{dateTime}");
+
+            var json = await _response.Content.ReadAsStringAsync();
+            List<Attendances> Attendances = JsonConvert.DeserializeObject<List<Attendances>>(json);
+            return Attendances;
+        }
+        public async Task<Attendances> GetByDateTimeAndUserNameAsync(string dateTime, long userId)
+        {
+            _response = await _client.GetAsync($"/api/v1/attendances/datecheck/{userId}/{dateTime}");
 
             var json = await _response.Content.ReadAsStringAsync();
             Attendances Attendances = JsonConvert.DeserializeObject<Attendances>(json);

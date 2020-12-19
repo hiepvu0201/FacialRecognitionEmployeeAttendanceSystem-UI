@@ -27,6 +27,14 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             List<Payslips> listPayslips = JsonConvert.DeserializeObject<List<Payslips>>(json);
             return listPayslips;
         }
+        public async Task<List<Payslips>> GetListByDate(string dateTime)
+        {
+            _response = await _client.GetAsync($"/api/v1/payslips/datecheck/{dateTime}");
+
+            var json = await _response.Content.ReadAsStringAsync();
+            List<Payslips> listPayslips = JsonConvert.DeserializeObject<List<Payslips>>(json);
+            return listPayslips;
+        }
         public void Add(Payslips payslips)
         {
             var payslip = JsonConvert.SerializeObject(payslips);

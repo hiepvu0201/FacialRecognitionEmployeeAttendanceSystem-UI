@@ -33,30 +33,21 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txtPin = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnCheckAttendanceHistory = new System.Windows.Forms.Button();
-            this.txtNameToCheck = new System.Windows.Forms.TextBox();
             this.btnMainMenu = new System.Windows.Forms.Button();
             this.btnPinMode = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.txtName = new System.Windows.Forms.TextBox();
             this.pbFaceCapture = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblThresh = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.pbCamera = new System.Windows.Forms.PictureBox();
             this.lblInfo = new System.Windows.Forms.Label();
+            this.btnStartCamera = new System.Windows.Forms.Button();
+            this.btnStopCamera = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFaceCapture)).BeginInit();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -84,25 +75,23 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.btnMainMenu, 0, 5);
-            this.tableLayoutPanel2.Controls.Add(this.btnPinMode, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel6, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.lblThresh, 0, 6);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.btnPinMode, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnStartCamera, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(641, 4);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 7;
+            this.tableLayoutPanel2.RowCount = 6;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 280F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(246, 540);
             this.tableLayoutPanel2.TabIndex = 1;
@@ -115,11 +104,11 @@
             this.tableLayoutPanel4.Controls.Add(this.txtPin, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnConfirm, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 44);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 85);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(240, 35);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(240, 34);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // txtPin
@@ -129,7 +118,7 @@
             this.txtPin.Margin = new System.Windows.Forms.Padding(2);
             this.txtPin.Multiline = true;
             this.txtPin.Name = "txtPin";
-            this.txtPin.Size = new System.Drawing.Size(164, 31);
+            this.txtPin.Size = new System.Drawing.Size(164, 30);
             this.txtPin.TabIndex = 0;
             // 
             // btnConfirm
@@ -138,62 +127,16 @@
             this.btnConfirm.Location = new System.Drawing.Point(170, 2);
             this.btnConfirm.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(68, 31);
+            this.btnConfirm.Size = new System.Drawing.Size(68, 30);
             this.btnConfirm.TabIndex = 3;
             this.btnConfirm.Text = "Confirm";
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.tableLayoutPanel5);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(2, 84);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(242, 36);
-            this.panel1.TabIndex = 2;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel5.Controls.Add(this.btnCheckAttendanceHistory, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.txtNameToCheck, 0, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(242, 36);
-            this.tableLayoutPanel5.TabIndex = 0;
-            // 
-            // btnCheckAttendanceHistory
-            // 
-            this.btnCheckAttendanceHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCheckAttendanceHistory.Location = new System.Drawing.Point(171, 2);
-            this.btnCheckAttendanceHistory.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCheckAttendanceHistory.Name = "btnCheckAttendanceHistory";
-            this.btnCheckAttendanceHistory.Size = new System.Drawing.Size(69, 32);
-            this.btnCheckAttendanceHistory.TabIndex = 1;
-            this.btnCheckAttendanceHistory.Text = "Check";
-            this.btnCheckAttendanceHistory.UseVisualStyleBackColor = true;
-            this.btnCheckAttendanceHistory.Click += new System.EventHandler(this.btnCheckAttendanceHistory_Click);
-            // 
-            // txtNameToCheck
-            // 
-            this.txtNameToCheck.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNameToCheck.Location = new System.Drawing.Point(3, 3);
-            this.txtNameToCheck.Multiline = true;
-            this.txtNameToCheck.Name = "txtNameToCheck";
-            this.txtNameToCheck.Size = new System.Drawing.Size(163, 30);
-            this.txtNameToCheck.TabIndex = 2;
-            // 
             // btnMainMenu
             // 
             this.btnMainMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnMainMenu.Location = new System.Drawing.Point(2, 445);
+            this.btnMainMenu.Location = new System.Drawing.Point(2, 502);
             this.btnMainMenu.Margin = new System.Windows.Forms.Padding(2);
             this.btnMainMenu.Name = "btnMainMenu";
             this.btnMainMenu.Size = new System.Drawing.Size(242, 36);
@@ -205,7 +148,7 @@
             // btnPinMode
             // 
             this.btnPinMode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPinMode.Location = new System.Drawing.Point(2, 2);
+            this.btnPinMode.Location = new System.Drawing.Point(2, 43);
             this.btnPinMode.Margin = new System.Windows.Forms.Padding(2);
             this.btnPinMode.Name = "btnPinMode";
             this.btnPinMode.Size = new System.Drawing.Size(242, 37);
@@ -218,8 +161,8 @@
             // 
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.pbFaceCapture, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.btnStopCamera, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 166);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -228,43 +171,6 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(240, 274);
             this.tableLayoutPanel6.TabIndex = 6;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel7.Controls.Add(this.btnAdd, 1, 0);
-            this.tableLayoutPanel7.Controls.Add(this.txtName, 0, 0);
-            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 236);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 1;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(234, 35);
-            this.tableLayoutPanel7.TabIndex = 0;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAdd.Location = new System.Drawing.Point(165, 2);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(67, 31);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // txtName
-            // 
-            this.txtName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtName.Location = new System.Drawing.Point(2, 2);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtName.Multiline = true;
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(159, 31);
-            this.txtName.TabIndex = 4;
             // 
             // pbFaceCapture
             // 
@@ -287,25 +193,12 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 10);
+            this.label1.Location = new System.Drawing.Point(78, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Preview Image Below";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblThresh
-            // 
-            this.lblThresh.AutoSize = true;
-            this.lblThresh.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblThresh.Location = new System.Drawing.Point(3, 483);
-            this.lblThresh.Name = "lblThresh";
-            this.lblThresh.Size = new System.Drawing.Size(46, 57);
-            this.lblThresh.TabIndex = 8;
-            this.lblThresh.Text = "Thresh: ";
-            this.lblThresh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel3
             // 
@@ -345,6 +238,28 @@
             this.lblInfo.TabIndex = 3;
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnStartCamera
+            // 
+            this.btnStartCamera.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnStartCamera.Location = new System.Drawing.Point(3, 3);
+            this.btnStartCamera.Name = "btnStartCamera";
+            this.btnStartCamera.Size = new System.Drawing.Size(240, 35);
+            this.btnStartCamera.TabIndex = 9;
+            this.btnStartCamera.Text = "Start Recognition";
+            this.btnStartCamera.UseVisualStyleBackColor = true;
+            this.btnStartCamera.Click += new System.EventHandler(this.btnStartCamera_Click);
+            // 
+            // btnStopCamera
+            // 
+            this.btnStopCamera.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnStopCamera.Location = new System.Drawing.Point(3, 236);
+            this.btnStopCamera.Name = "btnStopCamera";
+            this.btnStopCamera.Size = new System.Drawing.Size(234, 35);
+            this.btnStopCamera.TabIndex = 4;
+            this.btnStopCamera.Text = "Stop Camera";
+            this.btnStopCamera.UseVisualStyleBackColor = true;
+            this.btnStopCamera.Click += new System.EventHandler(this.btnStopCamera_Click);
+            // 
             // frmAttendanceSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -355,19 +270,14 @@
             this.Name = "frmAttendanceSystem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Attendance System";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAttendanceSystem_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAttendanceSystem_FormClosed);
             this.Load += new System.EventHandler(this.frmAttendanceSystem_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel7.ResumeLayout(false);
-            this.tableLayoutPanel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFaceCapture)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -383,23 +293,17 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnPinMode;
         private System.Windows.Forms.PictureBox pbCamera;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtPin;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Button btnMainMenu;
-        private System.Windows.Forms.Button btnCheckAttendanceHistory;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.PictureBox pbFaceCapture;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label lblInfo;
-        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.TextBox txtNameToCheck;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblThresh;
+        private System.Windows.Forms.Button btnStopCamera;
+        private System.Windows.Forms.Button btnStartCamera;
     }
 }

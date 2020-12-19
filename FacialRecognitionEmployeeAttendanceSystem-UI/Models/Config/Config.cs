@@ -16,7 +16,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
         public static int TimerResponseValue = 100;
         public static string ImageFileExtension = ".bmp";
         public static int ActiveCameraIndex = 0;//0: Default active camera device
-        public static int Threshold = 4000;
+        public static int Threshold = 5000;
         public static double Eigen_Distance = 0;
     }
 }

@@ -76,21 +76,37 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             {
                 case 1:
                     ucView1.dgvManagement.DataSource = listDepartments;
+                    ucView1.dgvManagement.Columns["shifts"].Visible = false;
+                    ucView1.dgvManagement.AutoResizeColumns();
+                    ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     break;
                 case 2:
                     ucView1.dgvManagement.DataSource = listRoles;
+                    ucView1.dgvManagement.AutoResizeColumns();
+                    ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     break;
                 case 3:
                     ucView1.dgvManagement.DataSource = listUsers;
+                    ucView1.dgvManagement.Columns["roles"].Visible = false;
+                    ucView1.dgvManagement.Columns["departments"].Visible = false;
+                    ucView1.dgvManagement.Columns["imgPath"].Visible = false;
+                    ucView1.dgvManagement.AutoResizeColumns();
+                    ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                     break;
                 case 4:
                     ucView1.dgvManagement.DataSource = listShifts;
+                    ucView1.dgvManagement.AutoResizeColumns();
+                    ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     break;
                 case 5:
                     ucView1.dgvManagement.DataSource = listAttendances;
+                    ucView1.dgvManagement.AutoResizeColumns();
+                    ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     break;
                 case 6:
                     ucView1.dgvManagement.DataSource = listPayslips;
+                    ucView1.dgvManagement.AutoResizeColumns();
+                    ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                     break;
                 default:
                     break;
@@ -341,7 +357,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             {
                 Users user = new Users();
                 user.fullName = ucUsers1.txtFullName.Text;
-                user.imgPath = ucUsers1.txtImgPath.Text;
                 user.pin = ucUsers1.txtPIN.Text;
                 user.dob = DateTime.Parse(ucUsers1.txtDob.Text);
                 user.homeAddress = ucUsers1.txtHomeAddress.Text;
@@ -494,7 +509,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         private void UpdateSelectedUser()
         {
             ucUsers1.txtFullName.Text = Users.GetInstance().fullName;
-            ucUsers1.txtImgPath.Text = Users.GetInstance().imgPath;
             ucUsers1.txtGrossSalary.Text = Users.GetInstance().grossSalary.ToString();
             ucUsers1.txtNetSalary.Text = Users.GetInstance().netSalary.ToString();
             ucUsers1.txtDob.Text = Users.GetInstance().dob.ToString();
@@ -576,9 +590,15 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         }
         private void btnModifySalary_Click(object sender, EventArgs e)
         {
-            this.Hide();
             frmModifySalaryRules frmModifySalaryRules = new frmModifySalaryRules();
             frmModifySalaryRules.Show();
+        }
+
+        private void btnCheckSalary_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmCheckAttendanceHistory frmCheckAttendanceHistory = new frmCheckAttendanceHistory();
+            frmCheckAttendanceHistory.Show();
         }
     }
 }

@@ -10,12 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.AttendanceSystem
+namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
 {
     public partial class frmCheckAttendanceHistory : Form
     {
         #region Properties
         AttendancesRepository _attendancesRepository = new AttendancesRepository();
+        PayslipsRepository _payslipsRepository = new PayslipsRepository();
         #endregion
 
         #region Constructor
@@ -28,11 +29,13 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.AttendanceSystem
         #region Event
         private void frmCheckAttendanceHistory_Load(object sender, EventArgs e)
         {
-            LoadData();
+            LoadAttendace();
+            LoadPayslips();
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            LoadData();
+            LoadAttendace();
+            LoadPayslips();
         }
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
@@ -88,23 +91,29 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.AttendanceSystem
         #endregion
 
         #region Method
-        private async void LoadData()
+        private async void LoadAttendace()
         {
-            /*string date = dtpHistory.Value.ToShortDateString();*/
-            Attendances attendances = await _attendancesRepository.GetByDateTimeAsync(dtpHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat));
+            List<Attendances> listAttendances = await _attendancesRepository.GetByDateTimeAsync(dtpHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat));
 
-            if (attendances != null && attendances.id != 0 && attendances.users.fullName == frmAttendanceSystem.recognitionName)
+            if (listAttendances != null && listAttendances.Count>0)
             {
-                List<Attendances> listAttendances = new List<Attendances>();
-                listAttendances.Add(attendances);
                 dgvCheckAttendanceHistory.DataSource = listAttendances;
+                dgvCheckAttendanceHistory.Columns["users"].Visible = false;
+                dgvCheckAttendanceHistory.AutoResizeColumns();
+                dgvCheckAttendanceHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+        }
+        private async void LoadPayslips()
+        {
+            List<Payslips> listPayslips = await _payslipsRepository.GetListByDate(dtpHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat));
+
+            if (listPayslips != null && listPayslips.Count > 0)
+            {
+                dgvPayslips.DataSource = listPayslips;
+                dgvPayslips.AutoResizeColumns();
+                dgvPayslips.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
         }
         #endregion
-
-        private void btnOptionalCalculate_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

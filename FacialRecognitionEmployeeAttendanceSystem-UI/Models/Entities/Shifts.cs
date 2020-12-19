@@ -8,10 +8,19 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
 {
     class Shifts
     {
+        [System.ComponentModel.DisplayName("Id")]
         public long id { get; set; }
+
+        [System.ComponentModel.DisplayName("Shift Name")]
         public string shiftName { get; set; }
+
+        [System.ComponentModel.DisplayName("Start At")]
         public DateTime timeStart { get; set; }
+
+        [System.ComponentModel.DisplayName("End At")]
         public DateTime timeEnd { get; set; }
+
+        [System.ComponentModel.DisplayName("Created At")]
         public DateTime createdAt { get; set; }
 
         private static Shifts _instance;

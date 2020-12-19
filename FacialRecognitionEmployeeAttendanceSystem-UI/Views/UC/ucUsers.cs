@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FacialRecognitionEmployeeAttendanceSystem_UI.Views.AttendanceSystem;
 
 namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
 {
@@ -17,11 +18,11 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
             InitializeComponent();
         }
 
-        private void btnCapture_Click(object sender, EventArgs e)
+        private void btnTrainingForm_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmAttendanceSystem frmAttendanceSystem = new frmAttendanceSystem();
-            frmAttendanceSystem.Show();
+            frmTraining frmTraining = new frmTraining(txtFullName.Text);
+            frmTraining.Show();
         }
     }
 }

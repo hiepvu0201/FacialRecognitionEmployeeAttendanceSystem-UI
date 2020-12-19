@@ -45,7 +45,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         
         //Variable that store name to set in frame
         public static string recognitionName = "";
-        
         string previousName = "";
 
         //Repository
@@ -125,7 +124,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                             }
                         }
                         lblInfo.Text = faceName;
-                        txtNameToCheck.Text = recognitionName;
                     }
                 }));
                 NotifyPropertyChanged();
@@ -149,9 +147,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         #region Event
         private void frmAttendanceSystem_Load(object sender, EventArgs e)
         {
-            GetFacesList();
-            videoCapture = ConfigCamera(videoCapture);
-            captureTimer.Start();
+            
         }
 
         protected virtual void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
@@ -236,34 +232,13 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
         private void btnMainMenu_Click(object sender, EventArgs e)
         {
+            captureTimer.Stop();
+            this.Close();
             frmMain frmMain = new frmMain();
             frmMain.Show();
-            this.Close();
         }
 
-        private void btnCheckAttendanceHistory_Click(object sender, EventArgs e)
-        {
-            frmCheckAttendanceHistory frmCheckAttendanceHistory = new frmCheckAttendanceHistory();
-            frmCheckAttendanceHistory.Show();
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            if (detectedFace == null)
-            {
-                MessageBox.Show("No face detected.");
-                return;
-            }
-            //Save detected face
-            detectedFace = detectedFace.Resize(100, 100, Inter.Cubic);
-            detectedFace.Save(Config.FacePhotosPath + "face" + (faceList.Count + 1) + Config.ImageFileExtension);
-            StreamWriter writer = new StreamWriter(Config.FaceListTextFile, true);
-            string personName = txtName.Text;
-            writer.WriteLine(String.Format("face{0}:{1}", (faceList.Count + 1), personName));
-            writer.Close();
-            GetFacesList();
-            MessageBox.Show("Successful.");
-        }
+        
         #endregion
 
         #region Method
@@ -332,7 +307,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                     }
 
                 }
-                catch (Exception ex)
+                catch
                 {
                     
                 }
@@ -451,7 +426,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             attendanceRq.dateCheck = DateTime.Now.ToString("yyyy-MM-dd");
 
             //Attendance from db
-            Attendances attendanceDB = await _attendanceRepository.GetByDateTimeAsync(attendanceRq.dateCheck);
+            Attendances attendanceDB = await _attendanceRepository.GetByDateTimeAndUserNameAsync(attendanceRq.dateCheck, userResult.id);
 
             attendanceRq.workingHours = CalculateWorkingTime(attendanceDB);
             attendanceRq.userId = userResult.id;
@@ -477,6 +452,23 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         }
         #endregion
         private void frmAttendanceSystem_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            captureTimer.Stop();
+        }
+
+        private void frmAttendanceSystem_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            captureTimer.Stop();
+        }
+
+        private void btnStartCamera_Click(object sender, EventArgs e)
+        {
+            GetFacesList();
+            videoCapture = ConfigCamera(videoCapture);
+            captureTimer.Start();
+        }
+
+        private void btnStopCamera_Click(object sender, EventArgs e)
         {
             captureTimer.Stop();
         }

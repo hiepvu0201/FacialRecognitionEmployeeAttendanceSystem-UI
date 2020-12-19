@@ -19,6 +19,19 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
         public frmModifySalaryRules()
         {
             InitializeComponent();
+
+            LoadJsonConfig();
+        }
+
+        private void LoadJsonConfig()
+        {
+            JObject json = JObject.Parse(File.ReadAllText(Config.ConfigFile));
+            ConfigSalary configSalary = JsonConvert.DeserializeObject<ConfigSalary>(json.ToString());
+            nudOvertimeSalaryRate.Value = Convert.ToDecimal(configSalary.overTimeSalaryRate);
+            nudSalaryPerHour.Value = Convert.ToDecimal(configSalary.salaryPerHour);
+            nudTaxRate.Value = Convert.ToDecimal(configSalary.taxRate);
+            nudAllowance.Value = Convert.ToDecimal(configSalary.allowance);
+            nudBonusPerDay.Value = Convert.ToDecimal(configSalary.bonusPerDay);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -36,6 +49,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
                 serializer.Serialize(file, configSalary);
                 MessageBox.Show("Save successfull!");
             }
+            this.Close();
         }
     }
 }

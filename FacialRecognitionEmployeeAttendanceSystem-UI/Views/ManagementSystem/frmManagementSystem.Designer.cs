@@ -36,7 +36,9 @@
             this.btnShifts = new System.Windows.Forms.Button();
             this.btnAttendances = new System.Windows.Forms.Button();
             this.btnPayslips = new System.Windows.Forms.Button();
+            this.btnModifySalary = new System.Windows.Forms.Button();
             this.btnMainMenu = new System.Windows.Forms.Button();
+            this.btnCheckSalary = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -49,16 +51,16 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.ucView1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucView();
             this.pnlAdd = new System.Windows.Forms.Panel();
-            this.ucPayslips1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucPayslips();
             this.ucAttendances1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucAttendances();
             this.ucDepartments1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucDepartments();
             this.ucShifts1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucShifts();
             this.ucUsers1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucUsers();
             this.ucRoles1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucRoles();
+            this.ucPayslips1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucPayslips();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.btnModifySalary = new System.Windows.Forms.Button();
+            this.btnTableOfAttendance = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -90,7 +92,6 @@
             this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.btnMainMenu, 0, 7);
             this.tableLayoutPanel2.Controls.Add(this.btnDepartments, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnRoles, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnUsers, 0, 2);
@@ -98,11 +99,14 @@
             this.tableLayoutPanel2.Controls.Add(this.btnAttendances, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.btnPayslips, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.btnModifySalary, 0, 6);
+            this.tableLayoutPanel2.Controls.Add(this.btnMainMenu, 0, 9);
+            this.tableLayoutPanel2.Controls.Add(this.btnCheckSalary, 0, 7);
+            this.tableLayoutPanel2.Controls.Add(this.btnTableOfAttendance, 0, 8);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 8;
+            this.tableLayoutPanel2.RowCount = 10;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
@@ -110,7 +114,8 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(166, 605);
             this.tableLayoutPanel2.TabIndex = 0;
@@ -187,6 +192,17 @@
             this.btnPayslips.UseVisualStyleBackColor = true;
             this.btnPayslips.Click += new System.EventHandler(this.btnPayslips_Click);
             // 
+            // btnModifySalary
+            // 
+            this.btnModifySalary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnModifySalary.Location = new System.Drawing.Point(5, 263);
+            this.btnModifySalary.Name = "btnModifySalary";
+            this.btnModifySalary.Size = new System.Drawing.Size(156, 35);
+            this.btnModifySalary.TabIndex = 6;
+            this.btnModifySalary.Text = "Modify Salary Rules";
+            this.btnModifySalary.UseVisualStyleBackColor = true;
+            this.btnModifySalary.Click += new System.EventHandler(this.btnModifySalary_Click);
+            // 
             // btnMainMenu
             // 
             this.btnMainMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -198,6 +214,17 @@
             this.btnMainMenu.Text = "Main Menu";
             this.btnMainMenu.UseVisualStyleBackColor = true;
             this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
+            // 
+            // btnCheckSalary
+            // 
+            this.btnCheckSalary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCheckSalary.Location = new System.Drawing.Point(5, 306);
+            this.btnCheckSalary.Name = "btnCheckSalary";
+            this.btnCheckSalary.Size = new System.Drawing.Size(156, 34);
+            this.btnCheckSalary.TabIndex = 7;
+            this.btnCheckSalary.Text = "Check Salary";
+            this.btnCheckSalary.UseVisualStyleBackColor = true;
+            this.btnCheckSalary.Click += new System.EventHandler(this.btnCheckSalary_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -351,12 +378,12 @@
             // pnlAdd
             // 
             this.pnlAdd.AutoScroll = true;
-            this.pnlAdd.Controls.Add(this.ucPayslips1);
             this.pnlAdd.Controls.Add(this.ucAttendances1);
             this.pnlAdd.Controls.Add(this.ucDepartments1);
             this.pnlAdd.Controls.Add(this.ucShifts1);
             this.pnlAdd.Controls.Add(this.ucUsers1);
             this.pnlAdd.Controls.Add(this.ucRoles1);
+            this.pnlAdd.Controls.Add(this.ucPayslips1);
             this.pnlAdd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAdd.Location = new System.Drawing.Point(2, 293);
             this.pnlAdd.Margin = new System.Windows.Forms.Padding(2);
@@ -364,60 +391,60 @@
             this.pnlAdd.Size = new System.Drawing.Size(736, 310);
             this.pnlAdd.TabIndex = 8;
             // 
-            // ucPayslips1
-            // 
-            this.ucPayslips1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPayslips1.Location = new System.Drawing.Point(0, 0);
-            this.ucPayslips1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.ucPayslips1.Name = "ucPayslips1";
-            this.ucPayslips1.Size = new System.Drawing.Size(736, 310);
-            this.ucPayslips1.TabIndex = 5;
-            // 
             // ucAttendances1
             // 
             this.ucAttendances1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucAttendances1.Location = new System.Drawing.Point(0, 0);
+            this.ucAttendances1.Location = new System.Drawing.Point(0, 310);
             this.ucAttendances1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ucAttendances1.Name = "ucAttendances1";
-            this.ucAttendances1.Size = new System.Drawing.Size(736, 310);
+            this.ucAttendances1.Size = new System.Drawing.Size(736, 0);
             this.ucAttendances1.TabIndex = 4;
             // 
             // ucDepartments1
             // 
             this.ucDepartments1.AutoScroll = true;
             this.ucDepartments1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucDepartments1.Location = new System.Drawing.Point(0, 0);
+            this.ucDepartments1.Location = new System.Drawing.Point(0, 310);
             this.ucDepartments1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ucDepartments1.Name = "ucDepartments1";
-            this.ucDepartments1.Size = new System.Drawing.Size(736, 310);
+            this.ucDepartments1.Size = new System.Drawing.Size(736, 0);
             this.ucDepartments1.TabIndex = 0;
             // 
             // ucShifts1
             // 
             this.ucShifts1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucShifts1.Location = new System.Drawing.Point(0, 0);
+            this.ucShifts1.Location = new System.Drawing.Point(0, 310);
             this.ucShifts1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ucShifts1.Name = "ucShifts1";
-            this.ucShifts1.Size = new System.Drawing.Size(736, 310);
+            this.ucShifts1.Size = new System.Drawing.Size(736, 0);
             this.ucShifts1.TabIndex = 3;
             // 
             // ucUsers1
             // 
             this.ucUsers1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucUsers1.Location = new System.Drawing.Point(0, 0);
+            this.ucUsers1.Location = new System.Drawing.Point(0, 310);
             this.ucUsers1.Margin = new System.Windows.Forms.Padding(2);
             this.ucUsers1.Name = "ucUsers1";
-            this.ucUsers1.Size = new System.Drawing.Size(736, 310);
+            this.ucUsers1.Size = new System.Drawing.Size(736, 0);
             this.ucUsers1.TabIndex = 2;
             // 
             // ucRoles1
             // 
             this.ucRoles1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucRoles1.Location = new System.Drawing.Point(0, 0);
+            this.ucRoles1.Location = new System.Drawing.Point(0, 310);
             this.ucRoles1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ucRoles1.Name = "ucRoles1";
-            this.ucRoles1.Size = new System.Drawing.Size(736, 310);
+            this.ucRoles1.Size = new System.Drawing.Size(736, 0);
             this.ucRoles1.TabIndex = 1;
+            // 
+            // ucPayslips1
+            // 
+            this.ucPayslips1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucPayslips1.Location = new System.Drawing.Point(0, 0);
+            this.ucPayslips1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ucPayslips1.Name = "ucPayslips1";
+            this.ucPayslips1.Size = new System.Drawing.Size(736, 310);
+            this.ucPayslips1.TabIndex = 5;
             // 
             // tableLayoutPanel5
             // 
@@ -457,16 +484,15 @@
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
-            // btnModifySalary
+            // btnTableOfAttendance
             // 
-            this.btnModifySalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnModifySalary.Location = new System.Drawing.Point(5, 263);
-            this.btnModifySalary.Name = "btnModifySalary";
-            this.btnModifySalary.Size = new System.Drawing.Size(156, 35);
-            this.btnModifySalary.TabIndex = 6;
-            this.btnModifySalary.Text = "Modify Salary Rules";
-            this.btnModifySalary.UseVisualStyleBackColor = true;
-            this.btnModifySalary.Click += new System.EventHandler(this.btnModifySalary_Click);
+            this.btnTableOfAttendance.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTableOfAttendance.Location = new System.Drawing.Point(5, 348);
+            this.btnTableOfAttendance.Name = "btnTableOfAttendance";
+            this.btnTableOfAttendance.Size = new System.Drawing.Size(156, 34);
+            this.btnTableOfAttendance.TabIndex = 8;
+            this.btnTableOfAttendance.Text = "Table Of Attendance";
+            this.btnTableOfAttendance.UseVisualStyleBackColor = true;
             // 
             // frmManagementSystem
             // 
@@ -523,5 +549,7 @@
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnMainMenu;
         private System.Windows.Forms.Button btnModifySalary;
+        private System.Windows.Forms.Button btnCheckSalary;
+        private System.Windows.Forms.Button btnTableOfAttendance;
     }
 }
