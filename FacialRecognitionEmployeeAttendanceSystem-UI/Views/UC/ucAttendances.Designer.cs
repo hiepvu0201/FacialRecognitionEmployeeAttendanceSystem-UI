@@ -43,8 +43,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtCheckInAt = new System.Windows.Forms.TextBox();
             this.txtCheckOutAt = new System.Windows.Forms.TextBox();
-            this.txtUserId = new System.Windows.Forms.TextBox();
-            this.txtShiftId = new System.Windows.Forms.TextBox();
+            this.cbbUser = new System.Windows.Forms.ComboBox();
+            this.cbbShift = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,11 +67,11 @@
             this.tableLayoutPanel1.Controls.Add(this.label8, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.txtCheckInAt, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtCheckOutAt, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.txtUserId, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.txtShiftId, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.cbbUser, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.cbbShift, 1, 7);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 9;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
@@ -90,7 +90,7 @@
             // 
             this.txtWorkingHours.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtWorkingHours.Location = new System.Drawing.Point(77, 74);
-            this.txtWorkingHours.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtWorkingHours.Margin = new System.Windows.Forms.Padding(2);
             this.txtWorkingHours.Name = "txtWorkingHours";
             this.txtWorkingHours.Size = new System.Drawing.Size(325, 20);
             this.txtWorkingHours.TabIndex = 7;
@@ -99,7 +99,7 @@
             // 
             this.txtNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNote.Location = new System.Drawing.Point(77, 50);
-            this.txtNote.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNote.Margin = new System.Windows.Forms.Padding(2);
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(325, 20);
             this.txtNote.TabIndex = 6;
@@ -108,7 +108,7 @@
             // 
             this.txtStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtStatus.Location = new System.Drawing.Point(77, 26);
-            this.txtStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtStatus.Margin = new System.Windows.Forms.Padding(2);
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.Size = new System.Drawing.Size(325, 20);
             this.txtStatus.TabIndex = 5;
@@ -157,7 +157,7 @@
             // 
             this.txtDateCheck.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDateCheck.Location = new System.Drawing.Point(77, 2);
-            this.txtDateCheck.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDateCheck.Margin = new System.Windows.Forms.Padding(2);
             this.txtDateCheck.Name = "txtDateCheck";
             this.txtDateCheck.Size = new System.Drawing.Size(325, 20);
             this.txtDateCheck.TabIndex = 4;
@@ -185,18 +185,18 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(3, 144);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 13);
+            this.label7.Size = new System.Drawing.Size(29, 13);
             this.label7.TabIndex = 10;
-            this.label7.Text = "User Id";
+            this.label7.Text = "User";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(3, 168);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 13);
+            this.label8.Size = new System.Drawing.Size(28, 13);
             this.label8.TabIndex = 11;
-            this.label8.Text = "Shift Id";
+            this.label8.Text = "Shift";
             // 
             // txtCheckInAt
             // 
@@ -214,30 +214,33 @@
             this.txtCheckOutAt.Size = new System.Drawing.Size(323, 20);
             this.txtCheckOutAt.TabIndex = 12;
             // 
-            // txtUserId
+            // cbbUser
             // 
-            this.txtUserId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtUserId.Location = new System.Drawing.Point(78, 147);
-            this.txtUserId.Name = "txtUserId";
-            this.txtUserId.Size = new System.Drawing.Size(323, 20);
-            this.txtUserId.TabIndex = 12;
+            this.cbbUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbbUser.FormattingEnabled = true;
+            this.cbbUser.Location = new System.Drawing.Point(78, 147);
+            this.cbbUser.Name = "cbbUser";
+            this.cbbUser.Size = new System.Drawing.Size(323, 21);
+            this.cbbUser.TabIndex = 14;
             // 
-            // txtShiftId
+            // cbbShift
             // 
-            this.txtShiftId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtShiftId.Location = new System.Drawing.Point(78, 171);
-            this.txtShiftId.Name = "txtShiftId";
-            this.txtShiftId.Size = new System.Drawing.Size(323, 20);
-            this.txtShiftId.TabIndex = 12;
+            this.cbbShift.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbbShift.FormattingEnabled = true;
+            this.cbbShift.Location = new System.Drawing.Point(78, 171);
+            this.cbbShift.Name = "cbbShift";
+            this.cbbShift.Size = new System.Drawing.Size(323, 21);
+            this.cbbShift.TabIndex = 15;
             // 
             // ucAttendances
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ucAttendances";
             this.Size = new System.Drawing.Size(404, 309);
+            this.Load += new System.EventHandler(this.ucAttendances_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -261,7 +264,7 @@
         private System.Windows.Forms.Label label8;
         public System.Windows.Forms.TextBox txtCheckInAt;
         public System.Windows.Forms.TextBox txtCheckOutAt;
-        public System.Windows.Forms.TextBox txtUserId;
-        public System.Windows.Forms.TextBox txtShiftId;
+        public System.Windows.Forms.ComboBox cbbUser;
+        public System.Windows.Forms.ComboBox cbbShift;
     }
 }

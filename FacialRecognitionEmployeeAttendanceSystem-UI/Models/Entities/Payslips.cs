@@ -42,6 +42,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
         [System.ComponentModel.DisplayName("User Id")]
         public long userId { get; set; }
 
+        public Users users { get; set; }
+
         [System.ComponentModel.DisplayName("Deduction Salary")]
         public double deductionSalary { get; set; }
 
@@ -50,5 +52,13 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
 
         [System.ComponentModel.DisplayName("Is Disabled")]
         public bool isDisabled { get; set; }
+
+        private static Payslips _instance;
+        public static Payslips GetInstance()
+        {
+            if (_instance == null)
+                _instance = new Payslips();
+            return _instance;
+        }
     }
 }

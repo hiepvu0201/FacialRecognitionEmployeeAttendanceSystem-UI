@@ -25,6 +25,10 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
 
         private void LoadJsonConfig()
         {
+            if (!File.Exists(Config.ConfigFile))
+            {
+                return;
+            }
             JObject json = JObject.Parse(File.ReadAllText(Config.ConfigFile));
             ConfigSalary configSalary = JsonConvert.DeserializeObject<ConfigSalary>(json.ToString());
             nudOvertimeSalaryRate.Value = Convert.ToDecimal(configSalary.overTimeSalaryRate);

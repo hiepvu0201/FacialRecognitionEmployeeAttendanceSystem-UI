@@ -49,13 +49,15 @@
             this.txtTax = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtDeductionSalary = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbbUser = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtPayDate, 1, 0);
@@ -77,202 +79,246 @@
             this.tableLayoutPanel1.Controls.Add(this.txtTax, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.txtDeductionSalary, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label11, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.cbbUser, 1, 10);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 11;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowCount = 12;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(539, 380);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(404, 309);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(2, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 17);
+            this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Paydate";
             // 
             // txtPayDate
             // 
             this.txtPayDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPayDate.Location = new System.Drawing.Point(143, 3);
+            this.txtPayDate.Location = new System.Drawing.Point(107, 2);
+            this.txtPayDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPayDate.Name = "txtPayDate";
-            this.txtPayDate.Size = new System.Drawing.Size(393, 22);
+            this.txtPayDate.Size = new System.Drawing.Size(295, 20);
             this.txtPayDate.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 30);
+            this.label2.Location = new System.Drawing.Point(2, 24);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 17);
+            this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Working salary";
             // 
             // txtWorkingSalary
             // 
             this.txtWorkingSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtWorkingSalary.Location = new System.Drawing.Point(143, 33);
+            this.txtWorkingSalary.Location = new System.Drawing.Point(107, 26);
+            this.txtWorkingSalary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtWorkingSalary.Name = "txtWorkingSalary";
-            this.txtWorkingSalary.Size = new System.Drawing.Size(393, 22);
+            this.txtWorkingSalary.Size = new System.Drawing.Size(295, 20);
             this.txtWorkingSalary.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 60);
+            this.label3.Location = new System.Drawing.Point(2, 48);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 17);
+            this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Public salary";
             // 
             // txtPublicSalary
             // 
             this.txtPublicSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPublicSalary.Location = new System.Drawing.Point(143, 63);
+            this.txtPublicSalary.Location = new System.Drawing.Point(107, 50);
+            this.txtPublicSalary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPublicSalary.Name = "txtPublicSalary";
-            this.txtPublicSalary.Size = new System.Drawing.Size(393, 22);
+            this.txtPublicSalary.Size = new System.Drawing.Size(295, 20);
             this.txtPublicSalary.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 90);
+            this.label4.Location = new System.Drawing.Point(2, 72);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 17);
+            this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Other salary";
             // 
             // txtOtherSalary
             // 
             this.txtOtherSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtOtherSalary.Location = new System.Drawing.Point(143, 93);
+            this.txtOtherSalary.Location = new System.Drawing.Point(107, 74);
+            this.txtOtherSalary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtOtherSalary.Name = "txtOtherSalary";
-            this.txtOtherSalary.Size = new System.Drawing.Size(393, 22);
+            this.txtOtherSalary.Size = new System.Drawing.Size(295, 20);
             this.txtOtherSalary.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 120);
+            this.label5.Location = new System.Drawing.Point(2, 96);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 17);
+            this.label5.Size = new System.Drawing.Size(93, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "Anual leave salary";
             // 
             // txtAnualLeaveSalary
             // 
             this.txtAnualLeaveSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtAnualLeaveSalary.Location = new System.Drawing.Point(143, 123);
+            this.txtAnualLeaveSalary.Location = new System.Drawing.Point(107, 98);
+            this.txtAnualLeaveSalary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAnualLeaveSalary.Name = "txtAnualLeaveSalary";
-            this.txtAnualLeaveSalary.Size = new System.Drawing.Size(393, 22);
+            this.txtAnualLeaveSalary.Size = new System.Drawing.Size(295, 20);
             this.txtAnualLeaveSalary.TabIndex = 9;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 150);
+            this.label6.Location = new System.Drawing.Point(2, 120);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 17);
+            this.label6.Size = new System.Drawing.Size(79, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "Overtime salary";
             // 
             // txtOvertimeSalary
             // 
             this.txtOvertimeSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtOvertimeSalary.Location = new System.Drawing.Point(143, 153);
+            this.txtOvertimeSalary.Location = new System.Drawing.Point(107, 122);
+            this.txtOvertimeSalary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtOvertimeSalary.Name = "txtOvertimeSalary";
-            this.txtOvertimeSalary.Size = new System.Drawing.Size(393, 22);
+            this.txtOvertimeSalary.Size = new System.Drawing.Size(295, 20);
             this.txtOvertimeSalary.TabIndex = 11;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 180);
+            this.label7.Location = new System.Drawing.Point(2, 144);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 17);
+            this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 12;
             this.label7.Text = "Allowance";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 210);
+            this.label8.Location = new System.Drawing.Point(2, 168);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 17);
+            this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 13;
             this.label8.Text = "Bonus";
             // 
             // txtAllowance
             // 
             this.txtAllowance.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtAllowance.Location = new System.Drawing.Point(143, 183);
+            this.txtAllowance.Location = new System.Drawing.Point(107, 146);
+            this.txtAllowance.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAllowance.Name = "txtAllowance";
-            this.txtAllowance.Size = new System.Drawing.Size(393, 22);
+            this.txtAllowance.Size = new System.Drawing.Size(295, 20);
             this.txtAllowance.TabIndex = 14;
             // 
             // txtBonus
             // 
             this.txtBonus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtBonus.Location = new System.Drawing.Point(143, 213);
+            this.txtBonus.Location = new System.Drawing.Point(107, 170);
+            this.txtBonus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBonus.Name = "txtBonus";
-            this.txtBonus.Size = new System.Drawing.Size(393, 22);
+            this.txtBonus.Size = new System.Drawing.Size(295, 20);
             this.txtBonus.TabIndex = 15;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 240);
+            this.label9.Location = new System.Drawing.Point(2, 192);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(31, 17);
+            this.label9.Size = new System.Drawing.Size(25, 13);
             this.label9.TabIndex = 16;
             this.label9.Text = "Tax";
             // 
             // txtTax
             // 
             this.txtTax.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTax.Location = new System.Drawing.Point(143, 243);
+            this.txtTax.Location = new System.Drawing.Point(107, 194);
+            this.txtTax.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTax.Name = "txtTax";
-            this.txtTax.Size = new System.Drawing.Size(393, 22);
+            this.txtTax.Size = new System.Drawing.Size(295, 20);
             this.txtTax.TabIndex = 17;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 270);
+            this.label10.Location = new System.Drawing.Point(2, 216);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(114, 17);
+            this.label10.Size = new System.Drawing.Size(86, 13);
             this.label10.TabIndex = 18;
             this.label10.Text = "Deduction salary";
             // 
             // txtDeductionSalary
             // 
             this.txtDeductionSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDeductionSalary.Location = new System.Drawing.Point(143, 273);
+            this.txtDeductionSalary.Location = new System.Drawing.Point(107, 218);
+            this.txtDeductionSalary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDeductionSalary.Name = "txtDeductionSalary";
-            this.txtDeductionSalary.Size = new System.Drawing.Size(393, 22);
+            this.txtDeductionSalary.Size = new System.Drawing.Size(295, 20);
             this.txtDeductionSalary.TabIndex = 19;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 240);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(29, 13);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "User";
+            // 
+            // cbbUser
+            // 
+            this.cbbUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbbUser.FormattingEnabled = true;
+            this.cbbUser.Location = new System.Drawing.Point(108, 243);
+            this.cbbUser.Name = "cbbUser";
+            this.cbbUser.Size = new System.Drawing.Size(293, 21);
+            this.cbbUser.TabIndex = 21;
             // 
             // ucPayslips
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ucPayslips";
-            this.Size = new System.Drawing.Size(539, 380);
+            this.Size = new System.Drawing.Size(404, 309);
+            this.Load += new System.EventHandler(this.ucPayslips_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -302,5 +348,7 @@
         public System.Windows.Forms.TextBox txtTax;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.TextBox txtDeductionSalary;
+        private System.Windows.Forms.Label label11;
+        public System.Windows.Forms.ComboBox cbbUser;
     }
 }

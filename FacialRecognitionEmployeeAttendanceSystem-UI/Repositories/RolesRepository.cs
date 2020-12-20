@@ -35,7 +35,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             _client.PostAsync($"/api/v1/roles/add", byteContent);
         }
-        public void Update(int id, Roles roles)
+        public void Update(long id, Roles roles)
         {
             var role = JsonConvert.SerializeObject(roles);
             var buffer = Encoding.UTF8.GetBytes(role);
@@ -43,7 +43,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             _client.PutAsync($"/api/v1/roles/update/{id}", byteContent);
         }
-        public async Task<Roles> GetByIdAsync(int id)
+        public async Task<Roles> GetByIdAsync(long id)
         {
             _response = await _client.GetAsync($"/api/v1/roles/{id}");
 
@@ -52,9 +52,27 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             return role;
         }
 
-        public void Delete(int id)
+        public void Delete(long id)
         {
             _client.DeleteAsync($"/api/v1/roles/delete/{id}");
+        }
+
+        public void Disable(long id, Object dummyObject)
+        {
+            var dObject = JsonConvert.SerializeObject(dummyObject);
+            var buffer = Encoding.UTF8.GetBytes(dObject);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PutAsync($"/api/v1/roles/disable/{id}", byteContent);
+        }
+
+        public void Enable(long id, Object dummyObject)
+        {
+            var dObject = JsonConvert.SerializeObject(dummyObject);
+            var buffer = Encoding.UTF8.GetBytes(dObject);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PutAsync($"/api/v1/roles/enable/{id}", byteContent);
         }
     }
 }

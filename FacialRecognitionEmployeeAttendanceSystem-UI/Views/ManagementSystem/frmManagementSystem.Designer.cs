@@ -39,6 +39,7 @@
             this.btnModifySalary = new System.Windows.Forms.Button();
             this.btnMainMenu = new System.Windows.Forms.Button();
             this.btnCheckSalary = new System.Windows.Forms.Button();
+            this.btnTableOfAttendance = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -49,18 +50,17 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pnlAdd = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnTableOfAttendance = new System.Windows.Forms.Button();
             this.ucView1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucView();
+            this.pnlAdd = new System.Windows.Forms.Panel();
             this.ucAttendances1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucAttendances();
             this.ucDepartments1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucDepartments();
             this.ucShifts1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucShifts();
             this.ucUsers1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucUsers();
             this.ucRoles1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucRoles();
             this.ucPayslips1 = new FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC.ucPayslips();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -226,6 +226,17 @@
             this.btnCheckSalary.UseVisualStyleBackColor = true;
             this.btnCheckSalary.Click += new System.EventHandler(this.btnCheckSalary_Click);
             // 
+            // btnTableOfAttendance
+            // 
+            this.btnTableOfAttendance.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTableOfAttendance.Location = new System.Drawing.Point(5, 348);
+            this.btnTableOfAttendance.Name = "btnTableOfAttendance";
+            this.btnTableOfAttendance.Size = new System.Drawing.Size(156, 34);
+            this.btnTableOfAttendance.TabIndex = 8;
+            this.btnTableOfAttendance.Text = "Table Of Attendance";
+            this.btnTableOfAttendance.UseVisualStyleBackColor = true;
+            this.btnTableOfAttendance.Click += new System.EventHandler(this.btnTableOfAttendance_Click);
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
@@ -366,6 +377,15 @@
             this.panel2.Size = new System.Drawing.Size(736, 205);
             this.panel2.TabIndex = 7;
             // 
+            // ucView1
+            // 
+            this.ucView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucView1.Location = new System.Drawing.Point(0, 0);
+            this.ucView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ucView1.Name = "ucView1";
+            this.ucView1.Size = new System.Drawing.Size(736, 205);
+            this.ucView1.TabIndex = 6;
+            // 
             // pnlAdd
             // 
             this.pnlAdd.AutoScroll = true;
@@ -382,69 +402,11 @@
             this.pnlAdd.Size = new System.Drawing.Size(736, 310);
             this.pnlAdd.TabIndex = 8;
             // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.57813F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.42188F));
-            this.tableLayoutPanel5.Controls.Add(this.txtSearch, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.btnSearch, 1, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 43);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(736, 37);
-            this.tableLayoutPanel5.TabIndex = 9;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSearch.Location = new System.Drawing.Point(2, 2);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSearch.Multiline = true;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(493, 33);
-            this.txtSearch.TabIndex = 0;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSearch.Location = new System.Drawing.Point(499, 2);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(235, 33);
-            this.btnSearch.TabIndex = 1;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // btnTableOfAttendance
-            // 
-            this.btnTableOfAttendance.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTableOfAttendance.Location = new System.Drawing.Point(5, 348);
-            this.btnTableOfAttendance.Name = "btnTableOfAttendance";
-            this.btnTableOfAttendance.Size = new System.Drawing.Size(156, 34);
-            this.btnTableOfAttendance.TabIndex = 8;
-            this.btnTableOfAttendance.Text = "Table Of Attendance";
-            this.btnTableOfAttendance.UseVisualStyleBackColor = true;
-            this.btnTableOfAttendance.Click += new System.EventHandler(this.btnTableOfAttendance_Click);
-            // 
-            // ucView1
-            // 
-            this.ucView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucView1.Location = new System.Drawing.Point(0, 0);
-            this.ucView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.ucView1.Name = "ucView1";
-            this.ucView1.Size = new System.Drawing.Size(736, 205);
-            this.ucView1.TabIndex = 6;
-            // 
             // ucAttendances1
             // 
             this.ucAttendances1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucAttendances1.Location = new System.Drawing.Point(0, 310);
-            this.ucAttendances1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ucAttendances1.Margin = new System.Windows.Forms.Padding(2);
             this.ucAttendances1.Name = "ucAttendances1";
             this.ucAttendances1.Size = new System.Drawing.Size(736, 0);
             this.ucAttendances1.TabIndex = 4;
@@ -494,6 +456,45 @@
             this.ucPayslips1.Name = "ucPayslips1";
             this.ucPayslips1.Size = new System.Drawing.Size(736, 310);
             this.ucPayslips1.TabIndex = 5;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.57813F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.42188F));
+            this.tableLayoutPanel5.Controls.Add(this.txtSearch, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btnSearch, 1, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 43);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(736, 37);
+            this.tableLayoutPanel5.TabIndex = 9;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSearch.Location = new System.Drawing.Point(2, 2);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(493, 33);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSearch.Location = new System.Drawing.Point(499, 2);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(235, 33);
+            this.btnSearch.TabIndex = 1;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // frmManagementSystem
             // 

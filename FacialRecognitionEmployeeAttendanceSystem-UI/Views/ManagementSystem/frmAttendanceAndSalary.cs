@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
 {
-    public partial class frmCheckAttendanceHistory : Form
+    public partial class frmAttendanceAndSalary : Form
     {
         #region Properties
         AttendancesRepository _attendancesRepository = new AttendancesRepository();
@@ -20,7 +20,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
         #endregion
 
         #region Constructor
-        public frmCheckAttendanceHistory()
+        public frmAttendanceAndSalary()
         {
             InitializeComponent();
         }
@@ -35,7 +35,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
         private void btnSearch_Click(object sender, EventArgs e)
         {
             LoadAttendace();
-            LoadPayslips();
         }
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
@@ -48,7 +47,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
                     Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
                     worksheet = workbook.Sheets["Sheet1"];
                     worksheet = workbook.ActiveSheet;
-                    worksheet.Name = $"Attendance History {dtpHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat)}";
+                    worksheet.Name = $"Attendance History {dtpAttendanceHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat)}";
 
                     for (int i = 1; i < dgvCheckAttendanceHistory.Columns.Count + 1; i++)
                     {
@@ -64,7 +63,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
                     }
 
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
-                    saveFileDialog.FileName = $"AttendanceHistory{dtpHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat)}";
+                    saveFileDialog.FileName = $"AttendanceHistory{dtpAttendanceHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat)}";
                     saveFileDialog.DefaultExt = ".xlsx";
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
@@ -83,6 +82,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
+            frmManagementSystem frmManagementSystem = new frmManagementSystem();
+            frmManagementSystem.Show();
             
         }
         #endregion
@@ -90,27 +91,36 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
         #region Method
         private async void LoadAttendace()
         {
-            List<Attendances> listAttendances = await _attendancesRepository.GetByDateTimeAsync(dtpHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat));
+            List<Attendances> listAttendances = await _attendancesRepository.GetByDateTimeAsync(dtpAttendanceHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat));
 
-            if (listAttendances != null && listAttendances.Count>0)
+            if (listAttendances==null)
             {
-                dgvCheckAttendanceHistory.DataSource = listAttendances;
-                dgvCheckAttendanceHistory.Columns["users"].Visible = false;
-                dgvCheckAttendanceHistory.AutoResizeColumns();
-                dgvCheckAttendanceHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                return;
             }
+
+            dgvCheckAttendanceHistory.DataSource = listAttendances;
+            dgvCheckAttendanceHistory.Columns["users"].Visible = false;
+            dgvCheckAttendanceHistory.AutoResizeColumns();
+            dgvCheckAttendanceHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
         private async void LoadPayslips()
         {
-            List<Payslips> listPayslips = await _payslipsRepository.GetListByDate(dtpHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat));
+            List<Payslips> listPayslips = await _payslipsRepository.GetListByDate(dtpPayslipsHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat));
 
-            if (listPayslips != null && listPayslips.Count > 0)
+            if (listPayslips==null)
             {
-                dgvPayslips.DataSource = listPayslips;
-                dgvPayslips.AutoResizeColumns();
-                dgvPayslips.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                return;
             }
+
+            dgvPayslips.DataSource = listPayslips;
+            dgvPayslips.AutoResizeColumns();
+            dgvPayslips.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
         #endregion
+
+        private void btnSearchDatePayslip_Click(object sender, EventArgs e)
+        {
+            LoadPayslips();
+        }
     }
 }

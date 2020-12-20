@@ -71,6 +71,25 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
         {
             _client.DeleteAsync($"/api/v1/attendances/delete/{id}");
         }
+
+        public void Disable(long id, Object dummyObject)
+        {
+            var dObject = JsonConvert.SerializeObject(dummyObject);
+            var buffer = Encoding.UTF8.GetBytes(dObject);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PutAsync($"/api/v1/attendances/disable/{id}", byteContent);
+        }
+
+        public void Enable(long id, Object dummyObject)
+        {
+            var dObject = JsonConvert.SerializeObject(dummyObject);
+            var buffer = Encoding.UTF8.GetBytes(dObject);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PutAsync($"/api/v1/attendances/enable/{id}", byteContent);
+        }
+
         public void CheckIn(Attendances attendances)
         {
             var attendance = JsonConvert.SerializeObject(attendances);

@@ -58,9 +58,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.label12 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.nudLateFee = new System.Windows.Forms.NumericUpDown();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
+            this.nudLateFee = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSalaryPerHour)).BeginInit();
@@ -73,8 +73,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTaxRate)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudLateFee)).BeginInit();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLateFee)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -374,14 +374,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.label14.TabIndex = 19;
             this.label14.Text = "Late fee per minute";
             // 
-            // nudLateFee
-            // 
-            this.nudLateFee.Dock = System.Windows.Forms.DockStyle.Left;
-            this.nudLateFee.Location = new System.Drawing.Point(0, 0);
-            this.nudLateFee.Name = "nudLateFee";
-            this.nudLateFee.Size = new System.Drawing.Size(120, 20);
-            this.nudLateFee.TabIndex = 20;
-            // 
             // panel7
             // 
             this.panel7.Controls.Add(this.label15);
@@ -401,6 +393,14 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.label15.Size = new System.Drawing.Size(13, 13);
             this.label15.TabIndex = 21;
             this.label15.Text = "$";
+            // 
+            // nudLateFee
+            // 
+            this.nudLateFee.Dock = System.Windows.Forms.DockStyle.Left;
+            this.nudLateFee.Location = new System.Drawing.Point(0, 0);
+            this.nudLateFee.Name = "nudLateFee";
+            this.nudLateFee.Size = new System.Drawing.Size(120, 20);
+            this.nudLateFee.TabIndex = 20;
             // 
             // frmModifySalaryRules
             // 
@@ -429,9 +429,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             ((System.ComponentModel.ISupportInitialize)(this.nudTaxRate)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudLateFee)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLateFee)).EndInit();
             this.ResumeLayout(false);
 
         }

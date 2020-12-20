@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtRoleId = new System.Windows.Forms.TextBox();
-            this.txtDepartmentId = new System.Windows.Forms.TextBox();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.txtNetSalary = new System.Windows.Forms.TextBox();
             this.txtGrossSalary = new System.Windows.Forms.TextBox();
@@ -49,6 +47,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnTrainingForm = new System.Windows.Forms.Button();
+            this.cbbDepartment = new System.Windows.Forms.ComboBox();
+            this.cbbRole = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,8 +58,6 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.txtRoleId, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.txtDepartmentId, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.txtNote, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.txtNetSalary, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.txtGrossSalary, 1, 4);
@@ -78,6 +76,8 @@
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.btnTrainingForm, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.cbbDepartment, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.cbbRole, 1, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
@@ -96,24 +96,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(404, 309);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // txtRoleId
-            // 
-            this.txtRoleId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtRoleId.Location = new System.Drawing.Point(92, 251);
-            this.txtRoleId.Margin = new System.Windows.Forms.Padding(2);
-            this.txtRoleId.Name = "txtRoleId";
-            this.txtRoleId.Size = new System.Drawing.Size(310, 20);
-            this.txtRoleId.TabIndex = 19;
-            // 
-            // txtDepartmentId
-            // 
-            this.txtDepartmentId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDepartmentId.Location = new System.Drawing.Point(92, 227);
-            this.txtDepartmentId.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDepartmentId.Name = "txtDepartmentId";
-            this.txtDepartmentId.Size = new System.Drawing.Size(310, 20);
-            this.txtDepartmentId.TabIndex = 18;
             // 
             // txtNote
             // 
@@ -256,9 +238,9 @@
             this.label9.Location = new System.Drawing.Point(2, 225);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(74, 13);
+            this.label9.Size = new System.Drawing.Size(62, 13);
             this.label9.TabIndex = 9;
-            this.label9.Text = "Department Id";
+            this.label9.Text = "Department";
             // 
             // label10
             // 
@@ -266,9 +248,9 @@
             this.label10.Location = new System.Drawing.Point(2, 249);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.Size = new System.Drawing.Size(29, 13);
             this.label10.TabIndex = 10;
-            this.label10.Text = "Role Id";
+            this.label10.Text = "Role";
             // 
             // label2
             // 
@@ -290,6 +272,24 @@
             this.btnTrainingForm.UseVisualStyleBackColor = true;
             this.btnTrainingForm.Click += new System.EventHandler(this.btnTrainingForm_Click);
             // 
+            // cbbDepartment
+            // 
+            this.cbbDepartment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbbDepartment.FormattingEnabled = true;
+            this.cbbDepartment.Location = new System.Drawing.Point(93, 228);
+            this.cbbDepartment.Name = "cbbDepartment";
+            this.cbbDepartment.Size = new System.Drawing.Size(308, 21);
+            this.cbbDepartment.TabIndex = 22;
+            // 
+            // cbbRole
+            // 
+            this.cbbRole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbbRole.FormattingEnabled = true;
+            this.cbbRole.Location = new System.Drawing.Point(93, 252);
+            this.cbbRole.Name = "cbbRole";
+            this.cbbRole.Size = new System.Drawing.Size(308, 21);
+            this.cbbRole.TabIndex = 23;
+            // 
             // ucUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,6 +298,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ucUsers";
             this.Size = new System.Drawing.Size(404, 309);
+            this.Load += new System.EventHandler(this.ucUsers_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -323,9 +324,9 @@
         public System.Windows.Forms.TextBox txtGrossSalary;
         public System.Windows.Forms.TextBox txtNetSalary;
         public System.Windows.Forms.TextBox txtNote;
-        public System.Windows.Forms.TextBox txtDepartmentId;
-        public System.Windows.Forms.TextBox txtRoleId;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnTrainingForm;
+        public System.Windows.Forms.ComboBox cbbDepartment;
+        public System.Windows.Forms.ComboBox cbbRole;
     }
 }

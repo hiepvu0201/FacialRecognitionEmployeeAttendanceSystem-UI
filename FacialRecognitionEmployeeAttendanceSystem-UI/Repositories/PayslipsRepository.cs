@@ -43,7 +43,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             _client.PostAsync($"/api/v1/payslips/add", byteContent);
         }
-        public void Update(int id, Payslips payslips)
+        public void Update(long id, Payslips payslips)
         {
             var payslip = JsonConvert.SerializeObject(payslips);
             var buffer = Encoding.UTF8.GetBytes(payslip);
@@ -51,7 +51,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             _client.PutAsync($"/api/v1/payslips/update/{id}", byteContent);
         }
-        public async Task<Payslips> GetByIdAsync(int id)
+        public async Task<Payslips> GetByIdAsync(long id)
         {
             _response = await _client.GetAsync($"/api/v1/payslips/{id}");
 
@@ -60,9 +60,27 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             return payslip;
         }
 
-        public void Delete(int id)
+        public void Delete(long id)
         {
             _client.DeleteAsync($"/api/v1/payslips/delete/{id}");
+        }
+
+        public void Disable(long id, Object dummyObject)
+        {
+            var dObject = JsonConvert.SerializeObject(dummyObject);
+            var buffer = Encoding.UTF8.GetBytes(dObject);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PutAsync($"/api/v1/payslips/disable/{id}", byteContent);
+        }
+
+        public void Enable(long id, Object dummyObject)
+        {
+            var dObject = JsonConvert.SerializeObject(dummyObject);
+            var buffer = Encoding.UTF8.GetBytes(dObject);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PutAsync($"/api/v1/payslips/enable/{id}", byteContent);
         }
     }
 }

@@ -35,7 +35,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             _client.PostAsync($"/api/v1/users/add", byteContent);
         }
-        public void Update(int id, Users users)
+        public void Update(long id, Users users)
         {
             var user = JsonConvert.SerializeObject(users);
             var buffer = Encoding.UTF8.GetBytes(user);
@@ -43,7 +43,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             _client.PutAsync($"/api/v1/users/update/{id}", byteContent);
         }
-        public async Task<Users> GetByIdAsync(int id)
+        public async Task<Users> GetByIdAsync(long id)
         {
             _response = await _client.GetAsync($"/api/v1/users/{id}");
 
@@ -51,7 +51,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             Users user = JsonConvert.DeserializeObject<Users>(json);
             return user;
         }
-        public void Delete(int id)
+        public void Delete(long id)
         {
             _client.DeleteAsync($"/api/v1/users/delete/{id}");
         }
@@ -70,6 +70,23 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             var json = await _response.Content.ReadAsStringAsync();
             Users user = JsonConvert.DeserializeObject<Users>(json);
             return user;
+        }
+        public void Disable(long id, Object dummyObject)
+        {
+            var dObject = JsonConvert.SerializeObject(dummyObject);
+            var buffer = Encoding.UTF8.GetBytes(dObject);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PutAsync($"/api/v1/users/disable/{id}", byteContent);
+        }
+
+        public void Enable(long id, Object dummyObject)
+        {
+            var dObject = JsonConvert.SerializeObject(dummyObject);
+            var buffer = Encoding.UTF8.GetBytes(dObject);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            _client.PutAsync($"/api/v1/users/enable/{id}", byteContent);
         }
     }
 }

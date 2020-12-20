@@ -42,6 +42,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
                             Roles.GetInstance().roleName = data.Cells[1].Value.ToString();
                             Roles.GetInstance().note = data.Cells[2].Value.ToString();
                             Roles.GetInstance().description = data.Cells[3].Value.ToString();
+                            Roles.GetInstance().salaryRate = Convert.ToDouble(data.Cells[4].Value);
                         }
                         break;
                     case 3:
@@ -74,15 +75,27 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
                             Attendances.GetInstance().status = Convert.ToBoolean(data.Cells[2].Value);
                             Attendances.GetInstance().note = data.Cells[3].Value.ToString();
                             Attendances.GetInstance().workingHours = Convert.ToInt32(data.Cells[4].Value);
-                            Attendances.GetInstance().checkinAt = Convert.ToDateTime(data.Cells[4].Value);
-                            Attendances.GetInstance().checkoutAt = Convert.ToDateTime(data.Cells[4].Value);
-                            Attendances.GetInstance().userId = Convert.ToInt32(data.Cells[4].Value);
-                            Attendances.GetInstance().shiftId = Convert.ToInt32(data.Cells[4].Value);
+                            Attendances.GetInstance().checkinAt = Convert.ToDateTime(data.Cells[5].Value);
+                            Attendances.GetInstance().checkoutAt = Convert.ToDateTime(data.Cells[6].Value);
+                            Attendances.GetInstance().userId = Convert.ToInt32(data.Cells[7].Value);
+                            Attendances.GetInstance().shiftId = Convert.ToInt32(data.Cells[8].Value);
                         }
                         break;
                     case 6:
                         {
                             // Payslip
+                            Payslips.GetInstance().payDate = Convert.ToDateTime(data.Cells[1].Value);
+                            Payslips.GetInstance().workingSalary = Convert.ToDouble(data.Cells[2].Value);
+                            Payslips.GetInstance().publicSalary = Convert.ToDouble(data.Cells[3].Value);
+                            Payslips.GetInstance().otherSalary = Convert.ToDouble(data.Cells[4].Value);
+                            Payslips.GetInstance().annualLeaveSalary = Convert.ToDouble(data.Cells[5].Value);
+                            Payslips.GetInstance().overtimeSalary = Convert.ToDouble(data.Cells[6].Value);
+                            Payslips.GetInstance().allowance = Convert.ToDouble(data.Cells[7].Value);
+                            Payslips.GetInstance().bonus = Convert.ToDouble(data.Cells[8].Value);
+                            Payslips.GetInstance().tax = Convert.ToDouble(data.Cells[9].Value);
+                            Payslips.GetInstance().userId = Convert.ToInt64(data.Cells[10].Value);
+                            Payslips.GetInstance().deductionSalary = Convert.ToDouble(data.Cells[11].Value);
+
                         }
                         break;
                     default:

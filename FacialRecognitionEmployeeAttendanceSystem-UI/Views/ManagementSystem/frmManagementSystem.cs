@@ -75,17 +75,29 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             switch (flag)
             {
                 case 1:
+                    if (listAttendances==null)
+                    {
+                        return;
+                    }
                     ucView1.dgvManagement.DataSource = listDepartments;
                     ucView1.dgvManagement.Columns["shifts"].Visible = false;
                     ucView1.dgvManagement.AutoResizeColumns();
                     ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     break;
                 case 2:
+                    if (listRoles == null)
+                    {
+                        return;
+                    }
                     ucView1.dgvManagement.DataSource = listRoles;
                     ucView1.dgvManagement.AutoResizeColumns();
                     ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     break;
                 case 3:
+                    if (listUsers == null)
+                    {
+                        return;
+                    }
                     ucView1.dgvManagement.DataSource = listUsers;
                     ucView1.dgvManagement.Columns["roles"].Visible = false;
                     ucView1.dgvManagement.Columns["departments"].Visible = false;
@@ -94,11 +106,19 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                     ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                     break;
                 case 4:
+                    if (listShifts == null)
+                    {
+                        return;
+                    }
                     ucView1.dgvManagement.DataSource = listShifts;
                     ucView1.dgvManagement.AutoResizeColumns();
                     ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     break;
                 case 5:
+                    if (listAttendances == null)
+                    {
+                        return;
+                    }
                     ucView1.dgvManagement.DataSource = listAttendances;
                     ucView1.dgvManagement.AutoResizeColumns();
                     ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -107,8 +127,13 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
                     break;
                 case 6:
+                    if (listPayslips == null)
+                    {
+                        return;
+                    }
                     ucView1.dgvManagement.DataSource = listPayslips;
                     ucView1.dgvManagement.AutoResizeColumns();
+                    ucView1.dgvManagement.Columns["users"].Visible = false;
                     ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                     break;
                 default:
@@ -306,6 +331,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 payslip.bonus = Double.Parse(ucPayslips1.txtBonus.Text);
                 payslip.tax = Double.Parse(ucPayslips1.txtTax.Text);
                 payslip.deductionSalary = Double.Parse(ucPayslips1.txtDeductionSalary.Text);
+                payslip.userId = Convert.ToInt64(ucPayslips1.cbbUser.Text.Substring(0, ucPayslips1.cbbUser.Text.IndexOf(".")));
 
                 _payslipsRepository.Add(payslip);
                 MessageBox.Show("Successful added!");
@@ -326,7 +352,10 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 attendance.status = Boolean.Parse(ucAttendances1.txtStatus.Text);
                 attendance.note = ucAttendances1.txtNote.Text;
                 attendance.workingHours = Double.Parse(ucAttendances1.txtWorkingHours.Text);
-
+                attendance.checkinAt = DateTime.Parse(ucAttendances1.txtCheckInAt.Text);
+                attendance.checkoutAt = DateTime.Parse(ucAttendances1.txtCheckOutAt.Text);
+                attendance.userId = Convert.ToInt64(ucAttendances1.cbbUser.Text.Substring(0, ucAttendances1.cbbUser.Text.IndexOf(".")));
+                attendance.shiftId = Convert.ToInt64(ucAttendances1.cbbShift.Text.Substring(0, ucAttendances1.cbbShift.Text.IndexOf(".")));
                 _attendancesRepository.Add(attendance);
                 MessageBox.Show("Successful added!");
             }
@@ -366,8 +395,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 user.grossSalary = Double.Parse(ucUsers1.txtGrossSalary.Text);
                 user.netSalary = Double.Parse(ucUsers1.txtNetSalary.Text);
                 user.note = ucUsers1.txtNote.Text;
-                user.departmentId = Convert.ToInt32(ucUsers1.txtDepartmentId.Text);
-                user.roleId = Convert.ToInt32(ucUsers1.txtRoleId.Text);
+                user.departmentId = Convert.ToInt64(ucUsers1.cbbDepartment.Text.Substring(0, ucUsers1.cbbDepartment.Text.IndexOf(".")));
+                user.roleId = Convert.ToInt64(ucUsers1.cbbRole.Text.Substring(0, ucUsers1.cbbRole.Text.IndexOf(".")));
 
                 _usersRepository.Add(user);
                 MessageBox.Show("Successful added!");
@@ -386,6 +415,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 role.roleName = ucRoles1.txtRoleName.Text;
                 role.note = ucRoles1.txtNote.Text;
                 role.description = ucRoles1.txtDescription.Text;
+                role.salaryRate = Convert.ToDouble(ucRoles1.txtSalaryRate.Text);
 
                 _rolesRepository.Add(role);
                 MessageBox.Show("Successful added!");
@@ -402,7 +432,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             {
                 Departments department = new Departments();
                 department.departmentName = ucDepartments1.txtDepartmentName.Text;
-                department.shiftId = Convert.ToInt32(ucDepartments1.txtShiftId.Text);
+                department.shiftId = Convert.ToInt64(ucDepartments1.cbbShift.Text.Substring(0, ucDepartments1.cbbShift.Text.IndexOf(".")));
 
                 if (isAdd==true)
                 {
@@ -442,12 +472,13 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         {
             btnAdd.Enabled = false;
             btnCancel.Enabled = true;
+            btnSave.Enabled = true;
             switch (flag)
             {
                 case 1:
                     {
                         // Department
-                        UpdateSelectedDepartment();
+                        UpdateSelectedDepartmentAsync();
                     }
                     break;
                 case 2:
@@ -460,7 +491,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 case 3:
                     {
                         // User
-                        UpdateSelectedUser();
+                        UpdateSelectedUserAsync();
                     }
                     break;
                 case 4:
@@ -472,13 +503,13 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 case 5:
                     {
                         // Attendance
-                        UpdateSelectedAttendance();
+                        UpdateSelectedAttendanceAsync();
                     }
                     break;
                 case 6:
                     {
                         // Payslip
-                        UpdateSelectedAttendance();
+                        UpdateSelectedPayslipAsync();
                     }
                     break;
                 default:
@@ -487,14 +518,33 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             isUpdate = true;
         }
 
+        private async Task UpdateSelectedPayslipAsync()
+        {
+            ucPayslips1.txtPayDate.Text = Convert.ToString(Payslips.GetInstance().payDate);
+            ucPayslips1.txtPublicSalary.Text = Convert.ToString(Payslips.GetInstance().publicSalary);
+            ucPayslips1.txtWorkingSalary.Text = Convert.ToString(Payslips.GetInstance().workingSalary);
+            ucPayslips1.txtOvertimeSalary.Text = Convert.ToString(Payslips.GetInstance().overtimeSalary);
+            ucPayslips1.txtOtherSalary.Text = Convert.ToString(Payslips.GetInstance().otherSalary);
+            ucPayslips1.txtBonus.Text = Convert.ToString(Payslips.GetInstance().bonus);
+            ucPayslips1.txtDeductionSalary.Text = Convert.ToString(Payslips.GetInstance().deductionSalary);
+            ucPayslips1.txtAllowance.Text = Convert.ToString(Payslips.GetInstance().allowance);
+            ucPayslips1.txtAnualLeaveSalary.Text = Convert.ToString(Payslips.GetInstance().annualLeaveSalary);
+            ucPayslips1.txtTax.Text = Convert.ToString(Payslips.GetInstance().tax);
+
+            Users tempUser = new Users();
+            tempUser = await _usersRepository.GetByIdAsync(Payslips.GetInstance().userId);
+            ucPayslips1.cbbUser.Items.Add(tempUser.id + "." + tempUser.fullName);
+        }
+
         private void UpdateSelectedRole()
         {
             ucRoles1.txtRoleName.Text = Roles.GetInstance().roleName;
             ucRoles1.txtNote.Text = Roles.GetInstance().note;
             ucRoles1.txtDescription.Text = Roles.GetInstance().description;
+            ucRoles1.txtSalaryRate.Text = Convert.ToString(Roles.GetInstance().salaryRate);
         }
 
-        private void UpdateSelectedAttendance()
+        private async Task UpdateSelectedAttendanceAsync()
         {
             ucAttendances1.txtDateCheck.Text = Convert.ToString(Attendances.GetInstance().dateCheck);
             ucAttendances1.txtNote.Text = Convert.ToString(Attendances.GetInstance().note);
@@ -502,8 +552,14 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             ucAttendances1.txtWorkingHours.Text = Convert.ToString(Attendances.GetInstance().workingHours);
             ucAttendances1.txtCheckInAt.Text = Convert.ToString(Attendances.GetInstance().checkinAt);
             ucAttendances1.txtCheckOutAt.Text = Convert.ToString(Attendances.GetInstance().dateCheck);
-            ucAttendances1.txtShiftId.Text = Convert.ToString(Attendances.GetInstance().shiftId);
-            ucAttendances1.txtUserId.Text = Convert.ToString(Attendances.GetInstance().userId);
+
+            Shifts tempShift = new Shifts();
+            tempShift = await _shiftsRepository.GetByIdAsync(Attendances.GetInstance().shiftId);
+            ucAttendances1.cbbShift.Items.Add(tempShift.id+"."+tempShift.shiftName);
+
+            Users tempUser = new Users();
+            tempUser = await _usersRepository.GetByIdAsync(Attendances.GetInstance().userId);
+            ucAttendances1.cbbUser.Items.Add(tempUser.id+"."+ tempUser.fullName);
         }
 
         private void UpdateSelectedShift()
@@ -513,7 +569,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             ucShifts1.txtTimeEnd.Text = Shifts.GetInstance().timeEnd.ToString();
         }
 
-        private void UpdateSelectedUser()
+        private async Task UpdateSelectedUserAsync()
         {
             ucUsers1.txtFullName.Text = Users.GetInstance().fullName;
             ucUsers1.txtGrossSalary.Text = Users.GetInstance().grossSalary.ToString();
@@ -522,14 +578,22 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             ucUsers1.txtHomeAddress.Text = Users.GetInstance().homeAddress;
             ucUsers1.txtNote.Text = Users.GetInstance().note;
             ucUsers1.txtPIN.Text = Users.GetInstance().pin;
-            ucUsers1.txtDepartmentId.Text = Users.GetInstance().departmentId.ToString();
-            ucUsers1.txtRoleId.Text = Users.GetInstance().roleId.ToString();
+
+            Departments tempDepartment = new Departments();
+            tempDepartment = await _departmentRepository.GetByIdAsync(Users.GetInstance().departmentId);
+            ucUsers1.cbbDepartment.Items.Add(tempDepartment.id + "." + tempDepartment.departmentName);
+
+            Roles tempRole = new Roles();
+            tempRole = await _rolesRepository.GetByIdAsync(Users.GetInstance().roleId);
+            ucUsers1.cbbRole.Items.Add(tempRole.id + "." + tempRole.roleName);
         }
 
-        private void UpdateSelectedDepartment()
+        private async Task UpdateSelectedDepartmentAsync()
         {
             ucDepartments1.txtDepartmentName.Text = Departments.GetInstance().departmentName;
-            ucDepartments1.txtShiftId.Text = Departments.GetInstance().shiftId.ToString();
+            Shifts tempShift = new Shifts();
+            tempShift = await _shiftsRepository.GetByIdAsync(Departments.GetInstance().shiftId);
+            ucAttendances1.cbbShift.Items.Add(tempShift.id + "." + tempShift.shiftName);
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -581,12 +645,98 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
         private void btnDisable_Click(object sender, EventArgs e)
         {
-
+            Object dummyObject = new object();
+            switch (flag)
+            {
+                case 1:
+                    {
+                        // Department
+                        _departmentRepository.Disable(selectedId, dummyObject);
+                    }
+                    break;
+                case 2:
+                    {
+                        // Role
+                        _rolesRepository.Disable(selectedId, dummyObject);
+                    }
+                    break;
+                case 3:
+                    {
+                        // User
+                        _usersRepository.Disable(selectedId, dummyObject);
+                    }
+                    break;
+                case 4:
+                    {
+                        // Shift
+                        _shiftsRepository.Disable(selectedId, dummyObject);
+                    }
+                    break;
+                case 5:
+                    {
+                        // Attendance
+                        _attendancesRepository.Disable(selectedId, dummyObject);
+                    }
+                    break;
+                case 6:
+                    {
+                        // Payslip
+                        _payslipsRepository.Disable(selectedId, dummyObject);
+                    }
+                    break;
+                default:
+                    break;
+            }
+            MessageBox.Show("Delete successfully!");
+            LoadData();
         }
 
         private void btnEnable_Click(object sender, EventArgs e)
         {
-
+            Object dummyObject = new object();
+            switch (flag)
+            {
+                case 1:
+                    {
+                        // Department
+                        _departmentRepository.Enable(selectedId, dummyObject);
+                    }
+                    break;
+                case 2:
+                    {
+                        // Role
+                        _rolesRepository.Enable(selectedId, dummyObject);
+                    }
+                    break;
+                case 3:
+                    {
+                        // User
+                        _usersRepository.Enable(selectedId, dummyObject);
+                    }
+                    break;
+                case 4:
+                    {
+                        // Shift
+                        _shiftsRepository.Enable(selectedId, dummyObject);
+                    }
+                    break;
+                case 5:
+                    {
+                        // Attendance
+                        _attendancesRepository.Enable(selectedId, dummyObject);
+                    }
+                    break;
+                case 6:
+                    {
+                        // Payslip
+                        _payslipsRepository.Enable(selectedId, dummyObject);
+                    }
+                    break;
+                default:
+                    break;
+            }
+            MessageBox.Show("Delete successfully!");
+            LoadData();
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
@@ -604,15 +754,37 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         private void btnCheckSalary_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmCheckAttendanceHistory frmCheckAttendanceHistory = new frmCheckAttendanceHistory();
+            frmAttendanceAndSalary frmCheckAttendanceHistory = new frmAttendanceAndSalary();
             frmCheckAttendanceHistory.Show();
         }
 
         private void btnTableOfAttendance_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmTableOfAttendance frmTableOfAttendance = new frmTableOfAttendance();
+            frmMonthlyAttendanceAndSalary frmTableOfAttendance = new frmMonthlyAttendanceAndSalary();
             frmTableOfAttendance.Show();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchValue = txtSearch.Text;
+
+            ucView1.dgvManagement.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            try
+            {
+                foreach (DataGridViewRow row in ucView1.dgvManagement.Rows)
+                {
+                    if (row.Cells[2].Value.ToString().Equals(searchValue))
+                    {
+                        row.Selected = true;
+                        break;
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
     }
 }
