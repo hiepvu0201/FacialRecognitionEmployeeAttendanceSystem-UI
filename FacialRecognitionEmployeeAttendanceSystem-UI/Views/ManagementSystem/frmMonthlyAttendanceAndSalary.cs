@@ -246,6 +246,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
                 DataGridViewRow row = (DataGridViewRow)dgvMonthlySalary.Rows[0].Clone();
                 row.Cells[0].Value = item.fullName;
 
+                double totalSalary = 0;
                 foreach (Payslips payslipItem in listPayslips)
                 {
                     if (payslipItem.users.fullName == item.fullName)
@@ -253,8 +254,10 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
                         int index = Convert.ToInt32(payslipItem.payDate.Day);
 
                         row.Cells[index].Value = payslipItem.publicSalary.ToString();
+                        totalSalary += payslipItem.publicSalary;
                     }
                 }
+                row.Cells[dgvMonthlySalary.ColumnCount - 1].Value = totalSalary.ToString();
                 dgvMonthlySalary.Rows.Add(row);
             }
         }
