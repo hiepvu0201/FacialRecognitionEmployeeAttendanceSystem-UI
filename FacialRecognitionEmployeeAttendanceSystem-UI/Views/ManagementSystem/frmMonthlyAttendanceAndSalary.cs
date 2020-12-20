@@ -29,16 +29,16 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
-            frmAttendanceSystem frmAttendanceSystem = new frmAttendanceSystem();
-            frmAttendanceSystem.Show();
+            frmManagementSystem frm = new frmManagementSystem();
+            frm.Show();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            LoadDataAsync();
+            LoadDataAttendanceAsync();
         }
 
-        private async Task LoadDataAsync()
+        private async Task LoadDataAttendanceAsync()
         {
             dgvTableOfAttendance.ColumnCount = DateTime.DaysInMonth(dtpAttendanceDate.Value.Year, dtpAttendanceDate.Value.Month) + 1;
             dgvTableOfAttendance.Columns[0].Name = $"User Name";
@@ -213,14 +213,23 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             }
         }
 
-        private async Task btnSearchSalary_ClickAsync(object sender, EventArgs e)
+        
+
+        private void btnSearchSalary_Click(object sender, EventArgs e)
         {
-            dgvMonthlySalary.ColumnCount = DateTime.DaysInMonth(dtpMonthlySalary.Value.Year, dtpMonthlySalary.Value.Month) + 1;
-            dgvMonthlySalary.Columns[0].Name = $"User Name";
-            for (int i = 1; i < dgvMonthlySalary.ColumnCount; i++)
+            LoadDataSalaryAsync();
+        }
+
+        private async Task LoadDataSalaryAsync()
+        {
+            //Last +1 for total salary
+            dgvMonthlySalary.ColumnCount = DateTime.DaysInMonth(dtpMonthlySalary.Value.Year, dtpMonthlySalary.Value.Month) + 1 + 1;
+            dgvMonthlySalary.Columns[0].Name = "User Name";
+            for (int i = 1; i < dgvMonthlySalary.ColumnCount - 1; i++)
             {
                 dgvMonthlySalary.Columns[i].Name = $"Day {i}";
             }
+            dgvMonthlySalary.Columns[dgvMonthlySalary.ColumnCount-1].Name = "Total";
             List<Users> listUsers = await _usersRepository.GetList();
             List<Payslips> listPayslips = await _payslipsRepository.GetList();
             foreach (Payslips item in listPayslips)
@@ -242,7 +251,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
                     if (payslipItem.users.fullName == item.fullName)
                     {
                         int index = Convert.ToInt32(payslipItem.payDate.Day);
-                        
+
                         row.Cells[index].Value = payslipItem.publicSalary.ToString();
                     }
                 }

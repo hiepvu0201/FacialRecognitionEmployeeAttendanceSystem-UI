@@ -154,6 +154,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.btnSearchSalary.TabIndex = 1;
             this.btnSearchSalary.Text = "Search";
             this.btnSearchSalary.UseVisualStyleBackColor = true;
+            this.btnSearchSalary.Click += new System.EventHandler(this.btnSearchSalary_Click);
             // 
             // tableLayoutPanel3
             // 
