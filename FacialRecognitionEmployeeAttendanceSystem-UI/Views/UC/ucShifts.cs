@@ -16,5 +16,15 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
         {
             InitializeComponent();
         }
+
+        private void txtTimeStart_Click(object sender, EventArgs e)
+        {
+            txtTimeStart.Text = "";
+        }
+
+        private void txtTimeEnd_Click(object sender, EventArgs e)
+        {
+            txtTimeEnd.Text = "";
+        }
     }
 }

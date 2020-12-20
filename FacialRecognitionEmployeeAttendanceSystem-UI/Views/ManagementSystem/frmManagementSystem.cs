@@ -314,6 +314,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 default:
                     break;
             }
+            LoadData();
         }
 
         private void SavePayslipInfo()
