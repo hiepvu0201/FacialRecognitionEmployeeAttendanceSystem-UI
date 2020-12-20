@@ -51,13 +51,12 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         UsersRepository _userRepository = new UsersRepository();
         AttendancesRepository _attendanceRepository = new AttendancesRepository();
         PayslipsRepository _payslipsRepository = new PayslipsRepository();
+        ShiftsRepository _shiftsRepository = new ShiftsRepository();
+ 
 
         //Flag
         int count = 0;
         bool isPinMode = false;
-
-        //Current salary
-        public static double todaySalary = 0;
         #endregion
 
         #region CameraCaptureImage
@@ -105,11 +104,12 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                     if (userResult != null)
                     {
                         Attendances attendance = await GetAttendanceForRequestAsync(userResult);
+                        Shifts shifts = await _shiftsRepository.GetByIdAsync(attendance.shiftId);
 
                         if (attendance != null)
                         {
                             double workingTime = CalculateWorkingTime(attendance);
-                            if (workingTime == 0)
+                            if (workingTime <= 0)
                             {
                                 lblInfo.Text = $"Check in success! Welcome {userResult.fullName}!".ToUpper();
                             }
@@ -119,8 +119,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                                 JObject json = JObject.Parse(File.ReadAllText(Config.ConfigFile));
                                 ConfigSalary configSalary = JsonConvert.DeserializeObject<ConfigSalary>(json.ToString());
 
-                                todaySalary = CalculateTodaySalary(workingTime, configSalary);
-                                _payslipsRepository.Add(CalcualteTodayPayslips(workingTime, new DateTime(DateTime.Now.Ticks), configSalary, todaySalary, userResult.id));
+                                _payslipsRepository.Add(CalcualteTodayPayslips(attendance, shifts, attendance.users.roles.salaryRate, new DateTime(DateTime.Now.Ticks), configSalary, userResult.id));
                             }
                         }
                         lblInfo.Text = faceName;
@@ -170,12 +169,13 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 if (userResult != null)
                 {
                     Attendances attendance = await GetAttendanceForRequestAsync(userResult);
+                    Shifts shifts = await _shiftsRepository.GetByIdAsync(attendance.shiftId);
 
                     if (attendance != null)
                     {
                         double workingTime = CalculateWorkingTime(attendance);
                         // Time <= 0 when check-in meanwhile > 0 when checkout
-                        if (workingTime == 0)
+                        if (workingTime <= 0)
                         {
                             MessageBox.Show($"Check in success! Welcome {userResult.fullName}!");
                         }
@@ -186,8 +186,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                             JObject json = JObject.Parse(File.ReadAllText(Config.ConfigFile));
                             ConfigSalary configSalary = JsonConvert.DeserializeObject<ConfigSalary>(json.ToString());
 
-                            todaySalary = CalculateTodaySalary(workingTime, configSalary);
-                            _payslipsRepository.Add(CalcualteTodayPayslips(workingTime, new DateTime(DateTime.Now.Ticks), configSalary, todaySalary, userResult.id));
+                            _payslipsRepository.Add(CalcualteTodayPayslips(attendance, shifts, attendance.users.roles.salaryRate, new DateTime(DateTime.Now.Ticks), configSalary, userResult.id));
 
                         }
                     }
@@ -197,30 +196,22 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             isPinMode = false;
         }
 
-        private Payslips CalcualteTodayPayslips(double workingTime, DateTime today, ConfigSalary configSalary, double todaySalary, long userId)
+        private Payslips CalcualteTodayPayslips(Attendances attendances, Shifts shifts, double salaryRate, DateTime today, ConfigSalary configSalary, long userId)
         {
             Payslips payslips = new Payslips();
             payslips.payDate = today;
-            payslips.publicSalary = todaySalary;
+            payslips.workingSalary = configSalary.salaryPerHour * CalculateWorkingTime(attendances)*salaryRate;
+            payslips.publicSalary = payslips.workingSalary - payslips.deductionSalary + configSalary.allowance;
             payslips.otherSalary = 0;
-            payslips.tax = configSalary.taxRate / 100 * (configSalary.salaryPerHour * workingTime);
+            payslips.tax = configSalary.taxRate / 100 * (configSalary.salaryPerHour * CalculateWorkingTime(attendances));
             payslips.overtimeSalary = 0;
-            payslips.deductionSalary = 0;
+            payslips.deductionSalary = payslips.tax + configSalary.lateFeePerMinute*((attendances.checkinAt- shifts.timeStart).TotalMinutes + (attendances.checkoutAt - shifts.timeEnd).TotalMinutes);
             payslips.annualLeaveSalary = 0;
             payslips.bonus = configSalary.bonusPerDay;
             payslips.userId = userId;
-            payslips.workingSalary = configSalary.salaryPerHour * workingTime;
             payslips.allowance = configSalary.allowance;
 
             return payslips;
-        }
-
-        private double CalculateTodaySalary(double workingTime, ConfigSalary configSalary)
-        {
-            double todaySalary = workingTime * configSalary.salaryPerHour + configSalary.bonusPerDay + configSalary.overTimeSalaryRate*0 + configSalary.allowance;
-            todaySalary = todaySalary - todaySalary * configSalary.taxRate / 100;
-
-            return todaySalary ;
         }
 
         private void btnPinMode_Click(object sender, EventArgs e)
@@ -409,7 +400,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
         private double CalculateWorkingTime(Attendances attendance)
         {
-            if (attendance == null || attendance.checkinAt == DateTime.MinValue)
+            if (attendance == null)
             {
                 return -1;
             }

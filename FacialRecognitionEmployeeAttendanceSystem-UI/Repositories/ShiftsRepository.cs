@@ -35,7 +35,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             _client.PostAsync($"/api/v1/shifts/add", byteContent);
         }
-        public void Update(int id, Shifts shifts)
+        public void Update(long id, Shifts shifts)
         {
             var shift = JsonConvert.SerializeObject(shifts);
             var buffer = Encoding.UTF8.GetBytes(shift);
@@ -43,7 +43,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             _client.PutAsync($"/api/v1/shifts/update/{id}", byteContent);
         }
-        public async Task<Shifts> GetByIdAsync(int id)
+        public async Task<Shifts> GetByIdAsync(long id)
         {
             _response = await _client.GetAsync($"/api/v1/shifts/{id}");
 
@@ -51,7 +51,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Repository
             Shifts shift = JsonConvert.DeserializeObject<Shifts>(json);
             return shift;
         }
-        public void Delete(int id)
+        public void Delete(long id)
         {
             _client.DeleteAsync($"/api/v1/shifts/delete/{id}");
         }

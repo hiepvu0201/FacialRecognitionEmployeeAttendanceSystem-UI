@@ -50,13 +50,17 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.panel6 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.nudTaxRate = new System.Windows.Forms.NumericUpDown();
-            this.btnSave = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.nudLateFee = new System.Windows.Forms.NumericUpDown();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSalaryPerHour)).BeginInit();
@@ -69,6 +73,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTaxRate)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLateFee)).BeginInit();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -88,11 +94,14 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.tableLayoutPanel1.Controls.Add(this.panel6, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.btnSave, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.btnSave, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label14, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.panel7, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowCount = 9;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -109,9 +118,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(103, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Salary Per Hour";
+            this.label1.Text = "Salary Rate Per Day";
             // 
             // label2
             // 
@@ -162,7 +171,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(126, 2);
+            this.label6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label6.Location = new System.Drawing.Point(120, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(13, 13);
             this.label6.TabIndex = 6;
@@ -189,7 +199,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(126, 7);
+            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label7.Location = new System.Drawing.Point(120, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(13, 13);
             this.label7.TabIndex = 6;
@@ -216,7 +227,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(126, 7);
+            this.label8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label8.Location = new System.Drawing.Point(120, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(15, 13);
             this.label8.TabIndex = 6;
@@ -243,7 +255,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(126, 7);
+            this.label9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label9.Location = new System.Drawing.Point(120, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(13, 13);
             this.label9.TabIndex = 6;
@@ -270,7 +283,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(126, 7);
+            this.label10.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label10.Location = new System.Drawing.Point(120, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(15, 13);
             this.label10.TabIndex = 6;
@@ -283,17 +297,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.nudTaxRate.Name = "nudTaxRate";
             this.nudTaxRate.Size = new System.Drawing.Size(120, 20);
             this.nudTaxRate.TabIndex = 9;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSave.Location = new System.Drawing.Point(487, 183);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 24);
-            this.btnSave.TabIndex = 10;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label11
             // 
@@ -351,6 +354,54 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.label12.TabIndex = 0;
             this.label12.Text = "From";
             // 
+            // btnSave
+            // 
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSave.Location = new System.Drawing.Point(487, 213);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 24);
+            this.btnSave.TabIndex = 10;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(3, 180);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(98, 13);
+            this.label14.TabIndex = 19;
+            this.label14.Text = "Late fee per minute";
+            // 
+            // nudLateFee
+            // 
+            this.nudLateFee.Dock = System.Windows.Forms.DockStyle.Left;
+            this.nudLateFee.Location = new System.Drawing.Point(0, 0);
+            this.nudLateFee.Name = "nudLateFee";
+            this.nudLateFee.Size = new System.Drawing.Size(120, 20);
+            this.nudLateFee.TabIndex = 20;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.label15);
+            this.panel7.Controls.Add(this.nudLateFee);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(123, 183);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(439, 24);
+            this.panel7.TabIndex = 21;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label15.Location = new System.Drawing.Point(120, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(13, 13);
+            this.label15.TabIndex = 21;
+            this.label15.Text = "$";
+            // 
             // frmModifySalaryRules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,6 +429,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             ((System.ComponentModel.ISupportInitialize)(this.nudTaxRate)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLateFee)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -412,5 +466,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DateTimePicker dtpFromDate;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.NumericUpDown nudLateFee;
     }
 }

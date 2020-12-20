@@ -108,6 +108,12 @@
     <Compile Include="Views\ManagementSystem\frmCheckAttendanceHistory.Designer.cs">
       <DependentUpon>frmCheckAttendanceHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ManagementSystem\frmTableOfAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ManagementSystem\frmTableOfAttendance.Designer.cs">
+      <DependentUpon>frmTableOfAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ManagementSystem\frmTraining.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ManagementSystem\frmCheckAttendanceHistory.resx">
       <DependentUpon>frmCheckAttendanceHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ManagementSystem\frmTableOfAttendance.resx">
+      <DependentUpon>frmTableOfAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ManagementSystem\frmTraining.resx">
       <DependentUpon>frmTraining.cs</DependentUpon>

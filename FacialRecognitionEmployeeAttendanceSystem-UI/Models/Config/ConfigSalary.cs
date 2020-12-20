@@ -13,5 +13,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
         public double overTimeSalaryRate { get; set; } = 1;
         public double allowance { get; set; } = 0;
         public double taxRate { get; set; } = 1;
+        public DateTime dateOffFrom { get; set; }
+        public DateTime dateOffTo { get; set; }
+        public double lateFeePerMinute { get; set; }
     }
 }

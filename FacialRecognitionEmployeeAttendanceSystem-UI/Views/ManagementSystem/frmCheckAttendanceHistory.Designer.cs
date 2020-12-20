@@ -38,19 +38,12 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.dgvCheckAttendanceHistory = new System.Windows.Forms.DataGridView();
             this.dgvPayslips = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnCalculateTodaySalary = new System.Windows.Forms.Button();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnOptionalCalculate = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCheckAttendanceHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPayslips)).BeginInit();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -70,7 +63,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.dgvCheckAttendanceHistory, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.dgvPayslips, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
@@ -185,83 +178,16 @@
             this.dgvPayslips.Size = new System.Drawing.Size(1003, 306);
             this.dgvPayslips.TabIndex = 3;
             // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 709F));
-            this.tableLayoutPanel4.Controls.Add(this.btnCalculateTodaySalary, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel3, 1, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 356);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1003, 35);
-            this.tableLayoutPanel4.TabIndex = 4;
-            // 
-            // btnCalculateTodaySalary
-            // 
-            this.btnCalculateTodaySalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCalculateTodaySalary.Location = new System.Drawing.Point(3, 3);
-            this.btnCalculateTodaySalary.Name = "btnCalculateTodaySalary";
-            this.btnCalculateTodaySalary.Size = new System.Drawing.Size(144, 29);
-            this.btnCalculateTodaySalary.TabIndex = 5;
-            this.btnCalculateTodaySalary.Text = "Calculate Today Salary";
-            this.btnCalculateTodaySalary.UseVisualStyleBackColor = true;
-            this.btnCalculateTodaySalary.Click += new System.EventHandler(this.btnCalculateTodaySalary_Click);
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnOptionalCalculate, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.comboBox1, 1, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(153, 3);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(344, 29);
-            this.tableLayoutPanel3.TabIndex = 6;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Location = new System.Drawing.Point(3, 353);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 29);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Optional Salary Calculate";
+            this.label2.Size = new System.Drawing.Size(1003, 41);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Payslips Section";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnOptionalCalculate
-            // 
-            this.btnOptionalCalculate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOptionalCalculate.Location = new System.Drawing.Point(247, 3);
-            this.btnOptionalCalculate.Name = "btnOptionalCalculate";
-            this.btnOptionalCalculate.Size = new System.Drawing.Size(94, 23);
-            this.btnOptionalCalculate.TabIndex = 1;
-            this.btnOptionalCalculate.Text = "Confirm";
-            this.btnOptionalCalculate.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "This Month",
-            "This Year"});
-            this.comboBox1.Location = new System.Drawing.Point(147, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(94, 21);
-            this.comboBox1.TabIndex = 2;
-            this.comboBox1.Text = "Click to choose";
             // 
             // frmCheckAttendanceHistory
             // 
@@ -276,13 +202,11 @@
             this.Load += new System.EventHandler(this.frmCheckAttendanceHistory_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCheckAttendanceHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPayslips)).EndInit();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -298,12 +222,7 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnExportExcel;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnOptionalCalculate;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dgvPayslips;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Button btnCalculateTodaySalary;
+        private System.Windows.Forms.Label label2;
     }
 }

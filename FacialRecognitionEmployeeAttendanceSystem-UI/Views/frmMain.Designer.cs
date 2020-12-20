@@ -46,9 +46,10 @@
             this.btnManagementSystem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnManagementSystem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnManagementSystem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnManagementSystem.Location = new System.Drawing.Point(517, 3);
+            this.btnManagementSystem.Location = new System.Drawing.Point(387, 2);
+            this.btnManagementSystem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnManagementSystem.Name = "btnManagementSystem";
-            this.btnManagementSystem.Size = new System.Drawing.Size(508, 528);
+            this.btnManagementSystem.Size = new System.Drawing.Size(382, 429);
             this.btnManagementSystem.TabIndex = 0;
             this.btnManagementSystem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnManagementSystem.UseVisualStyleBackColor = false;
@@ -66,21 +67,23 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 584);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(771, 474);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnAttendanceSystem);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(508, 528);
+            this.panel1.Size = new System.Drawing.Size(381, 429);
             this.panel1.TabIndex = 1;
             // 
             // btnAttendanceSystem
@@ -90,8 +93,9 @@
             this.btnAttendanceSystem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAttendanceSystem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAttendanceSystem.Location = new System.Drawing.Point(0, 0);
+            this.btnAttendanceSystem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAttendanceSystem.Name = "btnAttendanceSystem";
-            this.btnAttendanceSystem.Size = new System.Drawing.Size(508, 528);
+            this.btnAttendanceSystem.Size = new System.Drawing.Size(381, 429);
             this.btnAttendanceSystem.TabIndex = 1;
             this.btnAttendanceSystem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAttendanceSystem.UseVisualStyleBackColor = true;
@@ -102,9 +106,10 @@
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(3, 534);
+            this.label1.Location = new System.Drawing.Point(2, 433);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(508, 50);
+            this.label1.Size = new System.Drawing.Size(381, 41);
             this.label1.TabIndex = 2;
             this.label1.Text = "Click the image above to switch to Attendance Side";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -114,22 +119,24 @@
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(517, 534);
+            this.label2.Location = new System.Drawing.Point(387, 433);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(508, 50);
+            this.label2.Size = new System.Drawing.Size(382, 41);
             this.label2.TabIndex = 3;
             this.label2.Text = "Click the image above to switch to Management Side";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 584);
+            this.ClientSize = new System.Drawing.Size(771, 474);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Facial Recognition Employee Attendance System";
+            this.Text = "Facial Recognition Employee Attendance System Version 1.0.0";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);

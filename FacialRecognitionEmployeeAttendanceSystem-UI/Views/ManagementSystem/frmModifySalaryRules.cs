@@ -32,6 +32,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             nudTaxRate.Value = Convert.ToDecimal(configSalary.taxRate);
             nudAllowance.Value = Convert.ToDecimal(configSalary.allowance);
             nudBonusPerDay.Value = Convert.ToDecimal(configSalary.bonusPerDay);
+            nudLateFee.Value = Convert.ToDecimal(configSalary.lateFeePerMinute);
+            dtpFromDate.Value = configSalary.dateOffFrom;
+            dtpToDate.Value = configSalary.dateOffTo;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -42,6 +45,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             configSalary.taxRate = Convert.ToDouble(nudTaxRate.Value);
             configSalary.allowance = Convert.ToDouble(nudAllowance.Value);
             configSalary.bonusPerDay = Convert.ToDouble(nudBonusPerDay.Value);
+            configSalary.lateFeePerMinute = Convert.ToDouble(nudLateFee.Value);
+            configSalary.dateOffFrom = dtpFromDate.Value;
+            configSalary.dateOffTo = dtpToDate.Value;
 
             using (StreamWriter file = File.CreateText(Config.ConfigFile))
             {

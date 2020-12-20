@@ -21,7 +21,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
         public bool status { get; set; } = true;
 
         [System.ComponentModel.DisplayName("Note")]
-        public string note { get; set; }
+        public string note { get; set; } = "";
 
         [System.ComponentModel.DisplayName("Total Woking Hours")]
         public double workingHours { get; set; }
@@ -36,6 +36,11 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
 
         [System.ComponentModel.DisplayName("Belong To User Who Has Id")]
         public long userId { get; set; }
+
+        public Shifts shifts { get; set; }
+
+        [System.ComponentModel.DisplayName("Belong To Shift Who Has Id")]
+        public long shiftId { get; set; }
 
         public static Attendances GetInstance()
         {

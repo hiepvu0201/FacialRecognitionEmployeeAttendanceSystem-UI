@@ -74,6 +74,10 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
                             Attendances.GetInstance().status = Convert.ToBoolean(data.Cells[2].Value);
                             Attendances.GetInstance().note = data.Cells[3].Value.ToString();
                             Attendances.GetInstance().workingHours = Convert.ToInt32(data.Cells[4].Value);
+                            Attendances.GetInstance().checkinAt = Convert.ToDateTime(data.Cells[4].Value);
+                            Attendances.GetInstance().checkoutAt = Convert.ToDateTime(data.Cells[4].Value);
+                            Attendances.GetInstance().userId = Convert.ToInt32(data.Cells[4].Value);
+                            Attendances.GetInstance().shiftId = Convert.ToInt32(data.Cells[4].Value);
                         }
                         break;
                     case 6:

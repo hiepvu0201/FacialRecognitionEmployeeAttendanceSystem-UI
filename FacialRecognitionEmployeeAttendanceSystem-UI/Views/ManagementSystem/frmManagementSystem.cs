@@ -102,6 +102,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                     ucView1.dgvManagement.DataSource = listAttendances;
                     ucView1.dgvManagement.AutoResizeColumns();
                     ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    ucView1.dgvManagement.Columns["users"].Visible = false;
+                    ucView1.dgvManagement.Columns["shifts"].Visible = false;
+
                     break;
                 case 6:
                     ucView1.dgvManagement.DataSource = listPayslips;
@@ -493,10 +496,14 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
         private void UpdateSelectedAttendance()
         {
-            ucAttendances1.txtDateCheck.Text = Attendances.GetInstance().dateCheck.ToString();
-            ucAttendances1.txtNote.Text = Attendances.GetInstance().note;
-            ucAttendances1.txtStatus.Text = Attendances.GetInstance().status.ToString();
-            ucAttendances1.txtWorkingHours.Text = Attendances.GetInstance().workingHours.ToString();
+            ucAttendances1.txtDateCheck.Text = Convert.ToString(Attendances.GetInstance().dateCheck);
+            ucAttendances1.txtNote.Text = Convert.ToString(Attendances.GetInstance().note);
+            ucAttendances1.txtStatus.Text = Convert.ToString(Attendances.GetInstance().status);
+            ucAttendances1.txtWorkingHours.Text = Convert.ToString(Attendances.GetInstance().workingHours);
+            ucAttendances1.txtCheckInAt.Text = Convert.ToString(Attendances.GetInstance().checkinAt);
+            ucAttendances1.txtCheckOutAt.Text = Convert.ToString(Attendances.GetInstance().dateCheck);
+            ucAttendances1.txtShiftId.Text = Convert.ToString(Attendances.GetInstance().shiftId);
+            ucAttendances1.txtUserId.Text = Convert.ToString(Attendances.GetInstance().userId);
         }
 
         private void UpdateSelectedShift()
@@ -599,6 +606,13 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             this.Hide();
             frmCheckAttendanceHistory frmCheckAttendanceHistory = new frmCheckAttendanceHistory();
             frmCheckAttendanceHistory.Show();
+        }
+
+        private void btnTableOfAttendance_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmTableOfAttendance frmTableOfAttendance = new frmTableOfAttendance();
+            frmTableOfAttendance.Show();
         }
     }
 }

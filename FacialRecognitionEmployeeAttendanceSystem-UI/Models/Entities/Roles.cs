@@ -33,5 +33,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
 
         [System.ComponentModel.DisplayName("Is Disabled")]
         public bool isDisabled { get; set; }
+
+        [System.ComponentModel.DisplayName("Salary Rate")]
+        public double salaryRate { get; set; }
     }
 }
