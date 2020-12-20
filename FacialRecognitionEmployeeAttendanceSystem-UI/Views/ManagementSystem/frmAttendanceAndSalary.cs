@@ -91,36 +91,146 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
         #region Method
         private async void LoadAttendace()
         {
-            List<Attendances> listAttendances = await _attendancesRepository.GetByDateTimeAsync(dtpAttendanceHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat));
-
-            if (listAttendances==null)
+            try
             {
-                return;
-            }
+                List<Attendances> listAttendances = await _attendancesRepository.GetByDateTimeAsync(dtpAttendanceHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat));
 
-            dgvCheckAttendanceHistory.DataSource = listAttendances;
-            dgvCheckAttendanceHistory.Columns["users"].Visible = false;
-            dgvCheckAttendanceHistory.AutoResizeColumns();
-            dgvCheckAttendanceHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                if (listAttendances == null)
+                {
+                    return;
+                }
+
+                dgvCheckAttendanceHistory.DataSource = listAttendances;
+                dgvCheckAttendanceHistory.Columns["users"].Visible = false;
+                dgvCheckAttendanceHistory.AutoResizeColumns();
+                dgvCheckAttendanceHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception)
+            {
+
+            }
+            
         }
         private async void LoadPayslips()
         {
-            List<Payslips> listPayslips = await _payslipsRepository.GetListByDate(dtpPayslipsHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat));
-
-            if (listPayslips==null)
+            try
             {
-                return;
-            }
+                List<Payslips> listPayslips = await _payslipsRepository.GetListByDate(dtpPayslipsHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat));
 
-            dgvPayslips.DataSource = listPayslips;
-            dgvPayslips.AutoResizeColumns();
-            dgvPayslips.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                if (listPayslips == null)
+                {
+                    return;
+                }
+
+                dgvPayslips.DataSource = listPayslips;
+                dgvPayslips.AutoResizeColumns();
+                dgvPayslips.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception)
+            {
+
+            }
         }
         #endregion
 
         private void btnSearchDatePayslip_Click(object sender, EventArgs e)
         {
             LoadPayslips();
+        }
+
+        private void ExportToExcelPayslip_Click(object sender, EventArgs e)
+        {
+            if (dgvPayslips.Rows.Count > 0)
+            {
+                try
+                {
+                    Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+                    Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+                    Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+                    worksheet = workbook.Sheets["Sheet1"];
+                    worksheet = workbook.ActiveSheet;
+                    worksheet.Name = $"Attendance History {dtpPayslipsHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat)}";
+
+                    for (int i = 1; i < dgvPayslips.Columns.Count + 1; i++)
+                    {
+                        worksheet.Cells[1, i] = dgvPayslips.Columns[i - 1].HeaderText;
+                    }
+
+                    for (int i = 0; i < dgvPayslips.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dgvPayslips.Columns.Count; j++)
+                        {
+                            worksheet.Cells[i + 2, j + 1] = dgvPayslips.Rows[i].Cells[j].Value.ToString();
+                        }
+                    }
+
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.FileName = $"AttendanceHistory{dtpPayslipsHistory.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat)}";
+                    saveFileDialog.DefaultExt = ".xlsx";
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        workbook.SaveAs(saveFileDialog.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing);
+                    }
+                    app.Quit();
+                    MessageBox.Show("Export successfully!");
+                }
+                catch
+                {
+                    MessageBox.Show("Export fail! Please check and try later!");
+                }
+            }
+        }
+
+        private void btnSearchSpecificAttendance_Click(object sender, EventArgs e)
+        {
+            string searchValue = txtSearch.Text;
+
+            dgvCheckAttendanceHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            try
+            {
+                foreach (DataGridViewRow row in dgvCheckAttendanceHistory.Rows)
+                {
+                    if (row.Cells[8].Value == null)
+                    {
+                        return;
+                    }
+                    if (row.Cells[8].Value.ToString().Equals(searchValue))
+                    {
+                        row.Selected = true;
+                        break;
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void btnSearchSpecificSalary_Click(object sender, EventArgs e)
+        {
+            string searchValue = txtSearch.Text;
+
+            dgvCheckAttendanceHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            try
+            {
+                foreach (DataGridViewRow row in dgvCheckAttendanceHistory.Rows)
+                {
+                    if (row.Cells[11].Value == null)
+                    {
+                        return;
+                    }
+                    if (row.Cells[11].Value.ToString().Equals(searchValue))
+                    {
+                        row.Selected = true;
+                        break;
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
     }
 }

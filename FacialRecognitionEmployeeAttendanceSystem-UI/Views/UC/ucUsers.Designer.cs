@@ -143,6 +143,8 @@
             this.txtDob.Name = "txtDob";
             this.txtDob.Size = new System.Drawing.Size(310, 20);
             this.txtDob.TabIndex = 13;
+            this.txtDob.Text = "yyyy-mm-dd";
+            this.txtDob.Click += new System.EventHandler(this.txtDob_Click);
             // 
             // txtPIN
             // 

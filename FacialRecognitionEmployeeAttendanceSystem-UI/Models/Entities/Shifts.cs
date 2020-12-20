@@ -15,10 +15,10 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
         public string shiftName { get; set; }
 
         [System.ComponentModel.DisplayName("Start At")]
-        public DateTime timeStart { get; set; }
+        public string timeStart { get; set; }
 
         [System.ComponentModel.DisplayName("End At")]
-        public DateTime timeEnd { get; set; }
+        public string timeEnd { get; set; }
 
         [System.ComponentModel.DisplayName("Created At")]
         public DateTime createdAt { get; set; }

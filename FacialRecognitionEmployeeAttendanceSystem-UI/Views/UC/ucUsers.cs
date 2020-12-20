@@ -35,7 +35,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
             LoadDepartmentComboBoxAsysnc();
         }
 
-        private async Task LoadRoleComboBoxAsysnc()
+        public async Task LoadRoleComboBoxAsysnc()
         {
             List<Roles> listRole = await _rolesRepository.GetList();
             foreach (Roles item in listRole)
@@ -44,13 +44,18 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
             }
         }
 
-        private async Task LoadDepartmentComboBoxAsysnc()
+        public async Task LoadDepartmentComboBoxAsysnc()
         {
             List<Departments> listDepartment = await _departmentsRepository.GetList();
             foreach (Departments item in listDepartment)
             {
                 cbbDepartment.Items.Add(item.id + "." + item.departmentName);
             }
+        }
+
+        private void txtDob_Click(object sender, EventArgs e)
+        {
+            txtDob.Text = "";
         }
     }
 }

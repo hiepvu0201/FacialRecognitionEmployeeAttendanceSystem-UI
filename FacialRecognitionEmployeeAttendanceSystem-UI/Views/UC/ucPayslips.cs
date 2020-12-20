@@ -20,7 +20,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
             InitializeComponent();
         }
 
-        private async Task LoadUserComboboxAsync()
+        public async Task LoadUserComboboxAsync()
         {
             List<Users> listUser = await _usersRepository.GetList();
             foreach (Users item in listUser)

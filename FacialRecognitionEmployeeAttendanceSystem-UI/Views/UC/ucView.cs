@@ -63,9 +63,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
                     case 4:
                         {
                             // Shift
-                            Shifts.GetInstance().shiftName = data.Cells[1].Value.ToString();
-                            Shifts.GetInstance().timeStart = Convert.ToDateTime(data.Cells[2].Value);
-                            Shifts.GetInstance().timeEnd = Convert.ToDateTime(data.Cells[3].Value);
+                            Shifts.GetInstance().shiftName = Convert.ToString(data.Cells[1].Value);
+                            Shifts.GetInstance().timeStart = Convert.ToString(data.Cells[2].Value);
+                            Shifts.GetInstance().timeEnd = Convert.ToString(data.Cells[3].Value);
                         }
                         break;
                     case 5:

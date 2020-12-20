@@ -37,6 +37,7 @@
             this.btnExportExcel = new System.Windows.Forms.Button();
             this.btnSearchSpecificAttendance = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnBack = new System.Windows.Forms.Button();
             this.dgvCheckAttendanceHistory = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvPayslips = new System.Windows.Forms.DataGridView();
@@ -44,10 +45,9 @@
             this.dtpPayslipsHistory = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSearchDatePayslip = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.ExportToExcelPayslip = new System.Windows.Forms.Button();
+            this.btnSearchSpecificSalary = new System.Windows.Forms.Button();
             this.txtSearchPayslips = new System.Windows.Forms.TextBox();
-            this.btnBack = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -170,6 +170,7 @@
             this.btnSearchSpecificAttendance.TabIndex = 6;
             this.btnSearchSpecificAttendance.Text = "Search";
             this.btnSearchSpecificAttendance.UseVisualStyleBackColor = true;
+            this.btnSearchSpecificAttendance.Click += new System.EventHandler(this.btnSearchSpecificAttendance_Click);
             // 
             // txtSearch
             // 
@@ -179,6 +180,17 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(320, 31);
             this.txtSearch.TabIndex = 7;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnBack.Location = new System.Drawing.Point(915, 3);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(84, 31);
+            this.btnBack.TabIndex = 8;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // dgvCheckAttendanceHistory
             // 
@@ -225,8 +237,8 @@
             this.tableLayoutPanel3.Controls.Add(this.dtpPayslipsHistory, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnSearchDatePayslip, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button3, 6, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button4, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.ExportToExcelPayslip, 6, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnSearchSpecificSalary, 5, 0);
             this.tableLayoutPanel3.Controls.Add(this.txtSearchPayslips, 4, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 400);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
@@ -270,26 +282,28 @@
             this.btnSearchDatePayslip.UseVisualStyleBackColor = true;
             this.btnSearchDatePayslip.Click += new System.EventHandler(this.btnSearchDatePayslip_Click);
             // 
-            // button3
+            // ExportToExcelPayslip
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Location = new System.Drawing.Point(914, 2);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(86, 33);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Export Excel";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ExportToExcelPayslip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExportToExcelPayslip.Location = new System.Drawing.Point(914, 2);
+            this.ExportToExcelPayslip.Margin = new System.Windows.Forms.Padding(2);
+            this.ExportToExcelPayslip.Name = "ExportToExcelPayslip";
+            this.ExportToExcelPayslip.Size = new System.Drawing.Size(86, 33);
+            this.ExportToExcelPayslip.TabIndex = 3;
+            this.ExportToExcelPayslip.Text = "Export Excel";
+            this.ExportToExcelPayslip.UseVisualStyleBackColor = true;
+            this.ExportToExcelPayslip.Click += new System.EventHandler(this.ExportToExcelPayslip_Click);
             // 
-            // button4
+            // btnSearchSpecificSalary
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Location = new System.Drawing.Point(825, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(84, 31);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Search";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnSearchSpecificSalary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSearchSpecificSalary.Location = new System.Drawing.Point(825, 3);
+            this.btnSearchSpecificSalary.Name = "btnSearchSpecificSalary";
+            this.btnSearchSpecificSalary.Size = new System.Drawing.Size(84, 31);
+            this.btnSearchSpecificSalary.TabIndex = 6;
+            this.btnSearchSpecificSalary.Text = "Search";
+            this.btnSearchSpecificSalary.UseVisualStyleBackColor = true;
+            this.btnSearchSpecificSalary.Click += new System.EventHandler(this.btnSearchSpecificSalary_Click);
             // 
             // txtSearchPayslips
             // 
@@ -299,17 +313,6 @@
             this.txtSearchPayslips.Name = "txtSearchPayslips";
             this.txtSearchPayslips.Size = new System.Drawing.Size(410, 31);
             this.txtSearchPayslips.TabIndex = 7;
-            // 
-            // btnBack
-            // 
-            this.btnBack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnBack.Location = new System.Drawing.Point(915, 3);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(84, 31);
-            this.btnBack.TabIndex = 8;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // frmAttendanceAndSalary
             // 
@@ -353,8 +356,8 @@
         private System.Windows.Forms.DateTimePicker dtpPayslipsHistory;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSearchDatePayslip;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button ExportToExcelPayslip;
+        private System.Windows.Forms.Button btnSearchSpecificSalary;
         private System.Windows.Forms.TextBox txtSearchPayslips;
         private System.Windows.Forms.Button btnBack;
     }

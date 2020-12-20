@@ -65,81 +65,90 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
         private async void LoadData()
         {
-            List<Departments> listDepartments = await _departmentRepository.GetList();
-            List<Shifts> listShifts = await _shiftsRepository.GetList();
-            List<Attendances> listAttendances = await _attendancesRepository.GetList();
-            List<Roles> listRoles = await _rolesRepository.GetList();
-            List<Payslips> listPayslips = await _payslipsRepository.GetList();
-            List<Users> listUsers = await _usersRepository.GetList();
-
-            switch (flag)
+            try
             {
-                case 1:
-                    if (listAttendances==null)
-                    {
-                        return;
-                    }
-                    ucView1.dgvManagement.DataSource = listDepartments;
-                    ucView1.dgvManagement.Columns["shifts"].Visible = false;
-                    ucView1.dgvManagement.AutoResizeColumns();
-                    ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    break;
-                case 2:
-                    if (listRoles == null)
-                    {
-                        return;
-                    }
-                    ucView1.dgvManagement.DataSource = listRoles;
-                    ucView1.dgvManagement.AutoResizeColumns();
-                    ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    break;
-                case 3:
-                    if (listUsers == null)
-                    {
-                        return;
-                    }
-                    ucView1.dgvManagement.DataSource = listUsers;
-                    ucView1.dgvManagement.Columns["roles"].Visible = false;
-                    ucView1.dgvManagement.Columns["departments"].Visible = false;
-                    ucView1.dgvManagement.Columns["imgPath"].Visible = false;
-                    ucView1.dgvManagement.AutoResizeColumns();
-                    ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-                    break;
-                case 4:
-                    if (listShifts == null)
-                    {
-                        return;
-                    }
-                    ucView1.dgvManagement.DataSource = listShifts;
-                    ucView1.dgvManagement.AutoResizeColumns();
-                    ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    break;
-                case 5:
-                    if (listAttendances == null)
-                    {
-                        return;
-                    }
-                    ucView1.dgvManagement.DataSource = listAttendances;
-                    ucView1.dgvManagement.AutoResizeColumns();
-                    ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    ucView1.dgvManagement.Columns["users"].Visible = false;
-                    ucView1.dgvManagement.Columns["shifts"].Visible = false;
+                List<Departments> listDepartments = await _departmentRepository.GetList();
+                List<Shifts> listShifts = await _shiftsRepository.GetList();
+                List<Attendances> listAttendances = await _attendancesRepository.GetList();
+                List<Roles> listRoles = await _rolesRepository.GetList();
+                List<Payslips> listPayslips = await _payslipsRepository.GetList();
+                List<Users> listUsers = await _usersRepository.GetList();
 
-                    break;
-                case 6:
-                    if (listPayslips == null)
-                    {
-                        return;
-                    }
-                    ucView1.dgvManagement.DataSource = listPayslips;
-                    ucView1.dgvManagement.AutoResizeColumns();
-                    ucView1.dgvManagement.Columns["users"].Visible = false;
-                    ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-                    break;
-                default:
-                    break;
+                switch (flag)
+                {
+                    case 1:
+                        if (listDepartments == null)
+                        {
+                            return;
+                        }
+                        ucView1.dgvManagement.DataSource = listDepartments;
+                        ucView1.dgvManagement.Columns["shifts"].Visible = false;
+                        ucView1.dgvManagement.AutoResizeColumns();
+                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                        break;
+                    case 2:
+                        if (listRoles == null)
+                        {
+                            return;
+                        }
+                        ucView1.dgvManagement.DataSource = listRoles;
+                        ucView1.dgvManagement.AutoResizeColumns();
+                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                        break;
+                    case 3:
+                        if (listUsers == null)
+                        {
+                            return;
+                        }
+                        ucView1.dgvManagement.DataSource = listUsers;
+                        ucView1.dgvManagement.Columns["roles"].Visible = false;
+                        ucView1.dgvManagement.Columns["departments"].Visible = false;
+                        ucView1.dgvManagement.Columns["imgPath"].Visible = false;
+                        ucView1.dgvManagement.AutoResizeColumns();
+                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+                        break;
+                    case 4:
+                        if (listShifts == null)
+                        {
+                            return;
+                        }
+                        ucView1.dgvManagement.DataSource = listShifts;
+                        ucView1.dgvManagement.AutoResizeColumns();
+                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        break;
+                    case 5:
+                        if (listAttendances == null)
+                        {
+                            return;
+                        }
+                        ucView1.dgvManagement.DataSource = listAttendances;
+                        ucView1.dgvManagement.AutoResizeColumns();
+                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        ucView1.dgvManagement.Columns["users"].Visible = false;
+                        ucView1.dgvManagement.Columns["shifts"].Visible = false;
+
+                        break;
+                    case 6:
+                        if (listPayslips == null)
+                        {
+                            return;
+                        }
+                        ucView1.dgvManagement.DataSource = listPayslips;
+                        ucView1.dgvManagement.AutoResizeColumns();
+                        ucView1.dgvManagement.Columns["users"].Visible = false;
+                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+                        break;
+                    default:
+                        break;
+                }
             }
-            
+            catch (Exception)
+            {
+            }
         }
 
         private void btnDepartments_Click(object sender, EventArgs e)
@@ -334,11 +343,24 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 payslip.deductionSalary = Double.Parse(ucPayslips1.txtDeductionSalary.Text);
                 payslip.userId = Convert.ToInt64(ucPayslips1.cbbUser.Text.Substring(0, ucPayslips1.cbbUser.Text.IndexOf(".")));
 
-                _payslipsRepository.Add(payslip);
-                MessageBox.Show("Successful added!");
-                LoadData();
+                if (isAdd == true)
+                {
+                    _payslipsRepository.Add(payslip);
+                    MessageBox.Show("Successful added!");
+                    isAdd = false;
+                    LoadData();
+                    Init();
+                }
+                else if (isUpdate == true)
+                {
+                    _payslipsRepository.Update(selectedId, payslip);
+                    MessageBox.Show("Successful updated!");
+                    isUpdate = false;
+                    LoadData();
+                    Init();
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -357,10 +379,25 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 attendance.checkoutAt = DateTime.Parse(ucAttendances1.txtCheckOutAt.Text);
                 attendance.userId = Convert.ToInt64(ucAttendances1.cbbUser.Text.Substring(0, ucAttendances1.cbbUser.Text.IndexOf(".")));
                 attendance.shiftId = Convert.ToInt64(ucAttendances1.cbbShift.Text.Substring(0, ucAttendances1.cbbShift.Text.IndexOf(".")));
-                _attendancesRepository.Add(attendance);
-                MessageBox.Show("Successful added!");
+
+                if (isAdd == true)
+                {
+                    _attendancesRepository.Add(attendance);
+                    MessageBox.Show("Successful added!");
+                    isAdd = false;
+                    LoadData();
+                    Init();
+                }
+                else if (isUpdate == true)
+                {
+                    _attendancesRepository.Update(selectedId, attendance);
+                    MessageBox.Show("Successful updated!");
+                    isUpdate = false;
+                    LoadData();
+                    Init();
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -372,13 +409,27 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             {
                 Shifts shift = new Shifts();
                 shift.shiftName = ucShifts1.txtShiftName.Text;
-                shift.timeStart = DateTime.Parse(ucShifts1.txtTimeStart.Text);
-                shift.timeEnd = DateTime.Parse(ucShifts1.txtTimeEnd.Text);
+                shift.timeStart = ucShifts1.txtTimeStart.Text;
+                shift.timeEnd = ucShifts1.txtTimeEnd.Text;
 
-                _shiftsRepository.Add(shift);
-                MessageBox.Show("Successful added!");
+                if (isAdd == true)
+                {
+                    _shiftsRepository.Add(shift);
+                    MessageBox.Show("Successful added!");
+                    isAdd = false;
+                    LoadData();
+                    Init();
+                }
+                else if (isUpdate == true)
+                {
+                    _shiftsRepository.Update(selectedId, shift);
+                    MessageBox.Show("Successful updated!");
+                    isUpdate = false;
+                    LoadData();
+                    Init();
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -399,10 +450,24 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 user.departmentId = Convert.ToInt64(ucUsers1.cbbDepartment.Text.Substring(0, ucUsers1.cbbDepartment.Text.IndexOf(".")));
                 user.roleId = Convert.ToInt64(ucUsers1.cbbRole.Text.Substring(0, ucUsers1.cbbRole.Text.IndexOf(".")));
 
-                _usersRepository.Add(user);
-                MessageBox.Show("Successful added!");
+                if (isAdd == true)
+                {
+                    _usersRepository.Add(user);
+                    MessageBox.Show("Successful added!");
+                    isAdd = false;
+                    LoadData();
+                    Init();
+                }
+                else if (isUpdate == true)
+                {
+                    _usersRepository.Update(selectedId, user);
+                    MessageBox.Show("Successful updated!");
+                    isUpdate = false;
+                    LoadData();
+                    Init();
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -418,10 +483,24 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 role.description = ucRoles1.txtDescription.Text;
                 role.salaryRate = Convert.ToDouble(ucRoles1.txtSalaryRate.Text);
 
-                _rolesRepository.Add(role);
-                MessageBox.Show("Successful added!");
+                if (isAdd == true)
+                {
+                    _rolesRepository.Add(role);
+                    MessageBox.Show("Successful added!");
+                    isAdd = false;
+                    LoadData();
+                    Init();
+                }
+                else if (isUpdate == true)
+                {
+                    _rolesRepository.Update(selectedId, role);
+                    MessageBox.Show("Successful updated!");
+                    isUpdate = false;
+                    LoadData();
+                    Init();
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -453,7 +532,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 }
                 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

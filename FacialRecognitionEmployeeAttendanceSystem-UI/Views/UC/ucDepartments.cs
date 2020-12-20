@@ -25,7 +25,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
             LoadShiftComboBoxAsysnc();
         }
 
-        private async Task LoadShiftComboBoxAsysnc()
+        public async Task LoadShiftComboBoxAsysnc()
         {
             List<Shifts> listShift = await _shiftsRepository.GetList();
             foreach (Shifts item in listShift)

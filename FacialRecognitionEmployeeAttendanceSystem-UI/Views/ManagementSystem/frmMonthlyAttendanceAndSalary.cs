@@ -135,7 +135,11 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             {
                 foreach (DataGridViewRow row in dgvTableOfAttendance.Rows)
                 {
-                    if (row.Cells[2].Value.ToString().Equals(searchValue))
+                    if (row.Cells[0].Value==null)
+                    {
+                        return;
+                    }
+                    if (row.Cells[0].Value.ToString().Equals(searchValue))
                     {
                         row.Selected = true;
                         break;
@@ -157,7 +161,11 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             {
                 foreach (DataGridViewRow row in dgvMonthlySalary.Rows)
                 {
-                    if (row.Cells[2].Value.ToString().Equals(searchValue))
+                    if (row.Cells[0].Value == null)
+                    {
+                        return;
+                    }
+                    if (row.Cells[0].Value.ToString().Equals(searchValue))
                     {
                         row.Selected = true;
                         break;

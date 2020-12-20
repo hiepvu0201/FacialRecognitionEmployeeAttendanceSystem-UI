@@ -28,7 +28,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
             LoadShiftComboBoxAsysnc();
         }
 
-        private async Task LoadShiftComboBoxAsysnc()
+        public async Task LoadShiftComboBoxAsysnc()
         {
             List<Shifts> listShift = await _shiftsRepository.GetList();
             foreach (Shifts item in listShift)
@@ -37,7 +37,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
             }
         }
 
-        private async Task LoadUserComboboxAsync()
+        public async Task LoadUserComboboxAsync()
         {
             List<Users> listUser = await _usersRepository.GetList();
             foreach (Users item in listUser)
