@@ -129,7 +129,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             }
         }
         #endregion
-
+          
         #region Constructor
         public frmAttendanceSystem()
         {
@@ -418,11 +418,19 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
             //Attendance from db
             Attendances attendanceDB = await _attendanceRepository.GetByDateTimeAndUserNameAsync(attendanceRq.dateCheck, userResult.id);
+            List<Attendances> listAttendance = await _attendanceRepository.GetByUserIdAsync(userResult.id);
+            bool isCheckin = false;
+            if (attendanceDB.id == 0)
+            {
+                attendanceDB = listAttendance[0];
+                isCheckin = true;
+            }
 
             attendanceRq.workingHours = CalculateWorkingTime(attendanceDB);
             attendanceRq.userId = userResult.id;
+            attendanceRq.shiftId = attendanceDB.shiftId;
 
-            if (attendanceRq.workingHours <= 0)
+            if (isCheckin==true)
             {
                 attendanceRq.workingHours = 0;
                 attendanceRq.checkinAt = new DateTime(DateTime.Now.Ticks);
@@ -434,6 +442,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             else
             {
                 attendanceRq.checkoutAt = new DateTime(DateTime.Now.Ticks);
+                attendanceRq.workingHours = (attendanceRq.checkoutAt - attendanceRq.checkinAt).TotalHours;
 
                 _attendanceRepository.CheckOut(attendanceDB.id, attendanceRq);
 

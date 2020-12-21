@@ -49,7 +49,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
                         {
                             // User
                             Users.GetInstance().fullName = data.Cells[1].Value.ToString();
-                            Users.GetInstance().imgPath = data.Cells[2].Value.ToString();
                             Users.GetInstance().pin = data.Cells[3].ToString();
                             Users.GetInstance().dob = Convert.ToDateTime(data.Cells[4].Value);
                             Users.GetInstance().homeAddress = data.Cells[5].Value.ToString();

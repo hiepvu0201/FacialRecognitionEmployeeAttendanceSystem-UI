@@ -14,8 +14,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
         [System.ComponentModel.DisplayName("Full Name")]
         public string fullName { get; set; } = "";
 
-        public string imgPath { get; set; }
-
         [System.ComponentModel.DisplayName("PIN")]
         public string pin { get; set; }
 
