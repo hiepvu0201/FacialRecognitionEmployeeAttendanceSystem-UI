@@ -56,8 +56,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             //Button CRUD init
             btnAdd.Enabled = true;
             btnUpdate.Enabled = true;
-            btnEnable.Enabled = false;
-            btnDisable.Enabled = false;
+            btnEnable.Enabled = true;
+            btnDisable.Enabled = true;
             btnSave.Enabled = false;
             btnCancel.Enabled = false;
             btnDel.Enabled = true;
@@ -726,6 +726,11 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 
         private void btnDisable_Click(object sender, EventArgs e)
         {
+            if (flag == 0)
+            {
+                MessageBox.Show("Please choose!");
+                return;
+            }
             Object dummyObject = new object();
             switch (flag)
             {
@@ -768,12 +773,17 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 default:
                     break;
             }
-            MessageBox.Show("Delete successfully!");
+            MessageBox.Show("Disable successfully!");
             LoadData();
         }
 
         private void btnEnable_Click(object sender, EventArgs e)
         {
+            if (flag==0)
+            {
+                MessageBox.Show("Please choose!");
+                return;
+            }
             Object dummyObject = new object();
             switch (flag)
             {
@@ -816,7 +826,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 default:
                     break;
             }
-            MessageBox.Show("Delete successfully!");
+            MessageBox.Show("Enable successfully!");
             LoadData();
         }
 

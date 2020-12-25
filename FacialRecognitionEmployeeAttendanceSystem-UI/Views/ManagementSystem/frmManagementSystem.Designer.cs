@@ -196,7 +196,7 @@
             // 
             this.btnModifySalary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnModifySalary.Location = new System.Drawing.Point(6, 318);
-            this.btnModifySalary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModifySalary.Margin = new System.Windows.Forms.Padding(4);
             this.btnModifySalary.Name = "btnModifySalary";
             this.btnModifySalary.Size = new System.Drawing.Size(209, 42);
             this.btnModifySalary.TabIndex = 6;
@@ -220,7 +220,7 @@
             // 
             this.btnCheckSalary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCheckSalary.Location = new System.Drawing.Point(6, 370);
-            this.btnCheckSalary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCheckSalary.Margin = new System.Windows.Forms.Padding(4);
             this.btnCheckSalary.Name = "btnCheckSalary";
             this.btnCheckSalary.Size = new System.Drawing.Size(209, 41);
             this.btnCheckSalary.TabIndex = 7;
@@ -232,7 +232,7 @@
             // 
             this.btnTableOfAttendance.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnTableOfAttendance.Location = new System.Drawing.Point(6, 421);
-            this.btnTableOfAttendance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTableOfAttendance.Margin = new System.Windows.Forms.Padding(4);
             this.btnTableOfAttendance.Name = "btnTableOfAttendance";
             this.btnTableOfAttendance.Size = new System.Drawing.Size(209, 41);
             this.btnTableOfAttendance.TabIndex = 8;
@@ -535,8 +535,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDisable;
-        private System.Windows.Forms.Button btnEnable;
         private UC.ucDepartments ucDepartments1;
         private UC.ucPayslips ucPayslips1;
         private UC.ucAttendances ucAttendances1;
@@ -556,5 +554,7 @@
         private System.Windows.Forms.Button btnModifySalary;
         private System.Windows.Forms.Button btnCheckSalary;
         private System.Windows.Forms.Button btnTableOfAttendance;
+        public System.Windows.Forms.Button btnDisable;
+        public System.Windows.Forms.Button btnEnable;
     }
 }
