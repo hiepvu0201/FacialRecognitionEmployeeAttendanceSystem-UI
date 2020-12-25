@@ -42,7 +42,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
                             Roles.GetInstance().roleName = data.Cells[1].Value.ToString();
                             Roles.GetInstance().note = data.Cells[2].Value.ToString();
                             Roles.GetInstance().description = data.Cells[3].Value.ToString();
-                            Roles.GetInstance().salaryRate = Convert.ToDouble(data.Cells[4].Value);
+                            Roles.GetInstance().fixedSalary = Convert.ToDouble(data.Cells[4].Value);
                         }
                         break;
                     case 3:
@@ -57,6 +57,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
                             Users.GetInstance().note = data.Cells[8].Value.ToString();
                             Users.GetInstance().departmentId = Convert.ToInt32(data.Cells[10].Value);
                             Users.GetInstance().roleId = Convert.ToInt32(data.Cells[13].Value);
+                            Users.GetInstance().shiftId = Convert.ToInt32(data.Cells[14].Value);
                         }
                         break;
                     case 4:
@@ -77,7 +78,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
                             Attendances.GetInstance().checkinAt = Convert.ToDateTime(data.Cells[5].Value);
                             Attendances.GetInstance().checkoutAt = Convert.ToDateTime(data.Cells[6].Value);
                             Attendances.GetInstance().userId = Convert.ToInt32(data.Cells[7].Value);
-                            Attendances.GetInstance().shiftId = Convert.ToInt32(data.Cells[8].Value);
                         }
                         break;
                     case 6:

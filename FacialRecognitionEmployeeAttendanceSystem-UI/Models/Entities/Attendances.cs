@@ -37,11 +37,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
         [System.ComponentModel.DisplayName("Belong To User Who Has Id")]
         public long userId { get; set; }
 
-        public Shifts shifts { get; set; }
-
-        [System.ComponentModel.DisplayName("Belong To Shift Which Has Id")]
-        public long shiftId { get; set; }
-
         public static Attendances GetInstance()
         {
             if (_instance == null)

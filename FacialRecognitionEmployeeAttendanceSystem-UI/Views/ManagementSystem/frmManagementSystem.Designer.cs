@@ -80,11 +80,11 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(920, 613);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1227, 754);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -103,30 +103,30 @@
             this.tableLayoutPanel2.Controls.Add(this.btnCheckSalary, 0, 7);
             this.tableLayoutPanel2.Controls.Add(this.btnTableOfAttendance, 0, 8);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(5, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 10;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(166, 605);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(221, 746);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // btnDepartments
             // 
             this.btnDepartments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDepartments.Location = new System.Drawing.Point(4, 4);
-            this.btnDepartments.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDepartments.Location = new System.Drawing.Point(5, 4);
+            this.btnDepartments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDepartments.Name = "btnDepartments";
-            this.btnDepartments.Size = new System.Drawing.Size(158, 37);
+            this.btnDepartments.Size = new System.Drawing.Size(211, 46);
             this.btnDepartments.TabIndex = 0;
             this.btnDepartments.Text = "Departments";
             this.btnDepartments.UseVisualStyleBackColor = true;
@@ -135,10 +135,10 @@
             // btnRoles
             // 
             this.btnRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRoles.Location = new System.Drawing.Point(4, 47);
-            this.btnRoles.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRoles.Location = new System.Drawing.Point(5, 56);
+            this.btnRoles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRoles.Name = "btnRoles";
-            this.btnRoles.Size = new System.Drawing.Size(158, 37);
+            this.btnRoles.Size = new System.Drawing.Size(211, 46);
             this.btnRoles.TabIndex = 1;
             this.btnRoles.Text = "Roles";
             this.btnRoles.UseVisualStyleBackColor = true;
@@ -147,10 +147,10 @@
             // btnUsers
             // 
             this.btnUsers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUsers.Location = new System.Drawing.Point(4, 90);
-            this.btnUsers.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUsers.Location = new System.Drawing.Point(5, 108);
+            this.btnUsers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUsers.Name = "btnUsers";
-            this.btnUsers.Size = new System.Drawing.Size(158, 37);
+            this.btnUsers.Size = new System.Drawing.Size(211, 46);
             this.btnUsers.TabIndex = 2;
             this.btnUsers.Text = "Users";
             this.btnUsers.UseVisualStyleBackColor = true;
@@ -159,10 +159,10 @@
             // btnShifts
             // 
             this.btnShifts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnShifts.Location = new System.Drawing.Point(4, 133);
-            this.btnShifts.Margin = new System.Windows.Forms.Padding(2);
+            this.btnShifts.Location = new System.Drawing.Point(5, 160);
+            this.btnShifts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnShifts.Name = "btnShifts";
-            this.btnShifts.Size = new System.Drawing.Size(158, 37);
+            this.btnShifts.Size = new System.Drawing.Size(211, 46);
             this.btnShifts.TabIndex = 3;
             this.btnShifts.Text = "Shifts";
             this.btnShifts.UseVisualStyleBackColor = true;
@@ -171,10 +171,10 @@
             // btnAttendances
             // 
             this.btnAttendances.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAttendances.Location = new System.Drawing.Point(4, 176);
-            this.btnAttendances.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAttendances.Location = new System.Drawing.Point(5, 212);
+            this.btnAttendances.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAttendances.Name = "btnAttendances";
-            this.btnAttendances.Size = new System.Drawing.Size(158, 37);
+            this.btnAttendances.Size = new System.Drawing.Size(211, 46);
             this.btnAttendances.TabIndex = 4;
             this.btnAttendances.Text = "Attendances";
             this.btnAttendances.UseVisualStyleBackColor = true;
@@ -183,10 +183,10 @@
             // btnPayslips
             // 
             this.btnPayslips.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPayslips.Location = new System.Drawing.Point(4, 219);
-            this.btnPayslips.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPayslips.Location = new System.Drawing.Point(5, 264);
+            this.btnPayslips.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPayslips.Name = "btnPayslips";
-            this.btnPayslips.Size = new System.Drawing.Size(158, 37);
+            this.btnPayslips.Size = new System.Drawing.Size(211, 46);
             this.btnPayslips.TabIndex = 5;
             this.btnPayslips.Text = "Payslips";
             this.btnPayslips.UseVisualStyleBackColor = true;
@@ -195,9 +195,10 @@
             // btnModifySalary
             // 
             this.btnModifySalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnModifySalary.Location = new System.Drawing.Point(5, 263);
+            this.btnModifySalary.Location = new System.Drawing.Point(6, 318);
+            this.btnModifySalary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnModifySalary.Name = "btnModifySalary";
-            this.btnModifySalary.Size = new System.Drawing.Size(156, 35);
+            this.btnModifySalary.Size = new System.Drawing.Size(209, 42);
             this.btnModifySalary.TabIndex = 6;
             this.btnModifySalary.Text = "Modify Salary Rules";
             this.btnModifySalary.UseVisualStyleBackColor = true;
@@ -206,10 +207,10 @@
             // btnMainMenu
             // 
             this.btnMainMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnMainMenu.Location = new System.Drawing.Point(4, 565);
-            this.btnMainMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMainMenu.Location = new System.Drawing.Point(5, 698);
+            this.btnMainMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMainMenu.Name = "btnMainMenu";
-            this.btnMainMenu.Size = new System.Drawing.Size(158, 36);
+            this.btnMainMenu.Size = new System.Drawing.Size(211, 44);
             this.btnMainMenu.TabIndex = 0;
             this.btnMainMenu.Text = "Main Menu";
             this.btnMainMenu.UseVisualStyleBackColor = true;
@@ -218,9 +219,10 @@
             // btnCheckSalary
             // 
             this.btnCheckSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCheckSalary.Location = new System.Drawing.Point(5, 306);
+            this.btnCheckSalary.Location = new System.Drawing.Point(6, 370);
+            this.btnCheckSalary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCheckSalary.Name = "btnCheckSalary";
-            this.btnCheckSalary.Size = new System.Drawing.Size(156, 34);
+            this.btnCheckSalary.Size = new System.Drawing.Size(209, 41);
             this.btnCheckSalary.TabIndex = 7;
             this.btnCheckSalary.Text = "Check Salary";
             this.btnCheckSalary.UseVisualStyleBackColor = true;
@@ -229,11 +231,12 @@
             // btnTableOfAttendance
             // 
             this.btnTableOfAttendance.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTableOfAttendance.Location = new System.Drawing.Point(5, 348);
+            this.btnTableOfAttendance.Location = new System.Drawing.Point(6, 421);
+            this.btnTableOfAttendance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTableOfAttendance.Name = "btnTableOfAttendance";
-            this.btnTableOfAttendance.Size = new System.Drawing.Size(156, 34);
+            this.btnTableOfAttendance.Size = new System.Drawing.Size(209, 41);
             this.btnTableOfAttendance.TabIndex = 8;
-            this.btnTableOfAttendance.Text = "Table Of Attendance";
+            this.btnTableOfAttendance.Text = "Monthly Attendance And Salary";
             this.btnTableOfAttendance.UseVisualStyleBackColor = true;
             this.btnTableOfAttendance.Click += new System.EventHandler(this.btnTableOfAttendance_Click);
             // 
@@ -246,15 +249,15 @@
             this.tableLayoutPanel3.Controls.Add(this.pnlAdd, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(176, 4);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(234, 4);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 4;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(740, 605);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(988, 746);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // tableLayoutPanel4
@@ -275,21 +278,21 @@
             this.tableLayoutPanel4.Controls.Add(this.btnCancel, 5, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnDel, 6, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(736, 37);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(982, 46);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // btnAdd
             // 
             this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAdd.Location = new System.Drawing.Point(2, 2);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Location = new System.Drawing.Point(3, 2);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(101, 33);
+            this.btnAdd.Size = new System.Drawing.Size(134, 42);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -298,10 +301,10 @@
             // btnUpdate
             // 
             this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUpdate.Location = new System.Drawing.Point(107, 2);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUpdate.Location = new System.Drawing.Point(143, 2);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(101, 33);
+            this.btnUpdate.Size = new System.Drawing.Size(134, 42);
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -310,10 +313,10 @@
             // btnDisable
             // 
             this.btnDisable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDisable.Location = new System.Drawing.Point(212, 2);
-            this.btnDisable.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDisable.Location = new System.Drawing.Point(283, 2);
+            this.btnDisable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDisable.Name = "btnDisable";
-            this.btnDisable.Size = new System.Drawing.Size(101, 33);
+            this.btnDisable.Size = new System.Drawing.Size(134, 42);
             this.btnDisable.TabIndex = 2;
             this.btnDisable.Text = "Disable";
             this.btnDisable.UseVisualStyleBackColor = true;
@@ -322,10 +325,10 @@
             // btnEnable
             // 
             this.btnEnable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEnable.Location = new System.Drawing.Point(317, 2);
-            this.btnEnable.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEnable.Location = new System.Drawing.Point(423, 2);
+            this.btnEnable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEnable.Name = "btnEnable";
-            this.btnEnable.Size = new System.Drawing.Size(101, 33);
+            this.btnEnable.Size = new System.Drawing.Size(134, 42);
             this.btnEnable.TabIndex = 3;
             this.btnEnable.Text = "Enable";
             this.btnEnable.UseVisualStyleBackColor = true;
@@ -334,10 +337,10 @@
             // btnSave
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.Location = new System.Drawing.Point(422, 2);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSave.Location = new System.Drawing.Point(563, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(101, 33);
+            this.btnSave.Size = new System.Drawing.Size(134, 42);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -346,10 +349,10 @@
             // btnCancel
             // 
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancel.Location = new System.Drawing.Point(527, 2);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancel.Location = new System.Drawing.Point(703, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(101, 33);
+            this.btnCancel.Size = new System.Drawing.Size(134, 42);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -358,10 +361,10 @@
             // btnDel
             // 
             this.btnDel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDel.Location = new System.Drawing.Point(632, 2);
-            this.btnDel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDel.Location = new System.Drawing.Point(843, 2);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(102, 33);
+            this.btnDel.Size = new System.Drawing.Size(136, 42);
             this.btnDel.TabIndex = 6;
             this.btnDel.Text = "Delete";
             this.btnDel.UseVisualStyleBackColor = true;
@@ -371,19 +374,19 @@
             // 
             this.panel2.Controls.Add(this.ucView1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(2, 84);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(3, 102);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(736, 205);
+            this.panel2.Size = new System.Drawing.Size(982, 254);
             this.panel2.TabIndex = 7;
             // 
             // ucView1
             // 
             this.ucView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucView1.Location = new System.Drawing.Point(0, 0);
-            this.ucView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ucView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucView1.Name = "ucView1";
-            this.ucView1.Size = new System.Drawing.Size(736, 205);
+            this.ucView1.Size = new System.Drawing.Size(982, 254);
             this.ucView1.TabIndex = 6;
             // 
             // pnlAdd
@@ -396,65 +399,65 @@
             this.pnlAdd.Controls.Add(this.ucRoles1);
             this.pnlAdd.Controls.Add(this.ucPayslips1);
             this.pnlAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlAdd.Location = new System.Drawing.Point(2, 293);
-            this.pnlAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlAdd.Location = new System.Drawing.Point(3, 360);
+            this.pnlAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlAdd.Name = "pnlAdd";
-            this.pnlAdd.Size = new System.Drawing.Size(736, 310);
+            this.pnlAdd.Size = new System.Drawing.Size(982, 384);
             this.pnlAdd.TabIndex = 8;
             // 
             // ucAttendances1
             // 
             this.ucAttendances1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucAttendances1.Location = new System.Drawing.Point(0, 310);
-            this.ucAttendances1.Margin = new System.Windows.Forms.Padding(2);
+            this.ucAttendances1.Location = new System.Drawing.Point(0, 382);
+            this.ucAttendances1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucAttendances1.Name = "ucAttendances1";
-            this.ucAttendances1.Size = new System.Drawing.Size(736, 0);
+            this.ucAttendances1.Size = new System.Drawing.Size(982, 2);
             this.ucAttendances1.TabIndex = 4;
             // 
             // ucDepartments1
             // 
             this.ucDepartments1.AutoScroll = true;
             this.ucDepartments1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucDepartments1.Location = new System.Drawing.Point(0, 310);
-            this.ucDepartments1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ucDepartments1.Location = new System.Drawing.Point(0, 382);
+            this.ucDepartments1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucDepartments1.Name = "ucDepartments1";
-            this.ucDepartments1.Size = new System.Drawing.Size(736, 0);
+            this.ucDepartments1.Size = new System.Drawing.Size(982, 2);
             this.ucDepartments1.TabIndex = 0;
             // 
             // ucShifts1
             // 
             this.ucShifts1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucShifts1.Location = new System.Drawing.Point(0, 310);
-            this.ucShifts1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ucShifts1.Location = new System.Drawing.Point(0, 382);
+            this.ucShifts1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucShifts1.Name = "ucShifts1";
-            this.ucShifts1.Size = new System.Drawing.Size(736, 0);
+            this.ucShifts1.Size = new System.Drawing.Size(982, 2);
             this.ucShifts1.TabIndex = 3;
             // 
             // ucUsers1
             // 
             this.ucUsers1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucUsers1.Location = new System.Drawing.Point(0, 310);
-            this.ucUsers1.Margin = new System.Windows.Forms.Padding(2);
+            this.ucUsers1.Location = new System.Drawing.Point(0, 382);
+            this.ucUsers1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucUsers1.Name = "ucUsers1";
-            this.ucUsers1.Size = new System.Drawing.Size(736, 0);
+            this.ucUsers1.Size = new System.Drawing.Size(982, 2);
             this.ucUsers1.TabIndex = 2;
             // 
             // ucRoles1
             // 
             this.ucRoles1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucRoles1.Location = new System.Drawing.Point(0, 310);
-            this.ucRoles1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ucRoles1.Location = new System.Drawing.Point(0, 382);
+            this.ucRoles1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucRoles1.Name = "ucRoles1";
-            this.ucRoles1.Size = new System.Drawing.Size(736, 0);
+            this.ucRoles1.Size = new System.Drawing.Size(982, 2);
             this.ucRoles1.TabIndex = 1;
             // 
             // ucPayslips1
             // 
             this.ucPayslips1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ucPayslips1.Location = new System.Drawing.Point(0, 0);
-            this.ucPayslips1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ucPayslips1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucPayslips1.Name = "ucPayslips1";
-            this.ucPayslips1.Size = new System.Drawing.Size(736, 310);
+            this.ucPayslips1.Size = new System.Drawing.Size(982, 382);
             this.ucPayslips1.TabIndex = 5;
             // 
             // tableLayoutPanel5
@@ -465,32 +468,32 @@
             this.tableLayoutPanel5.Controls.Add(this.txtSearch, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnSearch, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 43);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 52);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(736, 37);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(982, 46);
             this.tableLayoutPanel5.TabIndex = 9;
             // 
             // txtSearch
             // 
             this.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSearch.Location = new System.Drawing.Point(2, 2);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSearch.Location = new System.Drawing.Point(3, 2);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(493, 33);
+            this.txtSearch.Size = new System.Drawing.Size(657, 42);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // btnSearch
             // 
             this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSearch.Location = new System.Drawing.Point(499, 2);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSearch.Location = new System.Drawing.Point(666, 2);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(235, 33);
+            this.btnSearch.Size = new System.Drawing.Size(313, 42);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -498,11 +501,11 @@
             // 
             // frmManagementSystem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(920, 613);
+            this.ClientSize = new System.Drawing.Size(1227, 754);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmManagementSystem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Management System";

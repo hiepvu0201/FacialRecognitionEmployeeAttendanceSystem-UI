@@ -105,7 +105,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                         ucView1.dgvManagement.DataSource = listUsers;
                         ucView1.dgvManagement.Columns["roles"].Visible = false;
                         ucView1.dgvManagement.Columns["departments"].Visible = false;
-                        ucView1.dgvManagement.Columns["imgPath"].Visible = false;
+                        ucView1.dgvManagement.Columns["shifts"].Visible = false;
                         ucView1.dgvManagement.AutoResizeColumns();
                         ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
@@ -128,7 +128,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                         ucView1.dgvManagement.AutoResizeColumns();
                         ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                         ucView1.dgvManagement.Columns["users"].Visible = false;
-                        ucView1.dgvManagement.Columns["shifts"].Visible = false;
 
                         break;
                     case 6:
@@ -378,7 +377,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 attendance.checkinAt = DateTime.Parse(ucAttendances1.txtCheckInAt.Text);
                 attendance.checkoutAt = DateTime.Parse(ucAttendances1.txtCheckOutAt.Text);
                 attendance.userId = Convert.ToInt64(ucAttendances1.cbbUser.Text.Substring(0, ucAttendances1.cbbUser.Text.IndexOf(".")));
-                attendance.shiftId = Convert.ToInt64(ucAttendances1.cbbShift.Text.Substring(0, ucAttendances1.cbbShift.Text.IndexOf(".")));
+                
 
                 if (isAdd == true)
                 {
@@ -449,6 +448,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 user.note = ucUsers1.txtNote.Text;
                 user.departmentId = Convert.ToInt64(ucUsers1.cbbDepartment.Text.Substring(0, ucUsers1.cbbDepartment.Text.IndexOf(".")));
                 user.roleId = Convert.ToInt64(ucUsers1.cbbRole.Text.Substring(0, ucUsers1.cbbRole.Text.IndexOf(".")));
+                user.shiftId = Convert.ToInt64(ucUsers1.cbbShift.Text.Substring(0, ucUsers1.cbbShift.Text.IndexOf(".")));
 
                 if (isAdd == true)
                 {
@@ -481,7 +481,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 role.roleName = ucRoles1.txtRoleName.Text;
                 role.note = ucRoles1.txtNote.Text;
                 role.description = ucRoles1.txtDescription.Text;
-                role.salaryRate = Convert.ToDouble(ucRoles1.txtSalaryRate.Text);
+                role.fixedSalary = Convert.ToDouble(ucRoles1.txtSalaryRate.Text);
 
                 if (isAdd == true)
                 {
@@ -621,7 +621,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             ucRoles1.txtRoleName.Text = Roles.GetInstance().roleName;
             ucRoles1.txtNote.Text = Roles.GetInstance().note;
             ucRoles1.txtDescription.Text = Roles.GetInstance().description;
-            ucRoles1.txtSalaryRate.Text = Convert.ToString(Roles.GetInstance().salaryRate);
+            ucRoles1.txtSalaryRate.Text = Convert.ToString(Roles.GetInstance().fixedSalary);
         }
 
         private async Task UpdateSelectedAttendanceAsync()
@@ -632,10 +632,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             ucAttendances1.txtWorkingHours.Text = Convert.ToString(Attendances.GetInstance().workingHours);
             ucAttendances1.txtCheckInAt.Text = Convert.ToString(Attendances.GetInstance().checkinAt);
             ucAttendances1.txtCheckOutAt.Text = Convert.ToString(Attendances.GetInstance().dateCheck);
-
-            Shifts tempShift = new Shifts();
-            tempShift = await _shiftsRepository.GetByIdAsync(Attendances.GetInstance().shiftId);
-            ucAttendances1.cbbShift.Items.Add(tempShift.id+"."+tempShift.shiftName);
 
             Users tempUser = new Users();
             tempUser = await _usersRepository.GetByIdAsync(Attendances.GetInstance().userId);
@@ -666,14 +662,19 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             Roles tempRole = new Roles();
             tempRole = await _rolesRepository.GetByIdAsync(Users.GetInstance().roleId);
             ucUsers1.cbbRole.Items.Add(tempRole.id + "." + tempRole.roleName);
+
+            Shifts tempShift = new Shifts();
+            tempShift = await _shiftsRepository.GetByIdAsync(Users.GetInstance().shiftId);
+            ucUsers1.cbbShift.Items.Add(tempShift.id + "." + tempShift.shiftName);
         }
 
         private async Task UpdateSelectedDepartmentAsync()
         {
             ucDepartments1.txtDepartmentName.Text = Departments.GetInstance().departmentName;
+
             Shifts tempShift = new Shifts();
             tempShift = await _shiftsRepository.GetByIdAsync(Departments.GetInstance().shiftId);
-            ucAttendances1.cbbShift.Items.Add(tempShift.id + "." + tempShift.shiftName);
+            ucDepartments1.cbbShift.Items.Add(tempShift.id + "." + tempShift.shiftName);
         }
 
         private void btnDel_Click(object sender, EventArgs e)

@@ -17,6 +17,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
     {
         RolesRepository _rolesRepository = new RolesRepository();
         DepartmentsRepository _departmentsRepository = new DepartmentsRepository();
+        ShiftsRepository _shiftsRepository = new ShiftsRepository();
+
         public ucUsers()
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
         {
             LoadRoleComboBoxAsysnc();
             LoadDepartmentComboBoxAsysnc();
+            LoadShiftComboBoxAsysnc();
         }
 
         public async Task LoadRoleComboBoxAsysnc()
@@ -50,6 +53,15 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
             foreach (Departments item in listDepartment)
             {
                 cbbDepartment.Items.Add(item.id + "." + item.departmentName);
+            }
+        }
+
+        public async Task LoadShiftComboBoxAsysnc()
+        {
+            List<Shifts> listShift = await _shiftsRepository.GetList();
+            foreach (Shifts item in listShift)
+            {
+                cbbShift.Items.Add(item.id + "." + item.shiftName);
             }
         }
 

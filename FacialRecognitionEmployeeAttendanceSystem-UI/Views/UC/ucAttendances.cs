@@ -25,16 +25,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
         private void ucAttendances_Load(object sender, EventArgs e)
         {
             LoadUserComboboxAsync();
-            LoadShiftComboBoxAsysnc();
-        }
-
-        public async Task LoadShiftComboBoxAsysnc()
-        {
-            List<Shifts> listShift = await _shiftsRepository.GetList();
-            foreach (Shifts item in listShift)
-            {
-                cbbShift.Items.Add(item.id+"."+item.shiftName);
-            }
         }
 
         public async Task LoadUserComboboxAsync()

@@ -104,12 +104,11 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                     if (userResult != null)
                     {
                         Attendances attendance = await GetAttendanceForRequestAsync(userResult);
-                        Shifts shifts = await _shiftsRepository.GetByIdAsync(attendance.shiftId);
+                        Shifts shifts = await _shiftsRepository.GetByIdAsync(userResult.shiftId);
 
                         if (attendance != null)
                         {
-                            double workingTime = CalculateWorkingTime(attendance);
-                            if (workingTime <= 0)
+                            if (attendance.workingHours <= 0)
                             {
                                 lblInfo.Text = $"Check in success! Welcome {userResult.fullName}!".ToUpper();
                             }
@@ -119,7 +118,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                                 JObject json = JObject.Parse(File.ReadAllText(Config.ConfigFile));
                                 ConfigSalary configSalary = JsonConvert.DeserializeObject<ConfigSalary>(json.ToString());
 
-                                _payslipsRepository.Add(CalcualteTodayPayslips(attendance, shifts, attendance.users.roles.salaryRate, new DateTime(DateTime.Now.Ticks), configSalary, userResult.id));
+                                _payslipsRepository.Add(CalcualteTodayPayslips(attendance, shifts, userResult.roles.fixedSalary, new DateTime(DateTime.Now.Ticks), configSalary, userResult.id));
                             }
                         }
                         lblInfo.Text = faceName;
@@ -169,13 +168,12 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 if (userResult != null)
                 {
                     Attendances attendance = await GetAttendanceForRequestAsync(userResult);
-                    Shifts shifts = await _shiftsRepository.GetByIdAsync(attendance.shiftId);
+                    Shifts shifts = await _shiftsRepository.GetByIdAsync(userResult.shiftId);
 
                     if (attendance != null)
                     {
-                        double workingTime = CalculateWorkingTime(attendance);
                         // Time <= 0 when check-in meanwhile > 0 when checkout
-                        if (workingTime <= 0)
+                        if (attendance.workingHours <= 0)
                         {
                             MessageBox.Show($"Check in success! Welcome {userResult.fullName}!");
                         }
@@ -186,8 +184,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                             JObject json = JObject.Parse(File.ReadAllText(Config.ConfigFile));
                             ConfigSalary configSalary = JsonConvert.DeserializeObject<ConfigSalary>(json.ToString());
 
-                            _payslipsRepository.Add(CalcualteTodayPayslips(attendance, shifts, attendance.users.roles.salaryRate, new DateTime(DateTime.Now.Ticks), configSalary, userResult.id));
-
+                            _payslipsRepository.Add(CalcualteTodayPayslips(attendance, shifts, userResult.roles.fixedSalary, new DateTime(DateTime.Now.Ticks), configSalary, userResult.id));
                         }
                     }
                 }
@@ -405,50 +402,42 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 return -1;
             }
 
-            double time = (DateTime.Now - attendance.checkinAt).TotalHours;
+            double time = (attendance.checkoutAt - attendance.checkinAt).TotalHours;
 
             return time;
         }
 
         private async System.Threading.Tasks.Task<Attendances> GetAttendanceForRequestAsync(Users userResult)
         {
-            //Attendance for json request
-            Attendances attendanceRq = new Attendances();
-            attendanceRq.dateCheck = DateTime.Now.ToString("yyyy-MM-dd");
+            List<Attendances> listAttendance = await _attendanceRepository.GetByDateTimeAndUserNameAsync(DateTime.Now.ToString("yyyy-MM-dd"), userResult.id);
 
-            //Attendance from db
-            Attendances attendanceDB = await _attendanceRepository.GetByDateTimeAndUserNameAsync(attendanceRq.dateCheck, userResult.id);
-            List<Attendances> listAttendance = await _attendanceRepository.GetByUserIdAsync(userResult.id);
-            bool isCheckin = false;
-            if (attendanceDB.id == 0)
+            Attendances attendance = new Attendances();
+            attendance.dateCheck = DateTime.Now.ToString("yyyy-MM-dd");
+            attendance.note = "";
+            attendance.userId = userResult.id;
+            attendance.status = true;
+
+            if (listAttendance == null||CalculateWorkingTime(listAttendance[listAttendance.Count-1])!=0)
             {
-                attendanceDB = listAttendance[0];
-                isCheckin = true;
-            }
+                
+                attendance.workingHours = 0;
+                attendance.checkinAt = new DateTime(DateTime.Now.Ticks);
 
-            attendanceRq.workingHours = CalculateWorkingTime(attendanceDB);
-            attendanceRq.userId = userResult.id;
-            attendanceRq.shiftId = attendanceDB.shiftId;
-
-            if (isCheckin==true)
-            {
-                attendanceRq.workingHours = 0;
-                attendanceRq.checkinAt = new DateTime(DateTime.Now.Ticks);
-
-                _attendanceRepository.CheckIn(attendanceRq);
-
+                _attendanceRepository.CheckIn(attendance);
                 FaceName = $"Check in success! Welcome {userResult.fullName}!";
+                return attendance;
             }
             else
             {
-                attendanceRq.checkoutAt = new DateTime(DateTime.Now.Ticks);
-                attendanceRq.workingHours = (attendanceRq.checkoutAt - attendanceRq.checkinAt).TotalHours;
+                Attendances attendancesDetail = listAttendance[listAttendance.Count - 1];
+                attendancesDetail.checkoutAt = new DateTime(DateTime.Now.Ticks);
+                attendancesDetail.workingHours = (attendancesDetail.checkoutAt - attendancesDetail.checkinAt).TotalHours;
 
-                _attendanceRepository.CheckOut(attendanceDB.id, attendanceRq);
+                _attendanceRepository.CheckOut(attendancesDetail.id, attendancesDetail);
 
                 FaceName = $"Check out success! Good bye {userResult.fullName}!";
+                return attendancesDetail;
             }
-            return attendanceRq;
         }
         #endregion
         private void frmAttendanceSystem_FormClosed(object sender, FormClosedEventArgs e)

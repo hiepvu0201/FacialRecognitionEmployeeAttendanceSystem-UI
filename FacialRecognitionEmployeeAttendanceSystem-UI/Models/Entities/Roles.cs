@@ -28,8 +28,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
         [System.ComponentModel.DisplayName("Description")]
         public string description { get; set; }
 
-        [System.ComponentModel.DisplayName("Salary Rate")]
-        public double salaryRate { get; set; }
+        [System.ComponentModel.DisplayName("Fixed Salary")]
+        public double fixedSalary { get; set; }
 
         [System.ComponentModel.DisplayName("Created At")]
         public DateTime createdAt { get; set; }
