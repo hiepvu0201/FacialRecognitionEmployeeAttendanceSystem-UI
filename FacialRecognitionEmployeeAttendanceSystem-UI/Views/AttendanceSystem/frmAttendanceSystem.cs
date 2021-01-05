@@ -206,7 +206,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             payslips.annualLeaveSalary = 0;
             payslips.userId = userId;
             payslips.workingSalary = configSalary.salaryPerHour * CalculateWorkingTime(attendances) * salaryRate;
-            payslips.tax = configSalary.taxRate / 100 * (configSalary.salaryPerHour * CalculateWorkingTime(attendances));
+            payslips.tax = configSalary.taxRate / 100 * payslips.workingSalary;
             payslips.deductionSalary = payslips.tax + configSalary.lateFeePerMinute * ((attendances.checkinAt - Convert.ToDateTime(shifts.timeStart)).TotalMinutes 
                                         + (attendances.checkoutAt - Convert.ToDateTime(shifts.timeEnd)).TotalMinutes);
             payslips.publicSalary = payslips.workingSalary - payslips.deductionSalary + configSalary.allowance;

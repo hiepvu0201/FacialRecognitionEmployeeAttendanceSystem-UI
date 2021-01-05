@@ -108,11 +108,10 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                         ucView1.dgvManagement.Columns["shifts"].Visible = false;
                         ucView1.dgvManagement.AutoResizeColumns();
                         ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
                         break;
                     case 4:
                         if (listShifts == null)
-                        {
+                        { 
                             return;
                         }
                         ucView1.dgvManagement.DataSource = listShifts;
