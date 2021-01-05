@@ -261,7 +261,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
                     {
                         int index = Convert.ToInt32(payslipItem.payDate.Day);
 
-                        row.Cells[index].Value = payslipItem.publicSalary.ToString();
+                        row.Cells[index].Value = (Convert.ToDouble(row.Cells[index].Value)+ payslipItem.publicSalary).ToString();
                         totalSalary += payslipItem.publicSalary;
                     }
                 }

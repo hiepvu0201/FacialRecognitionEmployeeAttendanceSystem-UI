@@ -127,8 +127,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.AttendanceSystem
         #endregion
         #region Method
         private Bitmap ProcessFrame(Image<Bgr, Byte> bgrFrame)
-        {
-            
+        {  
             bgrFrame = videoCapture.QueryFrame().ToImage<Bgr, Byte>();
 
             if (bgrFrame != null)

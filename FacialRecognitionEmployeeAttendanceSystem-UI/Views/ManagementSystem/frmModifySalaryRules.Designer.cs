@@ -99,7 +99,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.tableLayoutPanel1.Controls.Add(this.panel7, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 9;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
@@ -170,7 +170,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.panel2.Controls.Add(this.nudSalaryPerHour);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(164, 4);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(585, 29);
             this.panel2.TabIndex = 12;
@@ -182,15 +182,15 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.label6.Location = new System.Drawing.Point(160, 0);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(16, 17);
+            this.label6.Size = new System.Drawing.Size(37, 17);
             this.label6.TabIndex = 6;
-            this.label6.Text = "$";
+            this.label6.Text = "VNĐ";
             // 
             // nudSalaryPerHour
             // 
             this.nudSalaryPerHour.Dock = System.Windows.Forms.DockStyle.Left;
             this.nudSalaryPerHour.Location = new System.Drawing.Point(0, 0);
-            this.nudSalaryPerHour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudSalaryPerHour.Margin = new System.Windows.Forms.Padding(4);
             this.nudSalaryPerHour.Name = "nudSalaryPerHour";
             this.nudSalaryPerHour.Size = new System.Drawing.Size(160, 22);
             this.nudSalaryPerHour.TabIndex = 5;
@@ -201,7 +201,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.panel3.Controls.Add(this.nudBonusPerDay);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(164, 41);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(585, 29);
             this.panel3.TabIndex = 13;
@@ -213,15 +213,15 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.label7.Location = new System.Drawing.Point(160, 0);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(16, 17);
+            this.label7.Size = new System.Drawing.Size(37, 17);
             this.label7.TabIndex = 6;
-            this.label7.Text = "$";
+            this.label7.Text = "VNĐ";
             // 
             // nudBonusPerDay
             // 
             this.nudBonusPerDay.Dock = System.Windows.Forms.DockStyle.Left;
             this.nudBonusPerDay.Location = new System.Drawing.Point(0, 0);
-            this.nudBonusPerDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudBonusPerDay.Margin = new System.Windows.Forms.Padding(4);
             this.nudBonusPerDay.Name = "nudBonusPerDay";
             this.nudBonusPerDay.Size = new System.Drawing.Size(160, 22);
             this.nudBonusPerDay.TabIndex = 6;
@@ -232,7 +232,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.panel4.Controls.Add(this.nudOvertimeSalaryRate);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(164, 78);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(585, 29);
             this.panel4.TabIndex = 14;
@@ -252,7 +252,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             // 
             this.nudOvertimeSalaryRate.Dock = System.Windows.Forms.DockStyle.Left;
             this.nudOvertimeSalaryRate.Location = new System.Drawing.Point(0, 0);
-            this.nudOvertimeSalaryRate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudOvertimeSalaryRate.Margin = new System.Windows.Forms.Padding(4);
             this.nudOvertimeSalaryRate.Name = "nudOvertimeSalaryRate";
             this.nudOvertimeSalaryRate.Size = new System.Drawing.Size(160, 22);
             this.nudOvertimeSalaryRate.TabIndex = 7;
@@ -263,7 +263,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.panel5.Controls.Add(this.nudAllowance);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(164, 115);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(585, 29);
             this.panel5.TabIndex = 15;
@@ -275,15 +275,15 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.label9.Location = new System.Drawing.Point(160, 0);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(16, 17);
+            this.label9.Size = new System.Drawing.Size(37, 17);
             this.label9.TabIndex = 6;
-            this.label9.Text = "$";
+            this.label9.Text = "VNĐ";
             // 
             // nudAllowance
             // 
             this.nudAllowance.Dock = System.Windows.Forms.DockStyle.Left;
             this.nudAllowance.Location = new System.Drawing.Point(0, 0);
-            this.nudAllowance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudAllowance.Margin = new System.Windows.Forms.Padding(4);
             this.nudAllowance.Name = "nudAllowance";
             this.nudAllowance.Size = new System.Drawing.Size(160, 22);
             this.nudAllowance.TabIndex = 8;
@@ -294,7 +294,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.panel6.Controls.Add(this.nudTaxRate);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(164, 152);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(585, 29);
             this.panel6.TabIndex = 16;
@@ -314,7 +314,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             // 
             this.nudTaxRate.Dock = System.Windows.Forms.DockStyle.Left;
             this.nudTaxRate.Location = new System.Drawing.Point(0, 0);
-            this.nudTaxRate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudTaxRate.Margin = new System.Windows.Forms.Padding(4);
             this.nudTaxRate.Name = "nudTaxRate";
             this.nudTaxRate.Size = new System.Drawing.Size(160, 22);
             this.nudTaxRate.TabIndex = 9;
@@ -337,7 +337,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.panel1.Controls.Add(this.label12);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(164, 189);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(585, 29);
             this.panel1.TabIndex = 18;
@@ -345,7 +345,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             // dtpToDate
             // 
             this.dtpToDate.Location = new System.Drawing.Point(315, 0);
-            this.dtpToDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpToDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(265, 22);
             this.dtpToDate.TabIndex = 3;
@@ -365,7 +365,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             // 
             this.dtpFromDate.Dock = System.Windows.Forms.DockStyle.Left;
             this.dtpFromDate.Location = new System.Drawing.Point(40, 0);
-            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(237, 22);
             this.dtpFromDate.TabIndex = 1;
@@ -385,7 +385,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnSave.Location = new System.Drawing.Point(649, 263);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 29);
             this.btnSave.TabIndex = 10;
@@ -409,7 +409,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.panel7.Controls.Add(this.nudLateFee);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(164, 226);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(585, 29);
             this.panel7.TabIndex = 21;
@@ -421,15 +421,15 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.label15.Location = new System.Drawing.Point(160, 0);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(16, 17);
+            this.label15.Size = new System.Drawing.Size(37, 17);
             this.label15.TabIndex = 21;
-            this.label15.Text = "$";
+            this.label15.Text = "VNĐ";
             // 
             // nudLateFee
             // 
             this.nudLateFee.Dock = System.Windows.Forms.DockStyle.Left;
             this.nudLateFee.Location = new System.Drawing.Point(0, 0);
-            this.nudLateFee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudLateFee.Margin = new System.Windows.Forms.Padding(4);
             this.nudLateFee.Name = "nudLateFee";
             this.nudLateFee.Size = new System.Drawing.Size(160, 22);
             this.nudLateFee.TabIndex = 20;
@@ -440,7 +440,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(753, 326);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmModifySalaryRules";
             this.Text = "Modify Salary Rules";
             this.tableLayoutPanel1.ResumeLayout(false);

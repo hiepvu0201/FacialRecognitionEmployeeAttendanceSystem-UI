@@ -37,12 +37,14 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         private CascadeClassifier cascadeClassifier;    //For xml haarcascade file loading
         private EigenFaceRecognizer recognizer;         //Using eigen face recognizer algorithm to predict user
 
+
+
         //List Of Face, Name and Label Name
         private List<FaceData> faceList = new List<FaceData>();
         private VectorOfMat imageList = new VectorOfMat();
         private List<string> nameList = new List<string>();
         private VectorOfInt labelList = new VectorOfInt();
-        
+
         //Variable that store name to set in frame
         public static string recognitionName = "";
         string previousName = "";
@@ -52,7 +54,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         AttendancesRepository _attendanceRepository = new AttendancesRepository();
         PayslipsRepository _payslipsRepository = new PayslipsRepository();
         ShiftsRepository _shiftsRepository = new ShiftsRepository();
- 
+
 
         //Flag
         int count = 0;
@@ -128,7 +130,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             }
         }
         #endregion
-          
+
         #region Constructor
         public frmAttendanceSystem()
         {
@@ -145,7 +147,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         #region Event
         private void frmAttendanceSystem_Load(object sender, EventArgs e)
         {
-            
+            videoCapture = ConfigCamera(videoCapture);
         }
 
         protected virtual void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
@@ -197,17 +199,18 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         {
             Payslips payslips = new Payslips();
             payslips.payDate = today;
-            payslips.workingSalary = configSalary.salaryPerHour * CalculateWorkingTime(attendances)*salaryRate;
-            payslips.publicSalary = payslips.workingSalary - payslips.deductionSalary + configSalary.allowance;
-            payslips.otherSalary = 0;
-            payslips.tax = configSalary.taxRate / 100 * (configSalary.salaryPerHour * CalculateWorkingTime(attendances));
-            payslips.overtimeSalary = 0;
-            payslips.deductionSalary = payslips.tax + configSalary.lateFeePerMinute*((attendances.checkinAt- Convert.ToDateTime(shifts.timeStart)).TotalMinutes + (attendances.checkoutAt - Convert.ToDateTime(shifts.timeEnd)).TotalMinutes);
-            payslips.annualLeaveSalary = 0;
-            payslips.bonus = configSalary.bonusPerDay;
-            payslips.userId = userId;
             payslips.allowance = configSalary.allowance;
-
+            payslips.bonus = configSalary.bonusPerDay;
+            payslips.otherSalary = 0;
+            payslips.overtimeSalary = 0;
+            payslips.annualLeaveSalary = 0;
+            payslips.userId = userId;
+            payslips.workingSalary = configSalary.salaryPerHour * CalculateWorkingTime(attendances) * salaryRate;
+            payslips.tax = configSalary.taxRate / 100 * (configSalary.salaryPerHour * CalculateWorkingTime(attendances));
+            payslips.deductionSalary = payslips.tax + configSalary.lateFeePerMinute * ((attendances.checkinAt - Convert.ToDateTime(shifts.timeStart)).TotalMinutes 
+                                        + (attendances.checkoutAt - Convert.ToDateTime(shifts.timeEnd)).TotalMinutes);
+            payslips.publicSalary = payslips.workingSalary - payslips.deductionSalary + configSalary.allowance;
+            
             return payslips;
         }
 
@@ -226,7 +229,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
             frmMain.Show();
         }
 
-        
+
         #endregion
 
         #region Method
@@ -453,7 +456,6 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
         private void btnStartCamera_Click(object sender, EventArgs e)
         {
             GetFacesList();
-            videoCapture = ConfigCamera(videoCapture);
             captureTimer.Start();
         }
 
