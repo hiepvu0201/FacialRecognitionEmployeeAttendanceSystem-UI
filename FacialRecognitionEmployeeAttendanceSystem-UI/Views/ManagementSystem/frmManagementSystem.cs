@@ -82,7 +82,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                             return;
                         }
                         ucView1.dgvManagement.DataSource = listDepartments;
-                        ucView1.dgvManagement.Columns["shifts"].Visible = false;
+                        ucView1.dgvManagement.Columns["shifts"].Visible=false;
                         ucView1.dgvManagement.AutoResizeColumns();
                         ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -107,7 +107,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                         ucView1.dgvManagement.Columns["departments"].Visible = false;
                         ucView1.dgvManagement.Columns["shifts"].Visible = false;
                         ucView1.dgvManagement.AutoResizeColumns();
-                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
                         break;
                     case 4:
@@ -138,7 +138,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                         ucView1.dgvManagement.DataSource = listPayslips;
                         ucView1.dgvManagement.AutoResizeColumns();
                         ucView1.dgvManagement.Columns["users"].Visible = false;
-                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
                         break;
                     default:

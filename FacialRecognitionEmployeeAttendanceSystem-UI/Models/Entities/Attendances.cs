@@ -34,7 +34,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Models
 
         public Users users { get; set; }
 
-        [System.ComponentModel.DisplayName("Belong To User Who Has Id")]
+        [System.ComponentModel.DisplayName("User Id")]
         public long userId { get; set; }
 
         public static Attendances GetInstance()
