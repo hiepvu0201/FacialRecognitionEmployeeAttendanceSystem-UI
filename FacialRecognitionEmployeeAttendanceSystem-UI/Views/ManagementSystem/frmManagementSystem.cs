@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FacialRecognitionEmployeeAttendanceSystem_UI.Views.ManagementSystem;
+using AutoMapper;
+using FacialRecognitionEmployeeAttendanceSystem_UI.ViewModel;
+using FacialRecognitionEmployeeAttendanceSystem_UI.Mappers;
 
 namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
 {
@@ -74,6 +77,14 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 List<Payslips> listPayslips = await _payslipsRepository.GetList();
                 List<Users> listUsers = await _usersRepository.GetList();
 
+                var mapperProfile = new MapperProfile();
+                var config = new MapperConfiguration(cfg => cfg.AddProfile(mapperProfile));
+                var mapper = new Mapper(config);
+
+                var listPayslipView = mapper.Map<List<Payslips>>(listPayslips);
+                var listAttendView = mapper.Map<List<AttendancesViewModel>>(listAttendances);
+                var listDeptView = mapper.Map<List<DepartmentViewModel>>(listDepartments);
+                var listUserView = mapper.Map<List<UserViewModel>>(listUsers);
                 switch (flag)
                 {
                     case 1:
@@ -81,8 +92,10 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                         {
                             return;
                         }
-                        ucView1.dgvManagement.DataSource = listDepartments;
-                        ucView1.dgvManagement.Columns["shifts"].Visible=false;
+                        ucView1.dgvManagement.DataSource = listDeptView;
+                        ucView1.dgvManagement.Columns[0].Visible = false;   //invisible id
+                        ucView1.dgvManagement.Columns[3].Visible=false; //invisible shifts
+                        ucView1.dgvManagement.Columns[2].Visible = false; //invisible Shift ID
                         ucView1.dgvManagement.AutoResizeColumns();
                         ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -94,7 +107,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                         }
                         ucView1.dgvManagement.DataSource = listRoles;
                         ucView1.dgvManagement.AutoResizeColumns();
-                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        ucView1.dgvManagement.Columns[0].Visible = false; // Invisible columns Id
+                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
                         break;
                     case 3:
@@ -102,19 +116,22 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                         {
                             return;
                         }
-                        ucView1.dgvManagement.DataSource = listUsers;
-                        ucView1.dgvManagement.Columns["roles"].Visible = false;
-                        ucView1.dgvManagement.Columns["departments"].Visible = false;
-                        ucView1.dgvManagement.Columns["shifts"].Visible = false;
+                        ucView1.dgvManagement.DataSource = listUserView;
+                        ucView1.dgvManagement.Columns[0].Visible = false; // Invisible columns Id
+                        ucView1.dgvManagement.Columns[10].Visible = false; // Invisible columns DepId
+                        ucView1.dgvManagement.Columns[12].Visible = false; // Invisible columns RoleId
+                        ucView1.dgvManagement.Columns[15].Visible = false; // Invisible columns shifId
                         ucView1.dgvManagement.AutoResizeColumns();
-                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
                         break;
                     case 4:
                         if (listShifts == null)
-                        { 
+                        {
                             return;
                         }
                         ucView1.dgvManagement.DataSource = listShifts;
+                        ucView1.dgvManagement.Columns[0].Visible = false; // Invisible columns Id
                         ucView1.dgvManagement.AutoResizeColumns();
                         ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                         break;
@@ -123,10 +140,11 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                         {
                             return;
                         }
-                        ucView1.dgvManagement.DataSource = listAttendances;
+                        ucView1.dgvManagement.DataSource = listAttendView;
+                        ucView1.dgvManagement.Columns[0].Visible = false; // Invisible columns Id
+                        ucView1.dgvManagement.Columns[7].Visible = false; // Invisible columns UsrId
                         ucView1.dgvManagement.AutoResizeColumns();
                         ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                        ucView1.dgvManagement.Columns["users"].Visible = false;
 
                         break;
                     case 6:
@@ -134,10 +152,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                         {
                             return;
                         }
-                        ucView1.dgvManagement.DataSource = listPayslips;
+                        ucView1.dgvManagement.DataSource = listPayslipView;
                         ucView1.dgvManagement.AutoResizeColumns();
-                        ucView1.dgvManagement.Columns["users"].Visible = false;
-                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
                         break;
                     default:

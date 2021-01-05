@@ -32,15 +32,16 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
                     case 1:
                         {
                             // Department
-                            Departments.GetInstance().departmentName = data.Cells[1].Value.ToString();
+                            Departments.GetInstance().departmentName = Convert.ToString( data.Cells[1].Value);
+
                             Departments.GetInstance().shiftId = Convert.ToInt32(data.Cells[2].Value.ToString());
                         }
                         break;
                     case 2:
                         {
                             // Role
-                            Roles.GetInstance().roleName = data.Cells[1].Value.ToString();
-                            Roles.GetInstance().note = data.Cells[2].Value.ToString();
+                            Roles.GetInstance().roleName = Convert.ToString(data.Cells[1].Value);
+                            Roles.GetInstance().note = Convert.ToString(data.Cells[2].Value);
                             Roles.GetInstance().description = data.Cells[3].Value.ToString();
                             Roles.GetInstance().fixedSalary = Convert.ToDouble(data.Cells[4].Value);
                         }
@@ -48,16 +49,16 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
                     case 3:
                         {
                             // User
-                            Users.GetInstance().fullName = data.Cells[1].Value.ToString();
-                            Users.GetInstance().pin = data.Cells[3].ToString();
-                            Users.GetInstance().dob = Convert.ToDateTime(data.Cells[4].Value);
-                            Users.GetInstance().homeAddress = data.Cells[5].Value.ToString();
-                            Users.GetInstance().grossSalary = Convert.ToDouble(data.Cells[6].Value);
-                            Users.GetInstance().netSalary = Convert.ToDouble(data.Cells[7].Value);
-                            Users.GetInstance().note = data.Cells[8].Value.ToString();
+                            Users.GetInstance().fullName = Convert.ToString(data.Cells[1].Value);
+                            Users.GetInstance().pin = Convert.ToString(data.Cells[2].Value);
+                            Users.GetInstance().dob = Convert.ToDateTime(data.Cells[3].Value);
+                            Users.GetInstance().homeAddress = Convert.ToString(data.Cells[4].Value);
+                            Users.GetInstance().grossSalary = Convert.ToDouble(data.Cells[5].Value);
+                            Users.GetInstance().netSalary = Convert.ToDouble(data.Cells[6].Value);
+                            Users.GetInstance().note = Convert.ToString(data.Cells[7].Value);
                             Users.GetInstance().departmentId = Convert.ToInt32(data.Cells[10].Value);
-                            Users.GetInstance().roleId = Convert.ToInt32(data.Cells[13].Value);
-                            Users.GetInstance().shiftId = Convert.ToInt32(data.Cells[14].Value);
+                            Users.GetInstance().roleId = Convert.ToInt32(data.Cells[12].Value);
+                            Users.GetInstance().shiftId = Convert.ToInt32(data.Cells[15].Value);
                         }
                         break;
                     case 4:
@@ -71,9 +72,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
                     case 5:
                         {
                             // Attendance
-                            Attendances.GetInstance().dateCheck = data.Cells[1].Value.ToString();
+                            Attendances.GetInstance().dateCheck = Convert.ToString(data.Cells[1].Value);
                             Attendances.GetInstance().status = Convert.ToBoolean(data.Cells[2].Value);
-                            Attendances.GetInstance().note = data.Cells[3].Value.ToString();
+                            Attendances.GetInstance().note = Convert.ToString(data.Cells[3].Value);
                             Attendances.GetInstance().workingHours = Convert.ToInt32(data.Cells[4].Value);
                             Attendances.GetInstance().checkinAt = Convert.ToDateTime(data.Cells[5].Value);
                             Attendances.GetInstance().checkoutAt = Convert.ToDateTime(data.Cells[6].Value);
@@ -101,8 +102,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception E)
             {
+                MessageBox.Show(E.ToString());
             }
             
         }
