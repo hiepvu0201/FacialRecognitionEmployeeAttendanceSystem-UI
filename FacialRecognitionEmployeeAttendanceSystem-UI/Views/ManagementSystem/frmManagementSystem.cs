@@ -81,7 +81,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                 var config = new MapperConfiguration(cfg => cfg.AddProfile(mapperProfile));
                 var mapper = new Mapper(config);
 
-                var listPayslipView = mapper.Map<List<Payslips>>(listPayslips);
+                var listPayslipView = mapper.Map<List<PayslipViewModel>>(listPayslips);
                 var listAttendView = mapper.Map<List<AttendancesViewModel>>(listAttendances);
                 var listDeptView = mapper.Map<List<DepartmentViewModel>>(listDepartments);
                 var listUserView = mapper.Map<List<UserViewModel>>(listUsers);
@@ -154,8 +154,9 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views
                         }
                         ucView1.dgvManagement.DataSource = listPayslipView;
                         ucView1.dgvManagement.AutoResizeColumns();
+                        ucView1.dgvManagement.Columns[0].Visible = false; // Invisible columns Id
+                        ucView1.dgvManagement.Columns[10].Visible = false; // Invisible columns UsrId
                         ucView1.dgvManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
                         break;
                     default:
                         break;

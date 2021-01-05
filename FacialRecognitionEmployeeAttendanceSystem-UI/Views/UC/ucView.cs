@@ -94,7 +94,7 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.Views.UC
                             Payslips.GetInstance().bonus = Convert.ToDouble(data.Cells[8].Value);
                             Payslips.GetInstance().tax = Convert.ToDouble(data.Cells[9].Value);
                             Payslips.GetInstance().userId = Convert.ToInt64(data.Cells[10].Value);
-                            Payslips.GetInstance().deductionSalary = Convert.ToDouble(data.Cells[11].Value);
+                            Payslips.GetInstance().deductionSalary = Convert.ToDouble(data.Cells[12].Value);
 
                         }
                         break;

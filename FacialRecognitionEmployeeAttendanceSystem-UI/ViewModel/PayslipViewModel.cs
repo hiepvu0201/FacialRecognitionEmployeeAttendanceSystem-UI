@@ -8,6 +8,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.ViewModel
 {
     class PayslipViewModel
     {
+        public long id { get; set; }
+
         [System.ComponentModel.DisplayName("Payment Date")]
         public DateTime payDate { get; set; }
 
@@ -35,7 +37,8 @@ namespace FacialRecognitionEmployeeAttendanceSystem_UI.ViewModel
         [System.ComponentModel.DisplayName("Tax")]
         public double tax { get; set; }
 
-        [System.ComponentModel.DisplayName("User Name")]
+        public long userId { get; set; }
+
         public string userName { get; set; }
 
         [System.ComponentModel.DisplayName("Deduction Salary")]
